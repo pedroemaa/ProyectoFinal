@@ -21,75 +21,27 @@ function LoginScreen({ navigation }) {
       };
   
     return (
-     /* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <TextInput
-          placeholder="Nombre de usuario"
-          
-          style={{ marginBottom: 10, paddingHorizontal: 10, height: 40, borderColor: 'gray', borderWidth: 1 }}
-        />
-        <TextInput
-          placeholder="Contraseña"
-     
-          style={{ marginBottom: 10, paddingHorizontal: 10, height: 40, borderColor: 'gray', borderWidth: 1 }}
-        />
-        <TouchableOpacity title="Iniciar sesión" onPress={handleLogin} />
-        <TouchableOpacity title="Registrarse" onPress={handleRegister} color="green"  style={{ background:"blue", color:"white",}} />
-      </View>
-*/
-
-<View style={styles.container}>
+      <View style={styles.container}>
       <Text style={styles.txtlogin}>Login</Text>
       <TextInput style={styles.inputlogin} placeholder="Usuario"/>
       <TextInput style={styles.inputlogin} placeholder="Contraseña"/>
        <ButtonLogin/>
-       
-      
         <TouchableOpacity onPress={handleRegister} style={styles.buttonlogincrearcuenta}>
-
-           <Text style={styles.txtcrearcuenta}>CrearCuenta</Text>
-
-
+        <Text style={styles.txtcrearcuenta}>CrearCuenta</Text>
         </TouchableOpacity>
-
-      
-
       <TouchableOpacity onPress={handleCambiarContraseña} style={styles.buttonlogincambiarcontraseña}>
-
            <Text>¿Has olvidado la contraseña?</Text>
-
-
       </TouchableOpacity>
-
-
         <TouchableOpacity >
-
           <Text style={styles.txtopciones}></Text>
-
         </TouchableOpacity>
-
       <StatusBar style="auto" />
     </View> 
-
-
-
-
-
-
-
-
-
     );
   }
-
-
   export default LoginScreen;
 
-
-
-
-
   const styles = StyleSheet.create({
-  
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -109,24 +61,13 @@ function LoginScreen({ navigation }) {
       },
      txtlogin:{
     fontSize:50
-    
-    
      },
-    
      txtbuttoncrearcuenta: 
      {
-    
-     fontSize:20,
-     marginTop: 50,
-    
-    
-    
-    
-     }
-       ,
-
+      fontSize:20,
+      marginTop: 50,
+     },
      buttonlogincrearcuenta : {
-
         fontSize:20,
         marginTop: 50,
         backgroundColor:"#43DE48",
@@ -134,27 +75,13 @@ function LoginScreen({ navigation }) {
         borderRadius:30,
         width:"40%",
         textAlign:"center",
-      
-
-      }
-      ,
+      },
       buttonlogincambiarcontraseña : {
-
         fontSize:20,
         marginTop: 50,
-
-
-      }
-      ,
-
+      },
       txtcrearcuenta:{
-
-
        color:"white",
        fontSize:15 ,
-      
       }
-
-
-
   });

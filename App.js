@@ -9,63 +9,10 @@ import  CrearCuenta  from './Crearcuenta.js';
 import LoginScreen from './LoginScreen.js';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
-
-/*function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        title="Ir a Detalles"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-}
-
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-     
-    </View>
-  );
-}
-
-*/
-
-
-
-
 const Stack = createNativeStackNavigator()
 
 function App() {
   return(
-  /*  <View style={styles.container}>
-      <Text style={styles.txtlogin}>Login</Text>
-      <TextInput style={styles.inputlogin} placeholder="Usuario"/>
-      <TextInput style={styles.inputlogin} placeholder="Contraseña"/>
-       <ButtonLogin/>
-       
-
-        
-
-      
-
-      <CambiarContraseña />
-
-
-        <TouchableOpacity >
-
-          <Text style={styles.txtopciones}></Text>
-
-        </TouchableOpacity>
-
-      <StatusBar style="auto" />
-    </View> */
-
-
-  
-
-
     <NavigationContainer>
     <Stack.Navigator>
     <Stack.Screen name="Login" component={LoginScreen} />
@@ -73,14 +20,6 @@ function App() {
     <Stack.Screen name="CambiarContraseña" component={CambiarContraseña} />
     </Stack.Navigator>
   </NavigationContainer>
-
-
-
-
-
-
-
-
   );
 }
 
@@ -106,8 +45,6 @@ const styles = StyleSheet.create({
   },
  txtlogin:{
 fontSize:50
-
-
  },
 
  txtbuttoncrearcuenta: 
@@ -115,9 +52,5 @@ fontSize:50
 
  fontSize:20,
  marginTop: 50,
-
-
-
-
  }
 });

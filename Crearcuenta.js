@@ -7,51 +7,21 @@ import { StyleSheet, Text, View , TextInput , Button , TouchableOpacity, Navigat
 export default function CrearCuenta (navigation) {
 
     return(
-      
          <View>
-  
-      <Text style = {styles.txtcrearcuenta}> Crea una cuenta </Text>
-
-   
-    <TextInput placeholder="Tipo de Cuenta" style={styles.inputcrearcuenta}/>         
-
-
-    <TextInput placeholder="Email" style={styles.inputcrearcuenta}/>      
-
-
-    <TextInput placeholder="Contraseña" style={styles.inputcrearcuenta}/>      
-
-
-    <TextInput placeholder="Confirmar Contraseña" style={styles.inputcrearcuenta}/>   
-
-
-
-
+        <Text style = {styles.txtcrearcuenta}> Crea una cuenta </Text>
+        <TextInput placeholder="Tipo de Cuenta" style={styles.inputcrearcuenta}/>         
+        <TextInput placeholder="Email" style={styles.inputcrearcuenta}/>      
+        <TextInput placeholder="Contraseña" style={styles.inputcrearcuenta}/>      
+        <TextInput placeholder="Confirmar Contraseña" style={styles.inputcrearcuenta}/>   
          <TouchableOpacity style={styles.buttoncrearcuenta}>
-
-
          <Text style={styles.txtcrearcuenta}>Crear Cuenta</Text>
-
        </TouchableOpacity> 
-
-
       </View>
-
-     
-      
-
-
-);
+      );
     };
 
-
-    
 const styles = StyleSheet.create ({
-
- 
-
 inputcrearcuenta: {
-
         borderWidth: 1,
         borderColor:"gray",
         padding:10,
@@ -62,24 +32,15 @@ inputcrearcuenta: {
         backgroundColor:"white",
         paddingStart:30,
         margin:"auto",
-
-
-
 },
 
 txtcrearcuenta: 
 {
-
   fontSize:15 ,
   textAlign:"center" ,
   color:"white",
- 
-
-
-
 },
 buttoncrearcuenta : {
-
   fontSize:20,
   marginTop: 50,
   backgroundColor:"#43DE48",
@@ -88,12 +49,5 @@ buttoncrearcuenta : {
   width:"40%",
   textAlign:"center",
   margin:"auto",
-
-
 }
-
-
-
-
-  
 }); 
