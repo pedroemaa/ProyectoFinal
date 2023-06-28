@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -6,53 +6,88 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Image,
 } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 
 export default function CrearCuenta(navigation) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentValue, setCurrentValue] = useState();
+
+  const items = [
+    { label: "Buscar empleo", value: "Buscar empleo" },
+    { label: "Ofrecer empleo", value: "Ofrecer empleo" },
+    { label: "Cuenta mixta", value: "Cuenta mixta" },
+  ];
   return (
-    <View>
-      <Text style={styles.txtcrearcuenta}> Crea una cuenta </Text>
-      <TextInput placeholder="Tipo de Cuenta" style={styles.inputcrearcuenta} />
-      <TextInput placeholder="Email" style={styles.inputcrearcuenta} />
-      <TextInput placeholder="Contraseña" style={styles.inputcrearcuenta} />
-      <TextInput
-        placeholder="Confirmar Contraseña"
-        style={styles.inputcrearcuenta}
+    <View style={styles.container}>
+      <Image
+        style={styles.image}
+        source={require("./src/assetsPropios/ImagenLogIn.png")}
       />
+      <Text style={styles.txtcrearcuenta1}>Seleccione el tipo de usuario</Text>
+      <View style={styles.ViewdropDowncrearcuenta}>
+        <DropDownPicker
+          style={styles.dropDowncrearcuenta}
+          items={items}
+          open={isOpen}
+          setOpen={() => setIsOpen(!isOpen)}
+          value={currentValue}
+          setValue={(val) => setCurrentValue(val)}
+          placeholder="Seleccione su usuario"
+        />
+      </View>
       <TouchableOpacity style={styles.buttoncrearcuenta}>
-        <Text style={styles.txtcrearcuenta}>Crear Cuenta</Text>
+        <Text style={styles.txtcrearcuenta2}>Continuar</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  inputcrearcuenta: {
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  image: {
+    alignSelf: "center",
+    width: 310,
+    height: 230,
+    marginBottom: 50,
+  },
+  ViewdropDowncrearcuenta: {
+    marginHorizontal: 25,
+    width: "88%",
+  },
+  dropDowncrearcuenta: {
     borderWidth: 1,
     borderColor: "gray",
-    padding: 10,
-    width: "80%",
-    marginTop: 20,
-    height: 50,
-    borderRadius: 30,
+    marginTop: 12,
+    height: 60,
+    borderRadius: 8,
     backgroundColor: "white",
     paddingStart: 30,
-    margin: "auto",
+    alignSelf: "center",
   },
-
-  txtcrearcuenta: {
-    fontSize: 15,
-    textAlign: "center",
+  txtcrearcuenta1: {
+    fontSize: 20,
+    alignSelf: "flex-start",
+    marginLeft: 45,
+  },
+  txtcrearcuenta2: {
     color: "white",
+    fontSize: 20,
+    textAlign: "center",
+    marginTop: 5,
+    fontWeight: "bold",
   },
   buttoncrearcuenta: {
-    fontSize: 20,
-    marginTop: 50,
-    backgroundColor: "#43DE48",
-    padding: 25,
-    borderRadius: 30,
-    width: "40%",
-    textAlign: "center",
-    margin: "auto",
+    alignSelf: "center",
+    marginTop: 160,
+    width: "88%",
+    height: 60,
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: "#0B6EFE",
   },
 });
