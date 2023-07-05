@@ -18,38 +18,22 @@ import LoginScreen from "./LoginScreen.js";
 import MapPantalla from "./MapPantalla.js";
 import StorePantalla from "./StorePantalla.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import AccountNavigator from "./accountnavigator.js";
 
-/* import * as firebase from "firebase"; */
-
-// Your web app's Firebase configuration
-/*const firebaseConfig = {
-  apiKey: "AIzaSyANDfEhHABd2mi-qOB5ab69WhKDHCqnvBo",
-  authDomain: "hiring-12533.firebaseapp.com",
-  projectId: "hiring-12533",
-  storageBucket: "hiring-12533.appspot.com",
-  messagingSenderId: "756650175459",
-  appId: "1:756650175459:web:5d162fa4d579b92072ced6"
-};
-*/
-// Initialize Firebase
-
-/*if(!firebase.apps.lenght)
-{
-
- firebase.initializeApp(firebaseConfig);
-
-
-}
-
-*/
 const Stack = createNativeStackNavigator();
 
-function App() {
-  return <AccountNavigator />;
+export default function AccountNavigator() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="CrearCuenta" component={CrearCuenta} />
+        <Stack.Screen name="CambiarContraseña" component={CambiarContraseña} />
+        <Stack.Screen name="Map" component={MapPantalla} />
+        <Stack.Screen name="InfoOficio" component={StorePantalla} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
-
-export default App;
 
 const styles = StyleSheet.create({
   container: {
