@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 export default function ButtonLogin() {
-  return <Text style={styles.txtbuttonlogin}> Inicia Sesión </Text>;
+  return <Text style={styles.txtbuttonlogin}>Inicia Sesión</Text>;
 }
 
 const styles = StyleSheet.create({

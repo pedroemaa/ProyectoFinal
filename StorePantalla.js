@@ -17,7 +17,6 @@ export const StorePantalla = ({ navigation }) => {
       <View style={styles.buscador}>
         <Searchbar />
       </View>
-
       <View style={{ backgroundColor: "#51c4d3", flex: 1, padding: 18 }}>
         <StoreInfo />
       </View>

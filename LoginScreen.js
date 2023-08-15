@@ -1,26 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
   View,
-  TextInput,
-  Button,
   TouchableOpacity,
-  NavigationContainer,
-  useState,
   Image,
   SafeAreaView,
   ScrollView,
   ImageBackground,
 } from "react-native";
 import ButtonLogin from "./ButtonLogin";
-import ButtonCrearCuenta from "./Buttoncrearcuenta";
-import CambiarContraseña from "./CambiarContraseña";
+import Validacion, { desactivar } from "./ValidarInputs";
 
 function LoginScreen({ navigation }) {
-  const handleLogin = () => {};
-
   const handleRegister = () => {
     navigation.navigate("CrearCuenta");
   };
@@ -36,61 +29,8 @@ function LoginScreen({ navigation }) {
   const handleMap = () => {
     navigation.navigate("Map");
   };
+
   return (
-    /* <View style={styles.container}>
-      <Text style={styles.txtlogin}>Login</Text>
-      <TextInput style={styles.inputlogin} placeholder="Usuario"/>
-      <TextInput style={styles.inputlogin} placeholder="Contraseña"/>
-       <ButtonLogin/>
-       
-      
-        <TouchableOpacity onPress={handleRegister} style={styles.buttonlogincrearcuenta}>
-
-           <Text style={styles.txtcrearcuenta}>CrearCuenta</Text>
-
-
-        </TouchableOpacity>
-
-      
-
-      <TouchableOpacity onPress={handleCambiarContraseña} style={styles.buttonlogincambiarcontraseña}>
-
-           <Text>¿Has olvidado la contraseña?</Text>
-
-
-      </TouchableOpacity>
-
-
-
-
-      <TouchableOpacity onPress={handleMap} style={styles.buttonlogincambiarcontraseña}>
-
-<Text>Ir a Mapa</Text>
-
-
-</TouchableOpacity>
-
-
-
-<TouchableOpacity onPress={handleStoreInfo} style={styles.buttonlogincambiarcontraseña}>
-
-<Text >Ir a Tienda</Text>
-
-
-</TouchableOpacity>
-
-
-
-        <TouchableOpacity >
-
-          <Text style={styles.txtopciones}></Text>
-
-        </TouchableOpacity>
-
-      <StatusBar style="auto" />
-    </View> 
-*/
-
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.general}>
@@ -99,19 +39,28 @@ function LoginScreen({ navigation }) {
             style={styles.image}
             source={require("./src/assetsPropios/ImagenLogIn.png")}
           />
-          <Text style={styles.txtlogin}>Login Details</Text>
-          <TextInput
-            style={styles.inputlogin}
+          <Text style={styles.txtlogin}>Ingrese su usuario</Text>
+          <Validacion
             placeholder="Usuario, email o numero de telefono"
+            regex={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
+            validacionMensaje="No ingreso un formato correcto en el campo mail"
           />
-          <TextInput style={styles.inputlogin} placeholder="Contraseña" />
+          <Validacion
+            placeholder="Contraseña"
+            regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+            validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+          />
           <TouchableOpacity
             onPress={handleCambiarContraseña}
             style={styles.buttonLoginCambiarContraseña}
           >
             <Text style={{ fontSize: 16 }}>¿Has olvidado la contraseña?</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonlogin} onPress={handleMap}>
+          <TouchableOpacity
+            style={styles.buttonlogin}
+            onPress={handleMap}
+            disabled={false}
+          >
             <ButtonLogin />
           </TouchableOpacity>
           <View style={{ flexDirection: "row" }}>
@@ -143,6 +92,7 @@ function LoginScreen({ navigation }) {
           <TouchableOpacity
             onPress={handleStoreInfo}
             style={styles.buttonLoginCambiarContraseña}
+            disabled={desactivar}
           >
             <Text
               style={{
@@ -164,27 +114,14 @@ function LoginScreen({ navigation }) {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputlogin: {
-    borderWidth: 1,
-    borderColor: "gray",
-    padding: 10,
-    width: "80%",
-    marginTop: 20,
-    height: 50,
-    borderRadius: 30,
-    backgroundColor: "white",
-    paddingStart: 30,
-  },
   txtlogin: {
     fontSize: 50,
   },
-
+  validar: {
+    fontSize: 100,
+    color: "red",
+    alignSelf: "center",
+  },
   txtbuttoncrearcuenta: {
     fontSize: 20,
     marginTop: 50,
@@ -206,7 +143,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 15,
   },
-
   container: {
     flex: 1,
     backgroundColor: "#fff",

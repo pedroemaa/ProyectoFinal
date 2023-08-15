@@ -3,54 +3,53 @@ import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
-  View,
-  TextInput,
+  SafeAreaView,
   TouchableOpacity,
   Image,
+  View,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Validacion from "./ValidarInputs";
 
 function CambiarContraseña(navigation) {
   return (
-    <View style={styles.containercambiarcontraseña}>
+    <SafeAreaView style={styles.container}>
       <Image
         style={styles.image}
         source={require("./src/assetsPropios/ImagenLogIn.png")}
       />
-      <TextInput
-        placeholder="Nueva Contraseña"
-        style={styles.inputcambiarcontraseña}
+      <Validacion
+        placeholder="Contraseña"
+        regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+        validacionMensaje="No ingreso un formato correcto en el campo contraseña"
       />
-      <TextInput
-        placeholder="Confirmar Contraseña"
-        style={styles.inputcambiarcontraseña}
+      <Validacion
+        placeholder="Confirme su contraseña"
+        regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+        validacionMensaje="No ingreso un formato correcto en el campo contraseña"
       />
       <TouchableOpacity style={styles.buttoncambiarcontraseña}>
         <Text style={styles.txtmodificarcontraseña}>Modificar Contraseña</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 export default CambiarContraseña;
 
 const styles = StyleSheet.create({
-  containercambiarcontraseña: {
+  container: {
+    flex: 1,
+    alignItems: "flex-start",
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
   },
+
   image: {
     width: 310,
     height: 230,
     marginBottom: 50,
   },
-  buttonlogin: {
-    fontSize: 20,
-    marginTop: 50,
-  },
   buttoncambiarcontraseña: {
-    marginTop: 40,
+    marginTop: 30,
     width: "88%",
     height: 60,
     borderRadius: 10,
