@@ -21,7 +21,8 @@
     "react-native-material-dropdown": "^0.11.1",
     "react-native-paper": "^5.9.1",
     "react-native-svg": "13.4.0",
-    "react-native-web": "~0.18.11"
+    "react-native-web": "~0.18.11",
+    "svg": "^0.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
