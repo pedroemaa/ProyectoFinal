@@ -11,6 +11,7 @@ import {
   ImageBackground,
 } from "react-native";
 import ButtonLogin from "./ButtonLogin";
+import NuevaPantalla from "./botonNuevaPantalla";
 import Validacion, { desactivar } from "./ValidarInputs";
 
 function LoginScreen({ navigation }) {
@@ -30,6 +31,10 @@ function LoginScreen({ navigation }) {
     navigation.navigate("Map");
   };
 
+  const handlePant2 = () => {
+    navigation.navigate("NuevaPantallamm2")
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -37,74 +42,88 @@ function LoginScreen({ navigation }) {
           <StatusBar style="auto" />
           <Image
             style={styles.image}
-            source={require("./src/assetsPropios/ImagenLogIn.png")}
+            source={require("./src/assetsPropios/ImagenLogIn3.png")}
           />
           <Text style={styles.txtlogin}>Ingrese su usuario</Text>
+         
           <Validacion
             placeholder="Usuario, email o numero de telefono"
             regex={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
             validacionMensaje="No ingreso un formato correcto en el campo mail"
           />
+
           <Validacion
             placeholder="Contraseña"
             regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
             validacionMensaje="No ingreso un formato correcto en el campo contraseña"
           />
-          <TouchableOpacity
+      
+            <TouchableOpacity
             onPress={handleCambiarContraseña}
             style={styles.buttonLoginCambiarContraseña}
           >
             <Text style={{ fontSize: 16 }}>¿Has olvidado la contraseña?</Text>
           </TouchableOpacity>
+          
+          <TouchableOpacity
+            style={styles.NuevaPantalla}
+            onPress={handlePant2}
+            disabled={false}
+          >
+            <NuevaPantalla />
+          </TouchableOpacity>
+          
           <TouchableOpacity
             style={styles.buttonlogin}
             onPress={handleMap}
             disabled={false}
           >
             <ButtonLogin />
-          </TouchableOpacity>
+        
+            </TouchableOpacity>
+           
+
+
           <View style={{ flexDirection: "row" }}>
             <Image
               source={require("./src/assetsPropios/lineaAzul.png")}
-              style={styles.lineaAzul}
-            />
+              style={styles.lineaAzul}/>
             <Text style={styles.txtcrearcuenta}>O crea tu cuenta</Text>
             <Image
               source={require("./src/assetsPropios/lineaAzul2.png")}
-              style={styles.lineaAzul}
-            />
+              style={styles.lineaAzul}/> 
           </View>
-          <TouchableOpacity onPress={handleRegister} style={{ marginTop: 20 }}>
-            <ImageBackground
-              source={require("./src/assetsPropios/GoogleLogoBorde.png")}
-              style={{ width: 52, height: 52 }}
-            >
-              <Image
-                source={require("./src/assetsPropios/GoogleLogo.png")}
-                style={{
-                  alignSelf: "center",
-                  marginTop: 10,
-                }}
-              ></Image>
-            </ImageBackground>
-          </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={handleStoreInfo}
-            style={styles.buttonLoginCambiarContraseña}
-            disabled={desactivar}
-          >
-            <Text
-              style={{
-                fontSize: 16,
-                textAlign: "center",
-                width: "100%",
-                marginTop: 20,
-              }}
-            >
-              Ir a Tienda
-            </Text>
-          </TouchableOpacity>
+                    {/* Imagen Azul de fondo, con el logo que se pueda tocar*/ }
+         <View >
+            <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") } resizeMode= {'stretch'} style={styles.fondo}  >
+
+              <TouchableOpacity onPress={handleRegister} style={{ marginTop: 100 }}>
+               <Image
+                  source={require("./src/assetsPropios/GoogleLogo.png")}
+                  style={{
+                  alignSelf: 'center',
+                  }}>
+                </Image>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={handleStoreInfo}
+                style={styles.buttonLoginCambiarContraseña}
+                disabled={desactivar}>
+                <Text
+                 style={{
+                 fontSize: 16,
+                 textAlign: "center",
+                 width: "100%",
+                 marginTop: 40,
+                 }}>
+                  Ir a Tienda
+                </Text>
+             </TouchableOpacity>
+           </ImageBackground>
+         </View>
+        {/* -----------------------------------------------------------------------------*/ }
+
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -152,10 +171,18 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   image: {
-    width: 310,
-    height: 230,
-    marginBottom: 50,
+    width: 300,
+    height: 220,
+    marginBottom: 15,
   },
+  
+fondo: {
+  width: 400,
+  height: 320,
+  marginTop: -60,  
+},
+
+  
   inputlogin: {
     borderWidth: 1,
     borderColor: "gray",
@@ -195,18 +222,26 @@ const styles = StyleSheet.create({
   buttonlogin: {
     marginTop: 30,
     width: "88%",
-    height: 60,
+    height: 50,
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: "#0B6EFE",
+  },
+  NuevaPantalla: {
+    marginTop: 10,
+    width: "50%",
+    height: 40,
     borderRadius: 10,
     padding: 10,
     backgroundColor: "#0B6EFE",
   },
   txtcrearcuenta: {
-    marginTop: 30,
+    marginTop: 13,
     color: "black",
     fontSize: 15,
   },
   lineaAzul: {
-    marginTop: 40,
-    marginHorizontal: 20,
+    marginTop: 22,
+    marginHorizontal: 10,
   },
 });

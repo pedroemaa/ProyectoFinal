@@ -6,16 +6,16 @@ export default function Validacion(props) {
   const [text, setText] = useState();
   const [validacionMensaje, setValidacionMensaje] = useState("");
 
-  const validar = (input) => {
-    const esValido = props.regex.test(input);
-    if (text === "") {
-      setValidacionMensaje();
-    } else if (!esValido) {
-      setValidacionMensaje(props.validacionMensaje);
-    } else {
-      setValidacionMensaje();
-    }
-  };
+  //const validar = (input) => {
+  //  const esValido = props.regex.test(input);
+  //  if (text === "") {
+  //    setValidacionMensaje();
+  //  } else if (!esValido) {
+  //    setValidacionMensaje(props.validacionMensaje);
+  //  } else {
+  //    setValidacionMensaje();
+  //  }
+ // };
 
   return (
     <View style={styles.container}>

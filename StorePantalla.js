@@ -29,6 +29,6 @@ export default StorePantalla;
 const styles = StyleSheet.create({
   buscador: {
     padding: 15,
-    backgroundColor: "white",
+    backgroundColor: "black",
   },
 });

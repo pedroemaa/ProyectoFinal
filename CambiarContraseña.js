@@ -1,16 +1,20 @@
-import React from "react";
-import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
   SafeAreaView,
   TouchableOpacity,
   Image,
-  View,
 } from "react-native";
 import Validacion from "./ValidarInputs";
 
 function CambiarContraseña(navigation) {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  const handleValidationChange = (isValid) => {
+    setIsButtonDisabled(!isValid);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Image
@@ -21,13 +25,21 @@ function CambiarContraseña(navigation) {
         placeholder="Contraseña"
         regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
         validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+        onValidationChange={handleValidationChange}
       />
       <Validacion
         placeholder="Confirme su contraseña"
         regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
         validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+        onValidationChange={handleValidationChange}
       />
-      <TouchableOpacity style={styles.buttoncambiarcontraseña}>
+      <TouchableOpacity
+        style={[
+          styles.buttoncambiarcontraseña,
+          isButtonDisabled && styles.disabledButton,
+        ]}
+        disabled={isButtonDisabled}
+      >
         <Text style={styles.txtmodificarcontraseña}>Modificar Contraseña</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -55,6 +67,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     backgroundColor: "#0B6EFE",
+  },
+  disabledButton: {
+    backgroundColor: "#ccc", // Color de botón desactivado
   },
   inputcambiarcontraseña: {
     borderWidth: 1,
