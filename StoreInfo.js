@@ -29,7 +29,7 @@ export const StoreInfo = ({ store = {}, navigation }) => {
     <Card elevation={5} style={styles.card}>
       <Card.Cover
         key={name}
-        source={require("./src/assetsPropios/electricista.jpg")}
+        source={{ uri: photos[0] }}
         style={styles.imgStore}
       />
       <View>
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: "white",
+    marginBottom: 9,
   },
   titulo: {
     paddingLeft: 18,

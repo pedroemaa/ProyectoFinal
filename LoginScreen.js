@@ -37,60 +37,6 @@ function LoginScreen({ navigation }) {
     navigation.navigate("Map");
   };
   return (
-    /* <View style={styles.container}>
-      <Text style={styles.txtlogin}>Login</Text>
-      <TextInput style={styles.inputlogin} placeholder="Usuario"/>
-      <TextInput style={styles.inputlogin} placeholder="Contraseña"/>
-       <ButtonLogin/>
-       
-      
-        <TouchableOpacity onPress={handleRegister} style={styles.buttonlogincrearcuenta}>
-
-           <Text style={styles.txtcrearcuenta}>CrearCuenta</Text>
-
-
-        </TouchableOpacity>
-
-      
-
-      <TouchableOpacity onPress={handleCambiarContraseña} style={styles.buttonlogincambiarcontraseña}>
-
-           <Text>¿Has olvidado la contraseña?</Text>
-
-
-      </TouchableOpacity>
-
-
-
-
-      <TouchableOpacity onPress={handleMap} style={styles.buttonlogincambiarcontraseña}>
-
-<Text>Ir a Mapa</Text>
-
-
-</TouchableOpacity>
-
-
-
-<TouchableOpacity onPress={handleStoreInfo} style={styles.buttonlogincambiarcontraseña}>
-
-<Text >Ir a Tienda</Text>
-
-
-</TouchableOpacity>
-
-
-
-        <TouchableOpacity >
-
-          <Text style={styles.txtopciones}></Text>
-
-        </TouchableOpacity>
-
-      <StatusBar style="auto" />
-    </View> 
-*/
-
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.general}>
@@ -152,7 +98,7 @@ function LoginScreen({ navigation }) {
                 marginTop: 20,
               }}
             >
-              Ir a Tienda
+              Ir a Officios
             </Text>
           </TouchableOpacity>
         </View>
