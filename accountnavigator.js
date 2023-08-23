@@ -18,6 +18,7 @@ import LoginScreen from "./LoginScreen.js";
 import MapPantalla from "./MapPantalla.js";
 import StorePantalla from "./StorePantalla.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Navigation from "./navigation.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,8 +29,7 @@ export default function AccountNavigator() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="CrearCuenta" component={CrearCuenta} />
         <Stack.Screen name="CambiarContraseña" component={CambiarContraseña} />
-        <Stack.Screen name="Map" component={MapPantalla} />
-        <Stack.Screen name="InfoOficio" component={StorePantalla} />
+        <Stack.Screen name="Navigation" component={Navigation} />
       </Stack.Navigator>
     </NavigationContainer>
   );

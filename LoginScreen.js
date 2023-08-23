@@ -102,7 +102,7 @@ function LoginScreen({ navigation }) {
                 marginTop: 20,
               }}
             >
-              Ir a Tienda
+              Ir a Officios
             </Text>
           </TouchableOpacity>
         </View>

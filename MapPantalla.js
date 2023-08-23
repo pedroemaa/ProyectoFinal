@@ -9,14 +9,16 @@ import {
 import { Searchbar } from "react-native-paper";
 import MapView from "react-native-maps";
 
-export default function MapPantalla({ navigation }) {
+export const MapPantalla = ({ navigation }) => {
   return (
     <>
       <Searchbar style={styles.buscador} />
       <MapView style={styles.mapStyle} />
     </>
   );
-}
+};
+
+export default MapPantalla;
 
 const styles = StyleSheet.create({
   buscador: {
