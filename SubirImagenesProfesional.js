@@ -73,8 +73,7 @@ export default function SubirImagenProfesional ({ navigaton }) {
 
           <TouchableOpacity
              
-              style={styles.buttoncontinuar}
-          > 
+              style={styles.buttoncontinuar}> 
           <Text style={styles.txtcontinuar}>Continuar</Text>
             
            
