@@ -14,7 +14,7 @@ import ButtonLogin from "./ButtonLogin";
 import NuevaPantalla from "./botonNuevaPantalla";
 import Validacion, { desactivar } from "./ValidarInputs";
 
-function LoginScreen({ navigation }) {
+export default  function LoginScreen({ navigation }) {
   const handleRegister = () => {
     navigation.navigate("CrearCuenta");
   };
@@ -32,7 +32,7 @@ function LoginScreen({ navigation }) {
   };
 
   const handlePant2 = () => {
-    navigation.navigate("NuevaPantallamm2")
+    navigation.navigate("Crear Cuenta Profesional")
   }
 
   return (
@@ -130,11 +130,14 @@ function LoginScreen({ navigation }) {
   );
 }
 
-export default LoginScreen;
+
 
 const styles = StyleSheet.create({
   txtlogin: {
-    fontSize: 50,
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignSelf: "flex-start",
+    marginLeft: 40,
   },
   validar: {
     fontSize: 100,

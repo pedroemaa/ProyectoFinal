@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function NuevaPantalla() {
+export default function CrearCuentaProfesional() {
   return <Text style={styles.txtnuevapantalla}>boton2</Text>;
 }
 

@@ -11,9 +11,16 @@ import {
   ImageBackground,
  }from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
-export default function NuevaPantalla2(navigation) {
+export default function CrearCuentaProfesional({navigation}) {
+
+  const handleImagenProfecional= () => {
+    navigation.navigate("ImagenesProfecional");
+  };
+
+
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [currentProfesionValue, setCurrentValue] = useState();
@@ -48,9 +55,13 @@ export default function NuevaPantalla2(navigation) {
         ));
       };
 
+   
+
+    
 
   return (
    <SafeAreaView style={styles.container}>
+    
      <ScrollView>
 
       <View style={styles.container}>
@@ -80,11 +91,7 @@ export default function NuevaPantalla2(navigation) {
               placeholder=""/>
          </View>
     
-         <View >
-         <ImageBackground 
-              source={require("./src/assetsPropios/fondoabajo3.png")} 
-              resizeMode= {'stretch'}
-              style={styles.fondo}> 
+        
 
           <Text style={styles.txtLocation }>Localidad</Text>
           <View style={styles.ViewdropDownLocation}>
@@ -97,6 +104,14 @@ export default function NuevaPantalla2(navigation) {
               setValue={(val) => setCurrentValueL(val)}
               placeholder=""/>
           </View>
+
+
+          <View >
+         <ImageBackground 
+              source={require("./src/assetsPropios/fondoabajo3.png")} 
+              resizeMode= {'stretch'}
+              style={styles.fondo}> 
+
 
           <Text style={styles.txtDirección }>Dirección</Text>
            <TextInput   
@@ -117,14 +132,26 @@ export default function NuevaPantalla2(navigation) {
               ))}
              </View>
 
-          <TouchableOpacity style={styles.buttoncontinuar}>
-             <Text style={styles.txtcontinuar}>Continuar</Text>
+     
+
+
+             <View>
+          <TouchableOpacity
+            onPress={handleImagenProfecional}
+            style={styles.buttoncontinuar}> 
+          <Text style={styles.txtcontinuar}>Continuar</Text>
+            
+           
           </TouchableOpacity>
+          
+          <View style={styles.spaceBelowButton} />
+        </View>
 
           </ImageBackground>
         </View>
       </View>
    </ScrollView>
+ 
 </SafeAreaView>   
 );
 }
@@ -144,6 +171,7 @@ const styles = StyleSheet.create({
   /*Nombre             */
   txtName: {
     fontSize: 25,
+    fontWeight: 'bold',
     alignSelf: "flex-start",
     marginLeft: 40,
   },
@@ -164,6 +192,7 @@ const styles = StyleSheet.create({
   /*Apellido             */
   txtApellido: {
     fontSize: 25,
+    fontWeight: 'bold',
     alignSelf: "flex-start",
     marginLeft: 40,
     marginTop: 10,
@@ -185,6 +214,7 @@ const styles = StyleSheet.create({
   /*Profesion             */
   txtProfesion: {
     fontSize: 25,
+    fontWeight: 'bold',
     alignSelf: "flex-start",
     marginLeft: 40,
     marginTop: 10,
@@ -216,9 +246,10 @@ const styles = StyleSheet.create({
   /*Localidad             */
   txtLocation: {
     fontSize: 25,
+    fontWeight: 'bold',
     alignSelf: "flex-start",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 10,
   },
 
   ViewdropDownLocation: {
@@ -247,9 +278,10 @@ const styles = StyleSheet.create({
   /*  Direccion        */
   txtDirección: {
     fontSize: 25,
+    fontWeight: 'bold',
     alignSelf: "flex-start",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 10,
   },
 
   inputDirección: {
@@ -268,6 +300,7 @@ const styles = StyleSheet.create({
  /* PAGOS              */ 
   txtPago: {
     fontSize: 25,
+    fontWeight: 'bold',
     alignSelf: "flex-start",
     marginLeft: 11,
   },
@@ -277,7 +310,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     paddingLeft: 30,
-    marginTop: 10,
+    marginTop: 15,
   },
 
   checkboxContainer: {
@@ -318,18 +351,23 @@ const styles = StyleSheet.create({
 
   buttoncontinuar: {
     alignSelf: "center",
-    marginTop: 20,
+    fontSize: 20,
+    marginTop: 30,
     width: "88%",
-    height: 60,
+    height: 50,
     borderRadius: 10,
     padding: 10,
     backgroundColor: "#0B6EFE",
   },
 
+  spaceBelowButton: {
+    height: 20, // Ajusta esta altura según lo que necesites
+  },
+
+
   /*  revisar */
   fondo: {
-    width: 400,
-    height: 420,
-    marginTop: 0,  
+    justifyContent: 'center',
+    flex: 1,  
   },
 });
