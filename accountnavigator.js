@@ -1,27 +1,15 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Dimensions,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import PantPrincipal from "./PantPrincipal.js";
-import ButtonLogin from "./ButtonLogin.js";
 import CambiarContraseña from "./CambiarContraseña.js";
-import ButtonCrearCuenta from "./Buttoncrearcuenta.js";
 import CrearCuenta from "./Crearcuenta.js";
 import LoginScreen from "./LoginScreen.js";
 import MapPantalla from "./MapPantalla.js";
-import NuevaPantalla from "./botonNuevaPantalla.js";
-import StorePantalla from "./StorePantalla.js";
+import CreateAccoutMail from "./CreateAccoutMail.js";
+import CreateAccoutContra from "./CreateAccoutContra.js";
 import CrearCuentaProfesional from "./CrearCuentaProfesional.js";
 import ImagenesProfecional from"./SubirImagenesProfesional.js";
-//import CrearProfecional from"./crearPerfilProf.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Navigation from "./navigation.js";
 
@@ -33,8 +21,12 @@ export default function AccountNavigator() {
       <Stack.Navigator>
 
         <Stack.Screen name= "Pantalla Principal" component={PantPrincipal}/>
+        <Stack.Screen name= "Crear Cuenta Mail" component={CreateAccoutMail}/>
         <Stack.Screen name="Crear Cuenta Profesional" component={CrearCuentaProfesional} />
+        <Stack.Screen name="Crear Contraseña" component={CreateAccoutContra}/>
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Map" component={MapPantalla} />
+        <Stack.Screen name="ImagenesProfecional" component={ImagenesProfecional} />
         <Stack.Screen name="CrearCuenta" component={CrearCuenta} />
         <Stack.Screen name="CambiarContraseña" component={CambiarContraseña} />
         <Stack.Screen name="Navigation" component={Navigation} />
