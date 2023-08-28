@@ -23,6 +23,7 @@ import CrearCuentaProfesional from "./CrearCuentaProfesional.js";
 import ImagenesProfecional from"./SubirImagenesProfesional.js";
 //import CrearProfecional from"./crearPerfilProf.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Navigation from "./navigation.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,12 +37,8 @@ export default function AccountNavigator() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="CrearCuenta" component={CrearCuenta} />
         <Stack.Screen name="CambiarContraseña" component={CambiarContraseña} />
-        <Stack.Screen name="Map" component={MapPantalla} />
-        <Stack.Screen name="InfoOficio" component={StorePantalla} />
-        
-        <Stack.Screen name="ImagenesProfecional" component={ImagenesProfecional} />
-       
-        </Stack.Navigator>
+        <Stack.Screen name="Navigation" component={Navigation} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

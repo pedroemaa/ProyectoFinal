@@ -66,7 +66,7 @@ export default function SubirImagenProfesional ({ navigaton }) {
             )}
           </View>
           <View >
-            <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") } resizeMode= {'strech'} style={styles.fondo}  >
+            <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") } resizeMode= {'stretch'} style={styles.fondo}  >
 
 
 
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0B6EFE",
   },
   image2: {
-    justifyContent: 'center',
+    justifyContent: "center",
     flex: 1,
   },
 });

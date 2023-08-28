@@ -10,6 +10,7 @@ import { Searchbar } from "react-native-paper";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location"; // Importamos el módulo de geolocalización
 
+<<<<<<< HEAD
 export default function MapPantalla({ navigation }) {
   const [userLocation, setUserLocation] = useState(null);
 
@@ -39,6 +40,9 @@ export default function MapPantalla({ navigation }) {
     longitudeDelta: 0.01,
   };
 
+=======
+export const MapPantalla = ({ navigation }) => {
+>>>>>>> d72ccf84b7c7afd890c808b4aa54e3fd83b7ff30
   return (
     <>
       <Searchbar style={styles.buscador} />
@@ -53,7 +57,9 @@ export default function MapPantalla({ navigation }) {
       </MapView>
     </>
   );
-}
+};
+
+export default MapPantalla;
 
 const styles = StyleSheet.create({
   buscador: {

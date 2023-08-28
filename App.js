@@ -19,6 +19,9 @@ import MapPantalla from "./MapPantalla.js";
 import StorePantalla from "./StorePantalla.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AccountNavigator from "./accountnavigator.js";
+import { StoreContextProvider } from "./StoresContext.js";
+import Navigation from "./navigation.js";
+import AppNavigator from "./appnavigator.js";
 
 /* import * as firebase from "firebase"; */
 
@@ -46,7 +49,11 @@ import AccountNavigator from "./accountnavigator.js";
 const Stack = createNativeStackNavigator();
 
 function App() {
-  return <AccountNavigator />;
+  return (
+    <StoreContextProvider>
+      <AccountNavigator />
+    </StoreContextProvider>
+  );
 }
 
 export default App;

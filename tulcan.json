@@ -1,0 +1,187 @@
+{
+    "html_attributions": [],
+    "next_page_token": "some token",
+    "results": [
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 0.813899908367509,
+                    "lng": -77.71705578251684
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 0.813872,
+                        "lng": 77.717065
+                    },
+                    "southwest": {
+                        "lat": 0.813877,
+                        "lng": 77.717037
+                    }
+                }
+            },
+            "icon": "https://img.icons8.com/material-two-tone/24/fuse-symbol.png",
+            "name": "Electricista",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": ["./src/assetsPropios/electricista.jpg"],
+            "place_id": "some place id 1",
+            "rating": 4,
+            "reference": "",
+            "user_ratings_total": 45,
+            "vicinity": "Junin y Tulcan"
+        },
+        {
+            "business_status": "CLOSED_TEMPORARILY",
+            "geometry": {
+                "location": {
+                    "lat": 0,
+                    "lng": 0
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 0,
+                        "lng": 0
+                    },
+                    "southwest": {
+                        "lat": 0,
+                        "lng":0 
+                    }
+                }
+            },
+            "icon": "URL_ICON",
+            "name": "Electricista",
+            "permanently_closed": true,
+            "photos": ["./src/assetsPropios/electricista.jpg"],
+            "place_id": "some place id 2",
+            "plus_code": "",
+            "rating": 4,
+            "reference": "",
+            "scope": "",
+            "types": "",
+            "vicinity": "DIRECCION_TIENDA"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 0.813899908367509,
+                    "lng": -77.71705578251684
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 0.813872,
+                        "lng": 77.717065
+                    },
+                    "southwest": {
+                        "lat": 0.813877,
+                        "lng": 77.717037
+                    }
+                }
+            },
+            "icon": "https://img.icons8.com/material-two-tone/24/fuse-symbol.png",
+            "name": "Plomero",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": ["./src/assetsPropios/plomero.jpg"],
+            "place_id": "some place id 1",
+            "rating": 3,
+            "reference": "",
+            "user_ratings_total": 45,
+            "vicinity": "Junin y Tulcan"
+        },
+        {
+            "business_status": "CLOSED_TEMPORARILY",
+            "geometry": {
+                "location": {
+                    "lat": 0,
+                    "lng": 0
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 0,
+                        "lng": 0
+                    },
+                    "southwest": {
+                        "lat": 0,
+                        "lng":0 
+                    }
+                }
+            },
+            "icon": "URL_ICON",
+            "name": "Plomero",
+            "permanently_closed": true,
+            "photos": ["./src/assetsPropios/plomero.jpg"],
+            "place_id": "some place id ###",
+            "plus_code": "",
+            "rating": 4,
+            "reference": "",
+            "scope": "",
+            "types": "",
+            "vicinity": "DIRECCION_TIENDA"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": {
+                "location": {
+                    "lat": 0.813899908367509,
+                    "lng": -77.71705578251684
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 0.813872,
+                        "lng": 77.717065
+                    },
+                    "southwest": {
+                        "lat": 0.813877,
+                        "lng": 77.717037
+                    }
+                }
+            },
+            "icon": "https://img.icons8.com/material-two-tone/24/fuse-symbol.png",
+            "name": "Mecanico",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": ["./src/assetsPropios/mecanico.jpg"],
+            "place_id": "some place id 1",
+            "rating": 4,
+            "reference": "",
+            "user_ratings_total": 45,
+            "vicinity": "Junin y Tulcan"
+        },
+        {
+            "business_status": "CLOSED_TEMPORARILY",
+            "geometry": {
+                "location": {
+                    "lat": 0,
+                    "lng": 0
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 0,
+                        "lng": 0
+                    },
+                    "southwest": {
+                        "lat": 0,
+                        "lng":0 
+                    }
+                }
+            },
+            "icon": "URL_ICON",
+            "name": "Mecanico",
+            "permanently_closed": true,
+            "photos": ["./src/assetsPropios/mecanico.jpg"],
+            "place_id": "some place id ###",
+            "plus_code": "",
+            "rating": 4,
+            "reference": "",
+            "scope": "",
+            "types": "",
+            "vicinity": "DIRECCION_TIENDA"
+        }
+    ],
+    "status": "OK"
+}

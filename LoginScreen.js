@@ -124,6 +124,22 @@ export default  function LoginScreen({ navigation }) {
          </View>
         {/* -----------------------------------------------------------------------------*/ }
 
+          <TouchableOpacity
+            onPress={handleStoreInfo}
+            style={styles.buttonLoginCambiarContraseña}
+            disabled={desactivar}
+          >
+            <Text
+              style={{
+                fontSize: 16,
+                textAlign: "center",
+                width: "100%",
+                marginTop: 20,
+              }}
+            >
+              Ir a Officios
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
