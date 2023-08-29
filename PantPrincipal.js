@@ -112,7 +112,7 @@ BotonImagenes: {
     alignSelf: "center",
     marginTop: 20,
     width: "10%",
-    marginLeft:"center",
+   // marginLeft:"center",
   },
 
 button: {
