@@ -17,14 +17,14 @@ export default function PantPrincipal ({ navigation }) {
     navigation.navigate("Login")
   }
 
-  const handleRegister = () => {
-    navigation.navigate("CrearCuenta");
+  const handleCrearCuentaMail = () => {
+    navigation.navigate("Crear Cuenta Mail");
   };
 
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+    
         <View style={styles.general}>
           <Image
             style={styles.image}
@@ -35,25 +35,22 @@ export default function PantPrincipal ({ navigation }) {
           <Text style={styles.txtImagenes}>Bienvenido a Hiring</Text>
 
 
-
+          <Text style={styles.buttonText}>La app ideal para vos que necesitas buscar a profesionales del oficio,
+           con tan solo un click podes buscar entre miles de ellos y los que esten mas cerca de tu casa
+           </Text> 
+           
           <View style={styles.BotonImagenes}>
 
           <ImageBackground source={require("./src/assetsPropios/fondoabajo.png") }
                 resizeMode= {'stretch'}
                 style={styles.fondo}
             >
-
-           <Text style={styles.buttonText}>La app ideal para vos que necesitas buscar a profesionales del oficio,
-           con tan solo un click podes buscar entre miles de ellos y los que esten mas cerca de tu casa
-           </Text>        
-          
-           
-
+         
         <View style={styles.botones}>
 
           <TouchableOpacity
                 style={styles.buttonCrear}
-                onPress={handleRegister}> 
+                onPress={handleCrearCuentaMail}> 
           <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
           </TouchableOpacity>
 
@@ -73,7 +70,7 @@ export default function PantPrincipal ({ navigation }) {
           </View>
              {/* -----------------------------------------------------------------------------*/ }
         </View>
-      </ScrollView>
+      
     </SafeAreaView>
   );
 }
@@ -85,7 +82,7 @@ const styles = StyleSheet.create({
   },
   general: {
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
   image: {
     marginTop: -40,
@@ -93,21 +90,22 @@ const styles = StyleSheet.create({
     width: 360,
     height: 245,
   },
+
   txtImagenes: {
     fontSize: 80,
-    fontFamily: 'Outfit',
-    alignSelf: "center",
+    //fontFamily: 'outfit',
     fontWeight: 'semibold',
     marginLeft: 10,
   },
 
-  botones:{
+botones:{
     flexDirection: 'row',
     marginLeft: 30,
     justifyContent: 'stretch',
       
   },
-  BotonImagenes: {
+
+BotonImagenes: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -116,26 +114,29 @@ const styles = StyleSheet.create({
     width: "10%",
     marginLeft:"center",
   },
-  button: {
+
+button: {
     backgroundColor: "#EDEDED",
     borderRadius: 5,
     padding: 10,
     width: "100%",
     alignItems: "center",
   },
-  buttonText: {
+
+
+buttonText: {
     color: "#635C5C", 
     fontSize: 18,
     justifyContent: "center",
     marginLeft: 15,
     
   },
-  fondo: {
-    width: 390,
-    height: 420,
-    marginTop: -20,  
-  },
 
+fondo: {
+    width: 390,
+    height: 400,
+    marginTop: 80,  
+  },
 
   txtcontinuar: {
     color: "white",
@@ -145,28 +146,28 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  buttonCrear: {
+buttonCrear: {
     alignSelf: "flex",
     fontSize: 10,
-    marginTop: 250,
+    marginTop: 320,
     width: "47%",
     height: 50,
-    borderRadius: 10,
+    borderRadius: 14,
     padding: 10,
     marginLeft: -20,
     backgroundColor: "#0B6EFE",
   },
 
-  buttonIniciar: {
+buttonIniciar: {
    alignSelf: "flex-start",
    marginLeft: 30, 
    fontSize: 10,
-    marginTop: 250,
-    width: "47%",
-    height: 50,
-    borderRadius: 10,
-    padding: 10,
-    backgroundColor: "#0B6EFE",
+   marginTop: 320,
+   width: "47%",
+   height: 50,
+   borderRadius: 14,
+   padding: 10,
+   backgroundColor: "#0B6EFE",
   },
 
  

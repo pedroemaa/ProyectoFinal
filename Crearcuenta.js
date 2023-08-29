@@ -1,30 +1,48 @@
 import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
-export default function CrearCuenta(navigation) {
+export default function CrearCuenta({ navigation }) {
+
+  const [isOptionSelected, setIsOptionSelected] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [currentValue, setCurrentValue] = useState();
 
   const items = [
-    { label: "Buscar empleo", value: "Buscar empleo" },
-    { label: "Ofrecer empleo", value: "Ofrecer empleo" },
+    { label: "Buscar Profesional de Oficio", value: "Buscar empleo" },
+    { label: "Ofrecer Oficio", value: "Ofrecer empleo" },
     { label: "Cuenta mixta", value: "Cuenta mixta" },
   ];
+
+  const [isButtonSelected, setIsButtonSelected] = useState(false);
+
+  const handleButtonPress = () => {
+    if (currentValue) {
+      setIsButtonSelected(true);
+      setIsOptionSelected(true);
+      
+      switch (currentValue) {
+       case "Ofrecer empleo":
+          navigation.navigate("Crear Cuenta Profesional");
+       break;
+      //  case "Ofrecer empleo":
+        //  navigation.navigate("PantallaOfrecerEmpleo");
+    //  break;
+      //  case "Cuenta mixta":
+        //  navigation.navigate("PantallaCuentaMixta");
+        //break;
+      default:
+       break;
+    }
+  }
+};
+
+
+
+
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={require("./src/assetsPropios/ImagenLogIn.png")}
-      />
+      <Image style={styles.image} source={require("./src/assetsPropios/ImagenLogIn.png")} />
       <Text style={styles.txtcrearcuenta1}>Seleccione el tipo de usuario</Text>
       <View style={styles.ViewdropDowncrearcuenta}>
         <DropDownPicker
@@ -37,9 +55,23 @@ export default function CrearCuenta(navigation) {
           placeholder="Seleccione su usuario"
         />
       </View>
-      <TouchableOpacity style={styles.buttoncrearcuenta}>
+      <ImageBackground
+        source={require("./src/assetsPropios/fondoabajo3.png")}
+        resizeMode={'cover'}
+        style={styles.fondo}
+      >
+        <TouchableOpacity
+        style={[
+          styles.buttoncrearcuenta,
+          isButtonSelected && styles.selectedButton,
+          isOptionSelected && styles.optionSelectedButton
+        ]}
+        onPress={handleButtonPress}
+        disabled={!currentValue}
+      >
         <Text style={styles.txtcrearcuenta2}>Continuar</Text>
       </TouchableOpacity>
+      </ImageBackground>
     </View>
   );
 }
@@ -54,6 +86,7 @@ const styles = StyleSheet.create({
     width: 310,
     height: 230,
     marginBottom: 50,
+    marginTop: -30,
   },
   ViewdropDowncrearcuenta: {
     marginHorizontal: 25,
@@ -83,11 +116,21 @@ const styles = StyleSheet.create({
   },
   buttoncrearcuenta: {
     alignSelf: "center",
-    marginTop: 160,
+    marginTop: 80,
     width: "88%",
     height: 60,
     borderRadius: 10,
     padding: 10,
     backgroundColor: "#0B6EFE",
+  },
+
+  selectedButton: {
+    backgroundColor: 'gray', // Color de fondo cuando se selecciona
+  },
+
+  fondo: {
+    width: 400,
+    height: 320,
+    marginTop: 80,  
   },
 });

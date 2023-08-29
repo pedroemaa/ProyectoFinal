@@ -81,20 +81,20 @@ export default function CrearCuentaProfesional({navigation}) {
 
         <Text style={styles.txtProfesion }>Profesion</Text>
         <View style={styles.ViewdropDownProfesion}>
-          <DropDownPicker
-              style={styles.dropDownProfesion}
-              items={itemsProfesion}
-              open={isOpen1}
-              setOpen={() => setIsOpen1(!isOpen1)}
-              value={currentProfesionValue}
-              setValue={(val) => setCurrentValue(val)}
-              placeholder=""/>
-         </View>
-    
+    <DropDownPicker
+      style={styles.dropDownProfesion}
+      items={itemsProfesion}
+      open={isOpen1}
+      setOpen={() => setIsOpen1(!isOpen1)}
+      value={currentProfesionValue}
+      setValue={(val) => setCurrentValue(val)}
+      placeholder=""
+    />
+  </View>
         
 
           <Text style={styles.txtLocation }>Localidad</Text>
-          <View style={styles.ViewdropDownLocation}>
+          <View style={[styles.ViewdropDownLocation, ]}>
             <DropDownPicker
               style={styles.dropDownLocation}
               items={itemsLocation}
@@ -104,6 +104,8 @@ export default function CrearCuentaProfesional({navigation}) {
               setValue={(val) => setCurrentValueL(val)}
               placeholder=""/>
           </View>
+
+
 
 
           <View >
@@ -165,7 +167,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: 310,
     height: 230,
-    marginBottom: 20,   
+    marginBottom: 20, 
+    marginTop: -30,  
   },
 
   /*Nombre             */
@@ -227,7 +230,7 @@ const styles = StyleSheet.create({
     width: 320,
     Color: "white",
     alignSelf: "center",
-    zIndex: 1,
+    zIndex: 2,
   },
   
   dropDownProfesion: {
@@ -259,7 +262,7 @@ const styles = StyleSheet.create({
     width: 320,
     Color: "white",
     alignSelf: "center",
-    zIndex: 1,   
+    zIndex: 1,
   },
 
   dropDownLocation: {
@@ -307,7 +310,7 @@ const styles = StyleSheet.create({
 
   container1: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     alignItems: 'flex-start',
     paddingLeft: 30,
     marginTop: 15,
@@ -316,7 +319,7 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     marginHorizontal: 20,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 10,
   },
 
@@ -367,7 +370,7 @@ const styles = StyleSheet.create({
 
   /*  revisar */
   fondo: {
-    justifyContent: 'center',
+    justifyContent: "center",
     flex: 1,  
   },
 });
