@@ -24,12 +24,12 @@ const Stack = createNativeStackNavigator();
 
 export default function AccountNavigator() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
+    <NavigationContainer screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="CrearCuenta" component={CrearCuenta} />
         <Stack.Screen name="CambiarContraseña" component={CambiarContraseña} />
-        <Stack.Screen name="Navigation" component={Navigation} />
+        <Stack.Screen name="InfoOficio" component={Navigation} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -33,8 +33,8 @@ function LoginScreen({ navigation }) {
     navigation.navigate("CambiarContraseña");
   };
 
-  const handleMap = () => {
-    navigation.navigate("Map");
+  const handleinfo = () => {
+    navigation.navigate("InfoOficio");
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -57,7 +57,7 @@ function LoginScreen({ navigation }) {
           >
             <Text style={{ fontSize: 16 }}>¿Has olvidado la contraseña?</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonlogin} onPress={handleMap}>
+          <TouchableOpacity style={styles.buttonlogin} onPress={handleinfo}>
             <ButtonLogin />
           </TouchableOpacity>
           <View style={{ flexDirection: "row" }}>
@@ -84,22 +84,6 @@ function LoginScreen({ navigation }) {
                 }}
               ></Image>
             </ImageBackground>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={handleStoreInfo}
-            style={styles.buttonLoginCambiarContraseña}
-          >
-            <Text
-              style={{
-                fontSize: 16,
-                textAlign: "center",
-                width: "100%",
-                marginTop: 20,
-              }}
-            >
-              Ir a Officios
-            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

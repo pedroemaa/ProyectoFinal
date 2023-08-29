@@ -15,9 +15,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Ionicons } from "@expo/vector-icons";
 
-import StorePantalla from "./StorePantalla.js";
-
 import MapPantalla from "./MapPantalla.js";
+
+import { OfficioNavigator } from "./infonavigator.js";
 
 const Tab = createBottomTabNavigator();
 
@@ -38,14 +38,15 @@ const createScreenOptions = ({ route }) => {
     ),
     tabBarActiveTintColor: "#0B6EFE",
     tabBarInactiveTintColor: "gray",
+    headerShown: false,
   };
 };
 
 export const AppNavigator = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <Tab.Navigator screenOptions={createScreenOptions}>
-        <Tab.Screen name="Officio" component={StorePantalla} />
+        <Tab.Screen name="Officio" component={OfficioNavigator} />
 
         <Tab.Screen name="Mapa" component={MapPantalla} />
 
