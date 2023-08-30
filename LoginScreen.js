@@ -27,15 +27,15 @@ export default  function LoginScreen({ navigation }) {
     navigation.navigate("CambiarContraseña");
   };
 
-  const handleMap = () => {
-    navigation.navigate("Map");
+  const handleinfo = () => {
+    navigation.navigate("InfoOficio");
   };
 
  
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-          <View style={styles.general}>
+       <View style={styles.general}>
              <StatusBar style="auto" />
               <Image
                  style={styles.image}

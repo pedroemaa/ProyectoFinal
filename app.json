@@ -19,14 +19,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
-      }
-    },
+      },
     "web": {
       "port": 3000,
       "proxyPort": 19000,
       "favicon": "./assets/favicon.png"
     }
+
   }
 }
