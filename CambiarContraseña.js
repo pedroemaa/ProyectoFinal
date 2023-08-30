@@ -1,61 +1,75 @@
-import React from "react";
-import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
-  View,
-  TextInput,
+  SafeAreaView,
   TouchableOpacity,
   Image,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Validacion from "./ValidarInputs";
 
 function CambiarContraseña(navigation) {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  const handleValidationChange = (isValid) => {
+    setIsButtonDisabled(!isValid);
+  };
+
   return (
-    <View style={styles.containercambiarcontraseña}>
+    <SafeAreaView style={styles.container}>
       <Image
         style={styles.image}
         source={require("./src/assetsPropios/ImagenLogIn.png")}
       />
-      <TextInput
-        placeholder="Nueva Contraseña"
-        style={styles.inputcambiarcontraseña}
+      <Validacion
+        placeholder="Contraseña"
+        regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+        validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+        onValidationChange={handleValidationChange}
       />
-      <TextInput
-        placeholder="Confirmar Contraseña"
-        style={styles.inputcambiarcontraseña}
+      <Validacion
+        placeholder="Confirme su contraseña"
+        regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+        validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+        onValidationChange={handleValidationChange}
       />
-      <TouchableOpacity style={styles.buttoncambiarcontraseña}>
+      <TouchableOpacity
+        style={[
+          styles.buttoncambiarcontraseña,
+          isButtonDisabled && styles.disabledButton,
+        ]}
+        disabled={isButtonDisabled}
+      >
         <Text style={styles.txtmodificarcontraseña}>Modificar Contraseña</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 export default CambiarContraseña;
 
 const styles = StyleSheet.create({
-  containercambiarcontraseña: {
+  container: {
+    flex: 1,
+    alignItems: "flex-start",
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
   },
+
   image: {
     width: 310,
     height: 230,
     marginBottom: 50,
   },
-  buttonlogin: {
-    fontSize: 20,
-    marginTop: 50,
-  },
   buttoncambiarcontraseña: {
-    marginTop: 40,
+    marginTop: 30,
     width: "88%",
     height: 60,
     borderRadius: 10,
     padding: 10,
     backgroundColor: "#0B6EFE",
+  },
+  disabledButton: {
+    backgroundColor: "#ccc", // Color de botón desactivado
   },
   inputcambiarcontraseña: {
     borderWidth: 1,
