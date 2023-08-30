@@ -25,8 +25,8 @@ export default function CrearCuenta({ navigation }) {
        case "Ofrecer empleo":
           navigation.navigate("Crear Cuenta Profesional");
        break;
-      //  case "Ofrecer empleo":
-        //  navigation.navigate("PantallaOfrecerEmpleo");
+       case "Buscar empleo":
+          navigation.navigate("Crear Cuenta Usuario");
     //  break;
       //  case "Cuenta mixta":
         //  navigation.navigate("PantallaCuentaMixta");
@@ -40,38 +40,35 @@ export default function CrearCuenta({ navigation }) {
 
 
 
-  return (
+ return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require("./src/assetsPropios/ImagenLogIn.png")} />
-      <Text style={styles.txtcrearcuenta1}>Seleccione el tipo de usuario</Text>
-      <View style={styles.ViewdropDowncrearcuenta}>
-        <DropDownPicker
-          style={styles.dropDowncrearcuenta}
-          items={items}
-          open={isOpen}
-          setOpen={() => setIsOpen(!isOpen)}
-          value={currentValue}
-          setValue={(val) => setCurrentValue(val)}
-          placeholder="Seleccione su usuario"
-        />
-      </View>
-      <ImageBackground
-        source={require("./src/assetsPropios/fondoabajo3.png")}
-        resizeMode={'cover'}
-        style={styles.fondo}
-      >
-        <TouchableOpacity
-        style={[
-          styles.buttoncrearcuenta,
-          isButtonSelected && styles.selectedButton,
-          isOptionSelected && styles.optionSelectedButton
-        ]}
-        onPress={handleButtonPress}
-        disabled={!currentValue}
-      >
-        <Text style={styles.txtcrearcuenta2}>Continuar</Text>
-      </TouchableOpacity>
-      </ImageBackground>
+        <Image style={styles.image} source={require("./src/assetsPropios/ImagenLogIn.png")} />
+        <Text style={styles.txtcrearcuenta1}>Seleccione el tipo de usuario</Text>
+        <View style={styles.ViewdropDowncrearcuenta}>
+          <DropDownPicker
+            style={styles.dropDowncrearcuenta}
+            items={items}
+            open={isOpen}
+            setOpen={() => setIsOpen(!isOpen)}
+            value={currentValue}
+            setValue={(val) => setCurrentValue(val)}
+            placeholder="Seleccione su usuario"/>
+        </View>
+        <ImageBackground
+            source={require("./src/assetsPropios/fondoabajo3.png")}
+            resizeMode={'cover'}
+            style={styles.fondo}>
+          <TouchableOpacity
+            style={[
+            styles.buttoncrearcuenta,
+            isButtonSelected && styles.selectedButton,
+            isOptionSelected && styles.optionSelectedButton
+                  ]}
+            onPress={handleButtonPress}
+            disabled={!currentValue}>
+           <Text style={styles.txtcrearcuenta2}>Continuar</Text>
+          </TouchableOpacity>
+        </ImageBackground>
     </View>
   );
 }
@@ -123,11 +120,9 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#0B6EFE",
   },
-
   selectedButton: {
     backgroundColor: 'gray', // Color de fondo cuando se selecciona
   },
-
   fondo: {
     width: 400,
     height: 320,
