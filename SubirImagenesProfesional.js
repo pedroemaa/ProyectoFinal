@@ -20,21 +20,20 @@ export default function SubirImagenProfesional ({ navigaton }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageSelect = async () => {
-    let { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status !== "granted") {
-      console.error("Permiso de acceso a la galería denegado");
+        let { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== "granted") {
+         console.error("Permiso de acceso a la galería denegado");
       return;
-    }
+      }
 
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      quality: 1,
-    });
-
-    if (!result.cancelled) {
-      setSelectedImage(result.uri);
-    }
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        quality: 1,
+       });
+      if (!result.cancelled) {
+        setSelectedImage(result.uri);
+      }
   };
 
  // const handleCrearProfecional = () => {
@@ -47,40 +46,32 @@ export default function SubirImagenProfesional ({ navigaton }) {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.general}>
-          <Image
-            style={styles.image}
-            source={require("./src/assetsPropios/ImagenLogIn3.png")}
-          />
+              <Image
+                  style={styles.image}
+                  source={require("./src/assetsPropios/ImagenLogIn3.png")}/>
 
-          <Text style={styles.txtImagenes}>Imagenes</Text>
+              <Text style={styles.txtImagenes}>Imagenes</Text>
 
-          <View style={styles.BotonImagenes}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={handleImageSelect}
-            >
-              <Text style={styles.buttonText}>Subir imagenes</Text>
-            </TouchableOpacity>
-            {selectedImage && (
-              <Image source={{ uri: selectedImage }} style={styles.image2} />
-            )}
-          </View>
-          <View >
-            <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") } resizeMode= {'stretch'} style={styles.fondo}  >
-
-
-
-
-          <TouchableOpacity
-             
-              style={styles.buttoncontinuar}> 
-          <Text style={styles.txtcontinuar}>Continuar</Text>
-            
-           
-          </TouchableOpacity>
-
-          </ImageBackground>
-          </View>
+              <View style={styles.BotonImagenes}>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={handleImageSelect}>
+                  <Text style={styles.buttonText}>Subir imagenes</Text>
+                </TouchableOpacity>
+                  {selectedImage && (
+               <Image source={{ uri: selectedImage }} style={styles.image2} />
+                                )}
+              </View>
+              <View >
+                <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") }
+                                 resizeMode= {'stretch'}
+                                 style={styles.fondo}>
+                  <TouchableOpacity
+                      style={styles.buttoncontinuar}> 
+                    <Text style={styles.txtcontinuar}>Continuar</Text> 
+                  </TouchableOpacity>
+                </ImageBackground>
+              </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -128,23 +119,19 @@ const styles = StyleSheet.create({
   },
   fondo: {
     width: 400,
-    height: 320,
-    marginTop: 80,  
+    height: 380, 
   },
-
-
-  txtcontinuar: {
+ txtcontinuar: {
     color: "white",
     fontSize: 20,
     textAlign: "center",
     marginTop: 5,
     fontWeight: "bold",
   },
-
   buttoncontinuar: {
     alignSelf: "center",
     fontSize: 20,
-    marginTop: 220,
+    marginTop: 280,
     width: "88%",
     height: 50,
     borderRadius: 10,
