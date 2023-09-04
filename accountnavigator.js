@@ -18,10 +18,9 @@ const Stack = createNativeStackNavigator();
 
 export default function AccountNavigator() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-
-        <Stack.Screen name= "Pantalla Principal" component={PantPrincipal}/>
+    <NavigationContainer screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+       <Stack.Screen name= "Pantalla Principal" component={PantPrincipal}/>
         <Stack.Screen name= "Crear Cuenta Mail" component={CreateAccoutMail}/>
         <Stack.Screen name= "Crear Cuenta Profesional" component={CrearCuentaProfesional} />
         <Stack.Screen name= "Crear Cuenta Usuario" component={CraerCuentaUserEnd}/>
@@ -32,6 +31,7 @@ export default function AccountNavigator() {
         <Stack.Screen name= "CrearCuenta" component={CrearCuenta} />
         <Stack.Screen name= "CambiarContraseña" component={CambiarContraseña} />
         <Stack.Screen name= "Navigation" component={Navigation} />
+        <Stack.Screen name="InfoOficio" component={Navigation} />
       </Stack.Navigator>
     </NavigationContainer>
   );

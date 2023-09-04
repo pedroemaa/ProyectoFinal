@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     width: 310,
     height: 230,
     marginBottom: 20, 
-    marginTop: -30,  
+    marginTop: -40,  
   },
 
   /*Nombre             */

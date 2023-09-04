@@ -51,7 +51,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <StoreContextProvider>
-      <AccountNavigator />
+      <AccountNavigator headerShown={false} />
     </StoreContextProvider>
   );
 }

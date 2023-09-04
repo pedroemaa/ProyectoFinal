@@ -9,72 +9,54 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-
-
-export default function PantPrincipal ({ navigation }) {
-
+export default function PantPrincipal({ navigation }) {
   const handleLogin = () => {
-    navigation.navigate("Login")
-  }
-
+    navigation.navigate("Login");
+  };
   const handleCrearCuentaMail = () => {
     navigation.navigate("Crear Cuenta Mail");
   };
-
-
   return (
     <SafeAreaView style={styles.container}>
-    
-        <View style={styles.general}>
-          <Image
-            style={styles.image}
-            resizeMode= {'stretch'}
-            source={require("./src/assetsPropios/ImagenLogIn3.png")}
-          />
-
-          <Text style={styles.txtImagenes}>Bienvenido a Hiring</Text>
-
-
-          <Text style={styles.buttonText}>La app ideal para vos que necesitas buscar a profesionales del oficio,
-           con tan solo un click podes buscar entre miles de ellos y los que esten mas cerca de tu casa
-           </Text> 
-           
-          <View style={styles.BotonImagenes}>
-
-          <ImageBackground source={require("./src/assetsPropios/fondoabajo.png") }
-                resizeMode= {'stretch'}
-                style={styles.fondo}
-            >
-         
-        <View style={styles.botones}>
-
-          <TouchableOpacity
-                style={styles.buttonCrear}
-                onPress={handleCrearCuentaMail}> 
-          <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
-          </TouchableOpacity>
-
-
+      <View style={styles.general}>
+        <ImageBackground
+          style={styles.image}
+          resizeMode={"stretch"}
+          source={require("./src/assetsPropios/ImagenLogIn3.png")}
+        />
+        <Text style={styles.txtImagenes}>Bienvenido a Hiring</Text>
+        <Text style={styles.buttonText}>
+          La app ideal para vos que necesitas buscar a profesionales del oficio,
+          con tan solo un click podes buscar entre miles de ellos y los que
+          esten mas cerca de tu casa
+        </Text>
+        <View style={styles.BotonImagenes}>
+          <ImageBackground
           
-          <TouchableOpacity
+            source={require("./src/assetsPropios/fondoabajo.png")}
+            resizeMode={"stretch"}
+            style={styles.fondo}
+          >
+            <View style={styles.botones}>
+              <TouchableOpacity
+                style={styles.buttonCrear}
+                onPress={handleCrearCuentaMail}
+              >
+                <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
                 style={styles.buttonIniciar}
                 onPress={handleLogin}
-                > 
-                
-          <Text style={styles.txtcontinuar}>Iniciar Sesion</Text>
-          
-          </TouchableOpacity>
-          </View>
-
+              >
+                <Text style={styles.txtcontinuar}>Iniciar Sesion</Text>
+              </TouchableOpacity>
+            </View>
           </ImageBackground>
-          </View>
-             {/* -----------------------------------------------------------------------------*/ }
         </View>
-      
+      </View>
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -90,54 +72,42 @@ const styles = StyleSheet.create({
     width: 360,
     height: 245,
   },
-
   txtImagenes: {
     fontSize: 80,
-    //fontFamily: 'outfit',
-    fontWeight: 'semibold',
+    fontWeight: "semibold",
     marginLeft: 10,
   },
-
-botones:{
-    flexDirection: 'row',
+  botones: {
+    flexDirection: "row",
     marginLeft: 30,
-    justifyContent: 'stretch',
-      
+    justifyContent: "center",
   },
-
-BotonImagenes: {
+  BotonImagenes: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
     marginTop: 20,
     width: "10%",
-   // marginLeft:"center",
   },
-
-button: {
+  button: {
     backgroundColor: "#EDEDED",
     borderRadius: 5,
     padding: 10,
     width: "100%",
     alignItems: "center",
   },
-
-
-buttonText: {
-    color: "#635C5C", 
+  buttonText: {
+    color: "#635C5C",
     fontSize: 18,
     justifyContent: "center",
     marginLeft: 15,
-    
   },
-
-fondo: {
-    width: 390,
+  fondo: {
+    width: 390, 
     height: 400,
-    marginTop: 80,  
+    marginTop: 100,
   },
-
   txtcontinuar: {
     color: "white",
     fontSize: 20,
@@ -145,9 +115,7 @@ fondo: {
     marginTop: 5,
     fontWeight: "bold",
   },
-
-buttonCrear: {
-    alignSelf: "flex",
+  buttonCrear: {
     fontSize: 10,
     marginTop: 320,
     width: "47%",
@@ -157,19 +125,15 @@ buttonCrear: {
     marginLeft: -20,
     backgroundColor: "#0B6EFE",
   },
-
-buttonIniciar: {
-   alignSelf: "flex-start",
-   marginLeft: 30, 
-   fontSize: 10,
-   marginTop: 320,
-   width: "47%",
-   height: 50,
-   borderRadius: 14,
-   padding: 10,
-   backgroundColor: "#0B6EFE",
+  buttonIniciar: {
+    alignSelf: "flex-start",
+    marginLeft: 30,
+    fontSize: 10,
+    marginTop: 320,
+    width: "47%",
+    height: 50,
+    borderRadius: 14,
+    padding: 10,
+    backgroundColor: "#0B6EFE",
   },
-
- 
 });
-

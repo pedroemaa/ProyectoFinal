@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
 export default function CrearCuenta({ navigation }) {
-
-  const [isOptionSelected, setIsOptionSelected] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentValue, setCurrentValue] = useState();
+  const [currentValue, setCurrentValue] = useState(null);
+  const [isButtonSelected, setIsButtonSelected] = useState(false);
 
   const items = [
     { label: "Buscar Profesional de Oficio", value: "Buscar empleo" },
@@ -14,61 +13,58 @@ export default function CrearCuenta({ navigation }) {
     { label: "Cuenta mixta", value: "Cuenta mixta" },
   ];
 
-  const [isButtonSelected, setIsButtonSelected] = useState(false);
+  useEffect(() => {
+    // Actualizar el estado de isButtonSelected cuando se elige un valor
+    setIsButtonSelected(currentValue !== null);
+  }, [currentValue]);
 
   const handleButtonPress = () => {
     if (currentValue) {
-      setIsButtonSelected(true);
-      setIsOptionSelected(true);
-      
       switch (currentValue) {
-       case "Ofrecer empleo":
+        case "Ofrecer empleo":
           navigation.navigate("Crear Cuenta Profesional");
-       break;
-       case "Buscar empleo":
+          break;
+        case "Buscar empleo":
           navigation.navigate("Crear Cuenta Usuario");
-    //  break;
-      //  case "Cuenta mixta":
-        //  navigation.navigate("PantallaCuentaMixta");
-        //break;
-      default:
-       break;
+          break;
+        //  case "Cuenta mixta":
+        //    navigation.navigate("PantallaCuentaMixta");
+        //    break;
+        default:
+          break;
+      }
     }
-  }
-};
+  };
 
-
-
-
- return (
+  return (
     <View style={styles.container}>
-        <Image style={styles.image} source={require("./src/assetsPropios/ImagenLogIn.png")} />
-        <Text style={styles.txtcrearcuenta1}>Seleccione el tipo de usuario</Text>
-        <View style={styles.ViewdropDowncrearcuenta}>
-          <DropDownPicker
-            style={styles.dropDowncrearcuenta}
-            items={items}
-            open={isOpen}
-            setOpen={() => setIsOpen(!isOpen)}
-            value={currentValue}
-            setValue={(val) => setCurrentValue(val)}
-            placeholder="Seleccione su usuario"/>
-        </View>
-        <ImageBackground
-            source={require("./src/assetsPropios/fondoabajo3.png")}
-            resizeMode={'cover'}
-            style={styles.fondo}>
-          <TouchableOpacity
-            style={[
+      <Image style={styles.image} source={require("./src/assetsPropios/ImagenLogIn.png")} />
+      <Text style={styles.txtcrearcuenta1}>Seleccione el tipo de usuario</Text>
+      <View style={styles.ViewdropDowncrearcuenta}>
+        <DropDownPicker
+          style={styles.dropDowncrearcuenta}
+          items={items}
+          open={isOpen}
+          setOpen={() => setIsOpen(!isOpen)}
+          value={currentValue}
+          setValue={(val) => setCurrentValue(val)}
+          placeholder="Seleccione su usuario"
+        />
+      </View>
+      <ImageBackground
+        source={require("./src/assetsPropios/fondoabajo3.png")}
+        resizeMode={'cover'}
+        style={styles.fondo}>
+        <TouchableOpacity
+          style={[
             styles.buttoncrearcuenta,
-            isButtonSelected && styles.selectedButton,
-            isOptionSelected && styles.optionSelectedButton
-                  ]}
-            onPress={handleButtonPress}
-            disabled={!currentValue}>
-           <Text style={styles.txtcrearcuenta2}>Continuar</Text>
-          </TouchableOpacity>
-        </ImageBackground>
+            isButtonSelected ? styles.selectedButton : styles.grisButton,
+          ]}
+          onPress={handleButtonPress}
+          disabled={!currentValue}>
+          <Text style={styles.txtcrearcuenta2}>Continuar</Text>
+        </TouchableOpacity>
+      </ImageBackground>
     </View>
   );
 }
@@ -83,7 +79,7 @@ const styles = StyleSheet.create({
     width: 310,
     height: 230,
     marginBottom: 50,
-    marginTop: -30,
+    marginTop: 30,
   },
   ViewdropDowncrearcuenta: {
     marginHorizontal: 25,
@@ -121,11 +117,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#0B6EFE",
   },
   selectedButton: {
-    backgroundColor: 'gray', // Color de fondo cuando se selecciona
+    backgroundColor: "#0B6EFE", // Color de fondo cuando se selecciona
+  },
+  grisButton: {
+    backgroundColor: "gray", // Color de fondo inicial (gris)
   },
   fondo: {
     width: 400,
     height: 320,
-    marginTop: 80,  
+    marginTop: 90,
   },
 });
