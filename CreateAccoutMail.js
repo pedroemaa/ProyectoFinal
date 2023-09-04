@@ -13,9 +13,16 @@ import {
 import Validacion, { desactivar } from "./ValidarInputs";
 
 export default function CreateAccoutMail({ navigation }) {
+  
+  
   const handleContra = () => {
     navigation.navigate("Crear Contraseña");
   };
+
+  
+    const handleCrearCuenta = () => {
+      navigation.navigate("CrearCuenta");
+    };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -61,7 +68,7 @@ export default function CreateAccoutMail({ navigation }) {
               resizeMode={"stretch"}
               style={styles.fondo}
             >
-              <TouchableOpacity style={{ marginTop: 100 }}>
+              <TouchableOpacity onPress={handleCrearCuenta} style={{ marginTop: 100 }}>
                 <Image
                   source={require("./src/assetsPropios/GoogleLogo.png")}
                   style={{
@@ -148,7 +155,6 @@ const styles = StyleSheet.create({
   fondo: {
     width: 400,
     height: 320,
-    marginTop: -50,
   },
 
   buttonLoginCambiarContraseña: {

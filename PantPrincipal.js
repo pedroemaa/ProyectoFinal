@@ -9,35 +9,30 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-
 export default function PantPrincipal({ navigation }) {
   const handleLogin = () => {
     navigation.navigate("Login");
   };
-
   const handleCrearCuentaMail = () => {
     navigation.navigate("Crear Cuenta Mail");
   };
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.general}>
-        <Image
+        <ImageBackground
           style={styles.image}
           resizeMode={"stretch"}
           source={require("./src/assetsPropios/ImagenLogIn3.png")}
         />
-
         <Text style={styles.txtImagenes}>Bienvenido a Hiring</Text>
-
         <Text style={styles.buttonText}>
           La app ideal para vos que necesitas buscar a profesionales del oficio,
           con tan solo un click podes buscar entre miles de ellos y los que
           esten mas cerca de tu casa
         </Text>
-
         <View style={styles.BotonImagenes}>
           <ImageBackground
+          
             source={require("./src/assetsPropios/fondoabajo.png")}
             resizeMode={"stretch"}
             style={styles.fondo}
@@ -49,7 +44,6 @@ export default function PantPrincipal({ navigation }) {
               >
                 <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
               </TouchableOpacity>
-
               <TouchableOpacity
                 style={styles.buttonIniciar}
                 onPress={handleLogin}
@@ -63,7 +57,6 @@ export default function PantPrincipal({ navigation }) {
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -79,20 +72,16 @@ const styles = StyleSheet.create({
     width: 360,
     height: 245,
   },
-
   txtImagenes: {
     fontSize: 80,
-
     fontWeight: "semibold",
     marginLeft: 10,
   },
-
   botones: {
     flexDirection: "row",
     marginLeft: 30,
     justifyContent: "center",
   },
-
   BotonImagenes: {
     flex: 1,
     justifyContent: "center",
@@ -101,7 +90,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: "10%",
   },
-
   button: {
     backgroundColor: "#EDEDED",
     borderRadius: 5,
@@ -109,20 +97,17 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
-
   buttonText: {
     color: "#635C5C",
     fontSize: 18,
     justifyContent: "center",
     marginLeft: 15,
   },
-
   fondo: {
-    width: 390,
+    width: 390, 
     height: 400,
-    marginTop: 80,
+    marginTop: 100,
   },
-
   txtcontinuar: {
     color: "white",
     fontSize: 20,
@@ -130,7 +115,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontWeight: "bold",
   },
-
   buttonCrear: {
     fontSize: 10,
     marginTop: 320,
@@ -141,7 +125,6 @@ const styles = StyleSheet.create({
     marginLeft: -20,
     backgroundColor: "#0B6EFE",
   },
-
   buttonIniciar: {
     alignSelf: "flex-start",
     marginLeft: 30,

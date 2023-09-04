@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     width: 315,
     height: 230,
+    marginTop: -40,
   },
   txtImagenes: {
     fontSize: 25,
@@ -119,7 +120,8 @@ const styles = StyleSheet.create({
   },
   fondo: {
     width: 400,
-    height: 380, 
+    height: 380,
+    marginTop: 100, 
   },
  txtcontinuar: {
     color: "white",

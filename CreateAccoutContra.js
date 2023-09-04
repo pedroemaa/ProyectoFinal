@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   fondo: {
     width: 400,
     height: 320,
-    marginTop: 20,
+    marginTop: 60,
   },
 
   txtCrearContra: {
@@ -121,12 +121,12 @@ const styles = StyleSheet.create({
   buttonCrear: {
     alignSelf: "flex-start",
     fontSize: 20,
-    marginTop: 70,
-    width: "100%",
+    marginTop: 20,
+    width: "95%",
     height: 60,
     borderRadius: 10,
     padding: 10,
-    marginLeft: -15,
+    marginLeft: -25,
     backgroundColor: "#0B6EFE",
   },
 });

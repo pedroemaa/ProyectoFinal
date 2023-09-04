@@ -27,8 +27,8 @@ export default  function LoginScreen({ navigation }) {
     navigation.navigate("CambiarContraseña");
   };
 
-  const handleinfo = () => {
-    navigation.navigate("InfoOficio");
+  const handleMap = () => {
+    navigation.navigate("Map");
   };
 
  
@@ -77,7 +77,7 @@ export default  function LoginScreen({ navigation }) {
                     {/* Imagen Azul de fondo, con el logo que se pueda tocar*/ }
                 <View >
                   <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") } resizeMode= {'stretch'} style={styles.fondo}  >
-                       <TouchableOpacity onPress={handleRegister} style={{ marginTop: 100 }}>
+                       <TouchableOpacity onPress={handleMap} style={{ marginTop: 100 }}>
                         <Image
                             source={require("./src/assetsPropios/GoogleLogo.png")}
                             style={{

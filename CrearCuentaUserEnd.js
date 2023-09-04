@@ -15,8 +15,8 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 export default function CrearCuentaUserEnd({navigation}) {
 
-  const handleImagenProfecional= () => {
-    navigation.navigate("ImagenesProfecional");
+  const handleMap= () => {
+    navigation.navigate("Map");
   };
 
   const [isOpen2, setIsOpen2] = useState(false);
@@ -66,9 +66,9 @@ export default function CrearCuentaUserEnd({navigation}) {
             
                 <View>
                     <TouchableOpacity
-                        onPress={handleImagenProfecional}
+                        onPress={handleMap}
                         style={styles.buttoncontinuar}> 
-                        <Text style={styles.txtcontinuar}>Continuar</Text>          
+                        <Text style={styles.txtcontinuar}>Crear Cuenta</Text>          
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
