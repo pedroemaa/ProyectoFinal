@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   buscador: {
     padding: 4,
     backgroundColor: "white",
-    marginTop: 40,
+    marginTop: 50,
   },
   container: {
     flex: 1,
