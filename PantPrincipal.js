@@ -31,10 +31,9 @@ export default function PantPrincipal({ navigation }) {
           esten mas cerca de tu casa
         </Text>
         <View style={styles.BotonImagenes}>
-          <ImageBackground
-          
-            source={require("./src/assetsPropios/fondoabajo.png")}
-            resizeMode={"stretch"}
+          <ImageBackground          
+            source={require("./src/assetsPropios/fondoabajo3.png")}
+            resizeMode={'cover'}
             style={styles.fondo}
           >
             <View style={styles.botones}>
@@ -106,7 +105,9 @@ const styles = StyleSheet.create({
   fondo: {
     width: 390, 
     height: 400,
-    marginTop: 100,
+    marginTop: 110,
+    
+    
   },
   txtcontinuar: {
     color: "white",

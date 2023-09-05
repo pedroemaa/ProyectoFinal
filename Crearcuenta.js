@@ -9,7 +9,7 @@ export default function CrearCuenta({ navigation }) {
 
   const items = [
     { label: "Buscar Profesional de Oficio", value: "Buscar empleo" },
-    { label: "Ofrecer Oficio", value: "Ofrecer empleo" },
+    { label: "Ofrecer Servicios de Oficio", value: "Ofrecer empleo" },
     { label: "Cuenta mixta", value: "Cuenta mixta" },
   ];
 
