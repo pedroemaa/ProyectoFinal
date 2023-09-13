@@ -44,11 +44,11 @@ export default function SubirImagenProfesional ({ navigaton }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
         <View style={styles.general}>
               <Image
                   style={styles.image}
-                  source={require("./src/assetsPropios/ImagenLogIn3.png")}/>
+                  resizeMode={"stretch"}
+                  source={require("./src/assetsPropios/ImagenLogIn.png")}/>
 
               <Text style={styles.txtImagenes}>Imagenes</Text>
 
@@ -62,18 +62,20 @@ export default function SubirImagenProfesional ({ navigaton }) {
                <Image source={{ uri: selectedImage }} style={styles.image2} />
                                 )}
               </View>
-              <View >
+              <View  style={styles.general1}>
                 <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") }
                                  resizeMode= {'stretch'}
                                  style={styles.fondo}>
+
+                  <View  style={styles.Google}>                
                   <TouchableOpacity
                       style={styles.buttoncontinuar}> 
                     <Text style={styles.txtcontinuar}>Continuar</Text> 
                   </TouchableOpacity>
+                  </View>
                 </ImageBackground>
               </View>
         </View>
-      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -84,29 +86,40 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   general: {
-    alignItems: "center",
-    justifyContent: "flex-end",
+    flex: 1,
   },
+  general1: {
+    flex: 1,
+  },
+
   image: {
-    justifyContent: "flex-end",
-    width: 315,
-    height: 230,
+    flex: 1,
     marginTop: -40,
+    marginLeft: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    width: '90%',
+    height: '100%',
   },
+
   txtImagenes: {
     fontSize: 25,
     alignSelf: "flex-start",
     fontWeight: "bold",
-    marginLeft: 40,
+    marginLeft: 60,
   },
+
+
   BotonImagenes: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: -20,
     width: "88%",
   },
+
+
   button: {
     backgroundColor: "#EDEDED",
     borderRadius: 20,
@@ -119,9 +132,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   fondo: {
-    width: 400,
-    height: 380,
-    marginTop: 100, 
+    flex:1,
+    width: '100%',
+    height: '120%',
   },
  txtcontinuar: {
     color: "white",
@@ -133,7 +146,7 @@ const styles = StyleSheet.create({
   buttoncontinuar: {
     alignSelf: "center",
     fontSize: 20,
-    marginTop: 280,
+    marginTop: 200,
     width: "88%",
     height: 50,
     borderRadius: 10,
@@ -144,5 +157,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
   },
+
+
+  Google: {
+    flex:1,
+    flexDirection: "row",
+    marginTop: -40,
+    justifyContent: "center",
+   
+  },
+
+
 });
 

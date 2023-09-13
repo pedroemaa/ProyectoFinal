@@ -67,7 +67,8 @@ export default function CrearCuentaProfesional({navigation}) {
       <View style={styles.container}>
        <Image
              style={styles.image}
-              source={require("./src/assetsPropios/ImagenLogIn3.png")}></Image>
+             resizeMode={"stretch"}
+              source={require("./src/assetsPropios/ImagenLogIn.png")}></Image>
 
         <Text style={styles.txtName}>Nombre</Text>
         <TextInput   
@@ -165,10 +166,10 @@ const styles = StyleSheet.create({
     },
   image: {
     alignSelf: "center",
-    width: 310,
+    width: '80%',
     height: 230,
     marginBottom: 20, 
-    marginTop: -40,  
+    marginTop: -30,  
   },
 
   /*Nombre             */
@@ -314,13 +315,14 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     paddingLeft: 30,
     marginTop: 15,
+    
   },
 
   checkboxContainer: {
     marginHorizontal: 20,
     flexDirection: 'row',
     alignItems: "center",
-    marginBottom: 10,
+    marginTop: 15,
   },
 
   checkbox: {
@@ -335,6 +337,7 @@ const styles = StyleSheet.create({
   checkedBox: {
     backgroundColor: '#007AFF',
     borderColor: '#007AFF',
+    
   },
 
   label: {
@@ -364,13 +367,13 @@ const styles = StyleSheet.create({
   },
 
   spaceBelowButton: {
-    height: 20, // Ajusta esta altura según lo que necesites
+    height: 30, // Ajusta esta altura según lo que necesites
   },
 
 
-  /*  revisar */
   fondo: {
-    justifyContent: "center",
-    flex: 1,  
+    flex:1,
+    width: '100%',
+    height: '120%',
   },
 });

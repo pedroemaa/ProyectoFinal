@@ -19,12 +19,12 @@ export default function CreateAccoutContra({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
         <View style={styles.general}>
           <StatusBar style="auto" />
           <Image
             style={styles.image}
-            source={require("./src/assetsPropios/ImagenLogIn3.png")}
+            resizeMode={"stretch"}
+            source={require("./src/assetsPropios/ImagenLogIn.png")}
           />
           <Text style={styles.txtCrearContra}>Crear Contraseña</Text>
 
@@ -40,24 +40,23 @@ export default function CreateAccoutContra({ navigation }) {
             validacionMensaje="No ingreso un formato correcto en el campo contraseña"
           />
 
-          <View>
+          <View style={styles.general1}>
             <ImageBackground
               source={require("./src/assetsPropios/fondoabajo3.png")}
-              resizeMode={"stretch"}
+              resizeMode={'stretch'}
               style={styles.fondo}
-            >
-              <View style={styles.botones}>
-                <TouchableOpacity
+             >
+             <View style={styles.botones}>
+                  <TouchableOpacity
                   style={styles.buttonCrear}
-                  onPress={handleCrearCuenta}
-                >
+                   onPress={handleCrearCuenta}
+                  >
                   <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
                 </TouchableOpacity>
-              </View>
+             </View>
             </ImageBackground>
           </View>
         </View>
-      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -78,29 +77,35 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 15,
   },
-
   general: {
-    alignItems: "center",
-    justifyContent: "flex-end",
-  },
+    flex: 1,
+    },
+
+ general1: {
+      flex: 1,
+    },
 
   image: {
-    width: 300,
-    height: 220,
-    marginBottom: 15,
-    marginTop: -30,
+    flex: 1,
+    marginTop: -40,
+    marginLeft: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    width: '90%',
+    height: '90%',
   },
 
+
   fondo: {
-    width: 400,
-    height: 320,
-    marginTop: 60,
+    flex:1,
+    width: '100%',
+    height: '120%',
   },
 
   txtCrearContra: {
-    fontSize: 20,
+    fontSize: 25,
     alignSelf: "flex-start",
-    marginLeft: 45,
+    marginLeft: 20,
     fontWeight: "bold",
   },
 
@@ -108,6 +113,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginLeft: 30,
     justifyContent: "center",
+    alignSelf: "center",
   },
 
   txtcontinuar: {
@@ -119,14 +125,13 @@ const styles = StyleSheet.create({
   },
 
   buttonCrear: {
-    alignSelf: "flex-start",
+    alignSelf: "center",
     fontSize: 20,
-    marginTop: 20,
-    width: "95%",
+    marginTop: 40,
+    width: "70%",
     height: 60,
     borderRadius: 10,
     padding: 10,
-    marginLeft: -25,
     backgroundColor: "#0B6EFE",
   },
 });

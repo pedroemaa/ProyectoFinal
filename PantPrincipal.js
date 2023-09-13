@@ -1,28 +1,36 @@
 import React, { useState } from "react";
+import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
   View,
   Image,
   SafeAreaView,
-  ScrollView,
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+
+
 export default function PantPrincipal({ navigation }) {
+
+  
+
   const handleLogin = () => {
     navigation.navigate("Login");
   };
   const handleCrearCuentaMail = () => {
     navigation.navigate("Crear Cuenta Mail");
   };
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.general}>
-        <ImageBackground
+      <StatusBar style="auto" />
+        <Image
           style={styles.image}
           resizeMode={"stretch"}
-          source={require("./src/assetsPropios/ImagenLogIn3.png")}
+          source={require("./src/assetsPropios/ImagenLogIn.png")}
         />
         <Text style={styles.txtImagenes}>Bienvenido a Hiring</Text>
         <Text style={styles.buttonText}>
@@ -30,10 +38,11 @@ export default function PantPrincipal({ navigation }) {
           con tan solo un click podes buscar entre miles de ellos y los que
           esten mas cerca de tu casa
         </Text>
-        <View style={styles.BotonImagenes}>
+
+     
           <ImageBackground          
             source={require("./src/assetsPropios/fondoabajo3.png")}
-            resizeMode={'cover'}
+            resizeMode={"stretch"}
             style={styles.fondo}
           >
             <View style={styles.botones}>
@@ -51,7 +60,6 @@ export default function PantPrincipal({ navigation }) {
               </TouchableOpacity>
             </View>
           </ImageBackground>
-        </View>
       </View>
     </SafeAreaView>
   );
@@ -62,63 +70,66 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   general: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
   image: {
-    marginTop: -40,
+    flex: 1,
+    marginTop: -30,
     justifyContent: "flex-end",
     width: 360,
     height: 245,
   },
+
+  fondo: {
+    flex: 1, 
+    width: '100%',
+    height: '120%',
+
+  },
+
   txtImagenes: {
-    fontSize: 80,
+    fontSize: 74,
     fontWeight: "semibold",
     marginLeft: 10,
+    alignSelf: "center",
   },
   botones: {
     flexDirection: "row",
     marginLeft: 30,
-    justifyContent: "center",
+    justifyContent: "flex-start",
+   
   },
   BotonImagenes: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: -100,
     width: "10%",
+    justifyContent: 'flex-start'
   },
-  button: {
-    backgroundColor: "#EDEDED",
-    borderRadius: 5,
-    padding: 10,
-    width: "100%",
-    alignItems: "center",
-  },
+
   buttonText: {
     color: "#635C5C",
     fontSize: 18,
     justifyContent: "center",
     marginLeft: 15,
   },
-  fondo: {
-    width: 390, 
-    height: 400,
-    marginTop: 110,
-    
-    
-  },
+
   txtcontinuar: {
     color: "white",
     fontSize: 20,
     textAlign: "center",
     marginTop: 5,
     fontWeight: "bold",
+    
+    
   },
   buttonCrear: {
+    alignSelf: "center",
     fontSize: 10,
-    marginTop: 320,
+    marginTop: 200,
     width: "47%",
     height: 50,
     borderRadius: 14,
@@ -127,10 +138,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#0B6EFE",
   },
   buttonIniciar: {
-    alignSelf: "flex-start",
     marginLeft: 30,
     fontSize: 10,
-    marginTop: 320,
+    marginTop: 200,
     width: "47%",
     height: 50,
     borderRadius: 14,
