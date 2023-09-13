@@ -51,7 +51,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <StoreContextProvider>
-      <AccountNavigator headerShown={false} />
+      <AccountNavigator headerShown={false} tabbarvisible= {false }  />
     </StoreContextProvider>
   );
 }

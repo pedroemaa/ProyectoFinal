@@ -34,12 +34,11 @@ export default  function LoginScreen({ navigation }) {
  
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-       <View style={styles.general}>
-             <StatusBar style="auto" />
-              <Image
-                 style={styles.image}
-                 source={require("./src/assetsPropios/ImagenLogIn3.png")}/>
+      <View style={styles.general}>
+           <Image
+            style={styles.image}
+            resizeMode={"stretch"}
+            source={require("./src/assetsPropios/ImagenLogIn.png")}/>
                <Text style={styles.txtlogin}>Ingrese su usuario</Text>
          
                <Validacion
@@ -64,35 +63,37 @@ export default  function LoginScreen({ navigation }) {
                   disabled={false}>
                   <ButtonLogin />
                 </TouchableOpacity>
+
+            <View style={styles.general1}>
            
-               <View style={{ flexDirection: "row" }}>
-                    <Image
-                          source={require("./src/assetsPropios/lineaAzul.png")}
-                          style={styles.lineaAzul}/>
-                      <Text style={styles.txtingresar}>O ingresar con</Text>
-                    <Image
-                          source={require("./src/assetsPropios/lineaAzul2.png")}
-                          style={styles.lineaAzul}/> 
-                </View>
+              <View style={{ flexDirection: "row" }}>
+                 <Image
+                      source={require("./src/assetsPropios/lineaAzul.png")}
+                      style={styles.lineaAzul}/>
+                       <Text style={styles.txtingresar}>O ingresar con</Text>
+                  <Image
+                      source={require("./src/assetsPropios/lineaAzul2.png")}
+                      style={styles.lineaAzul}/> 
+              </View>
                     {/* Imagen Azul de fondo, con el logo que se pueda tocar*/ }
-                <View >
-                  <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") } resizeMode= {'stretch'} style={styles.fondo}  >
-                       <TouchableOpacity onPress={handleMap} style={{ marginTop: 100 }}>
-                        <Image
-                            source={require("./src/assetsPropios/GoogleLogo.png")}
-                            style={{
-                            alignSelf: "center"}}>
-                        </Image>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                            onPress={handleStoreInfo}
-                            style={styles.buttonLoginCambiarContraseña}
-                            disabled={desactivar}>
-                      </TouchableOpacity>
-                  </ImageBackground>
-                </View>  
+
+              <ImageBackground          
+                  source={require("./src/assetsPropios/fondoabajo3.png")}
+                  resizeMode={"stretch"}
+                  style={styles.fondo}   >
+             
+                 <View  style={styles.Google}>
+                    <TouchableOpacity onPress={handleMap} style={{ marginTop: 100 }}>
+                      <Image
+                          source={require("./src/assetsPropios/GoogleLogo.png")}
+                          style={{
+                          alignSelf: "center"}}>
+                      </Image>
+                    </TouchableOpacity>
+                  </View>
+               </ImageBackground>   
+            </View>        
           </View>
-      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -107,75 +108,61 @@ container: {
   },
 
 txtlogin: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
     alignSelf: "flex-start",
-    marginLeft: 40,
+    marginLeft: 25,
   },
 
-validar: {
-    fontSize: 100,
-    color: "red",
-    alignSelf: "center",
+
+  general: {
+    flex: 1,
+    },
+  
+  general1: {
+    flex: 1,
   },
 
-general: {
-    alignItems: "center",
-    justifyContent: "flex-end",
-  },
 
-image: {
-    width: 300,
-    height: 220,
-    marginBottom: 15,
-    marginTop: -30,
+  Google: {
+    flex:1,
+    flexDirection: "row",
+    marginTop: -40,
+    justifyContent: "center",
+   
   },
   
-fondo: {
-  width: 400,
-  height: 320,
-  marginTop: -60,  
-},
-
-inputlogin: {
-    borderWidth: 1,
-    borderColor: "gray",
-    padding: 10,
-    width: "88%",
-    marginTop: 12,
-    height: 60,
-    borderRadius: 8,
-    backgroundColor: "white",
-    paddingStart: 30,
+  image: {
+    flex: 1,
+    marginTop: -40,
+    marginLeft: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    width: '90%',
+    height: '90%',
   },
 
-txtbuttoncrearcuenta: {
-    fontSize: 20,
-    marginTop: 50,
+  fondo: {
+    flex: 1, 
+    width: '100%',
+    height: '120%',
   },
 
-buttonlogincrearcuenta: {
-    fontSize: 20,
-    marginTop: 50,
-    backgroundColor: "#43DE48",
-    padding: 25,
-    borderRadius: 8,
-    width: "40%",
-    textAlign: "center",
-  },
+
 
 buttonLoginCambiarContraseña: {
     marginTop: 5,
     fontSize: 20,
     flexDirection: "row",
     alignSelf: "flex-end",
-    marginRight: 45,
+    marginRight: 25,
   },
 
 buttonlogin: {
-    marginTop: 30,
-    width: "88%",
+    marginTop: 20,
+    width: "80%",
     height: 50,
+    alignSelf: "center",
     borderRadius: 10,
     padding: 10,
     backgroundColor: "#0B6EFE",

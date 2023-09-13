@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground, SafeAreaView} from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
 export default function CrearCuenta({ navigation }) {
@@ -37,35 +37,40 @@ export default function CrearCuenta({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={require("./src/assetsPropios/ImagenLogIn.png")} />
-      <Text style={styles.txtcrearcuenta1}>Seleccione el tipo de usuario</Text>
-      <View style={styles.ViewdropDowncrearcuenta}>
-        <DropDownPicker
-          style={styles.dropDowncrearcuenta}
-          items={items}
-          open={isOpen}
-          setOpen={() => setIsOpen(!isOpen)}
-          value={currentValue}
-          setValue={(val) => setCurrentValue(val)}
-          placeholder="Seleccione su usuario"
-        />
-      </View>
-      <ImageBackground
-        source={require("./src/assetsPropios/fondoabajo3.png")}
-        resizeMode={'cover'}
-        style={styles.fondo}>
-        <TouchableOpacity
-          style={[
-            styles.buttoncrearcuenta,
-            isButtonSelected ? styles.selectedButton : styles.grisButton,
-          ]}
-          onPress={handleButtonPress}
-          disabled={!currentValue}>
-          <Text style={styles.txtcrearcuenta2}>Continuar</Text>
-        </TouchableOpacity>
-      </ImageBackground>
-    </View>
+ <SafeAreaView style={styles.container}>
+    <View style={styles.general}>
+       <Image style={styles.image} source={require("./src/assetsPropios/ImagenLogIn.png")} resizeMode={'contain'} />
+         <Text style={styles.txtcrearcuenta1}>Seleccione el tipo de usuario</Text>
+           <View style={styles.general1}> 
+
+            <ImageBackground
+                source={require("./src/assetsPropios/fondoabajo3.png")}
+                resizeMode={'stretch'}
+                style={styles.fondo}>
+             <View style={styles.ViewdropDowncrearcuenta}>
+                <DropDownPicker
+                    style={styles.dropDowncrearcuenta}
+                    items={items}
+                    open={isOpen}
+                    setOpen={() => setIsOpen(!isOpen)}
+                    value={currentValue}
+                    setValue={(val) => setCurrentValue(val)}
+                    placeholder="Seleccione su usuario"
+                />
+              </View>
+
+               <TouchableOpacity
+                    style={[
+                    styles.buttoncrearcuenta,
+                    isButtonSelected ? styles.selectedButton : styles.grisButton]}
+                    onPress={handleButtonPress}
+                    disabled={!currentValue}>
+                  <Text style={styles.txtcrearcuenta2}>Continuar</Text>
+                </TouchableOpacity>
+            </ImageBackground>
+         </View>
+     </View>
+  </SafeAreaView>
   );
 }
 
@@ -74,13 +79,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  image: {
-    alignSelf: "center",
-    width: 310,
-    height: 230,
-    marginBottom: 50,
-    marginTop: 30,
+  general: {
+    flex: 1,
+    },
+
+ general1: {
+      flex: 1,
   },
+
+  image: {
+    flex: 1,
+    marginLeft: 20,
+    marginTop: -100,
+    justifyContent: "center",
+    alignItems: "center",
+    width: '90%',
+    height: '50%',
+  },
+
   ViewdropDowncrearcuenta: {
     marginHorizontal: 25,
     width: "88%",
@@ -96,9 +112,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   txtcrearcuenta1: {
-    fontSize: 20,
+    fontSize: 22,
     alignSelf: "flex-start",
-    marginLeft: 45,
+    marginLeft: 25,
+    fontWeight: "bold",
+    marginTop: -50,
   },
   txtcrearcuenta2: {
     color: "white",
@@ -109,7 +127,7 @@ const styles = StyleSheet.create({
   },
   buttoncrearcuenta: {
     alignSelf: "center",
-    marginTop: 80,
+    marginTop: 120,
     width: "88%",
     height: 60,
     borderRadius: 10,
@@ -123,8 +141,8 @@ const styles = StyleSheet.create({
     backgroundColor: "gray", // Color de fondo inicial (gris)
   },
   fondo: {
-    width: 400,
-    height: 320,
-    marginTop: 90,
+    flex:1,
+    width: '100%',
+    height: '120%',
   },
 });

@@ -31,10 +31,11 @@ export default function CrearCuentaUserEnd({navigation}) {
 
  return (
    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
+      <View style={styles.general}>
            <Image
                  style={styles.image}
-                 source={require("./src/assetsPropios/ImagenLogIn3.png")}></Image>
+                 resizeMode={"stretch"}
+                 source={require("./src/assetsPropios/ImagenLogIn.png")}></Image>
 
             <Text style={styles.txtName}>Nombre</Text>
             <TextInput   
@@ -46,7 +47,7 @@ export default function CrearCuentaUserEnd({navigation}) {
                   placeholder=""
                   style={styles.inputApellido}/>
 
-            <View >
+            <View style={styles.general1}>
             <ImageBackground 
                   source={require("./src/assetsPropios/fondoabajo3.png")} 
                   resizeMode= {'stretch'}
@@ -83,10 +84,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     },
+    general: {
+      flex: 1,
+      marginTop: 20,
+      },
+  
+   general1: {
+        flex: 1,
+      },
+  
+
+
   image: {
     alignSelf: "center",
     width: 310,
-    height: 230,
+    height: 240,
     marginBottom: 20, 
     marginTop: -30,  
   },
@@ -193,8 +205,9 @@ const styles = StyleSheet.create({
   },
 
   fondo: {
-    width: 400,
-    height: 380,
-      
+    flex: 1, 
+    width: '100%',
+    height: '120%',
+
   },
 });

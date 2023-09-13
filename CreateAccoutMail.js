@@ -26,12 +26,12 @@ export default function CreateAccoutMail({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
         <View style={styles.general}>
           <StatusBar style="auto" />
           <Image
             style={styles.image}
-            source={require("./src/assetsPropios/ImagenLogIn3.png")}
+            resizeMode={"stretch"}
+            source={require("./src/assetsPropios/ImagenLogIn.png")}
           />
 
           <Text style={styles.txtIngMail}>Ingrese su Mail</Text>
@@ -48,12 +48,14 @@ export default function CreateAccoutMail({ navigation }) {
             </TouchableOpacity>
           </View>
 
+
+        <View style={styles.general1}> 
+
           <View style={{ flexDirection: "row" }}>
             <Image
               source={require("./src/assetsPropios/lineaAzul.png")}
               style={styles.lineaAzul}
             />
-
             <Text style={styles.txtcrearcuenta}>O crea tu cuenta</Text>
             <Image
               source={require("./src/assetsPropios/lineaAzul2.png")}
@@ -62,27 +64,30 @@ export default function CreateAccoutMail({ navigation }) {
           </View>
 
           {/* Imagen Azul de fondo, con el logo que se pueda tocar*/}
-          <View>
-            <ImageBackground
-              source={require("./src/assetsPropios/fondoabajo3.png")}
-              resizeMode={"stretch"}
-              style={styles.fondo}
-            >
-              <TouchableOpacity onPress={handleCrearCuenta} style={{ marginTop: 100 }}>
+         
+          <ImageBackground
+            source={require("./src/assetsPropios/fondoabajo3.png")}
+            resizeMode={"stretch"}
+            style={styles.fondo}>
+           <View  style={styles.Google}>
+             <TouchableOpacity onPress={handleCrearCuenta} style={{ marginTop: 100 }}>
                 <Image
                   source={require("./src/assetsPropios/GoogleLogo.png")}
                   style={{
-                    alignSelf: "center",
-                  }}
-                ></Image>
-              </TouchableOpacity>
-            </ImageBackground>
-          </View>
+                  alignSelf: "center"}}
+                 ></Image>
+             </TouchableOpacity>
+            </View>
+          </ImageBackground>
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
+
+
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -90,22 +95,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 
+  general: {
+    flex: 1,
+    },
+
+ general1: {
+      flex: 1,
+    },
+
   txtIngMail: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "bold",
     alignSelf: "flex-start",
-    marginLeft: 40,
-  },
-
-  validar: {
-    fontSize: 100,
-    color: "red",
-    alignSelf: "center",
-  },
-
-  txtbuttoncrearcuenta: {
-    fontSize: 20,
-    marginTop: 50,
+    marginLeft: 20,
   },
 
   botones: {
@@ -140,21 +142,28 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 
-  general: {
-    alignItems: "center",
-    justifyContent: "flex-end",
-  },
-
   image: {
-    width: 300,
-    height: 220,
-    marginBottom: 15,
-    marginTop: -30,
+    flex: 1,
+    marginTop: -40,
+    marginLeft: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    width: '90%',
+    height: '40%',
   },
 
   fondo: {
-    width: 400,
-    height: 320,
+    flex:1,
+    width: '100%',
+    height: '120%',
+  },
+
+  Google: {
+    flex:1,
+    flexDirection: "row",
+    marginTop: -40,
+    justifyContent: "center",
+   
   },
 
   buttonLoginCambiarContraseña: {

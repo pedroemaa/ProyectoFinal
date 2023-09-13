@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: "gray",
+    alignSelf: "center",
     padding: 10,
     width: 360,
     marginTop: 0,
