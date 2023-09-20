@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
-  ScrollView,
   ImageBackground,
 } from "react-native";
 import Validacion, { desactivar } from "./ValidarInputs";
@@ -15,9 +14,7 @@ import Validacion, { desactivar } from "./ValidarInputs";
 export default function CreateAccoutMail({ navigation }) {
   
   
-  const handleContra = () => {
-    navigation.navigate("Crear Contraseña");
-  };
+
 
   
     const handleCrearCuenta = () => {
@@ -34,7 +31,7 @@ export default function CreateAccoutMail({ navigation }) {
             source={require("./src/assetsPropios/ImagenLogIn.png")}
           />
 
-          <Text style={styles.txtIngMail}>Ingrese su Mail</Text>
+          <Text style={styles.txtIngMail}>Crear Cuenta</Text>
 
           <Validacion
             placeholder="ejem@ejemplo.com"
@@ -42,8 +39,20 @@ export default function CreateAccoutMail({ navigation }) {
             validacionMensaje="No ingreso un formato correcto en el campo mail"
           />
 
+          <Validacion
+            placeholder="Contraseña"
+            regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+            validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+          />
+
+          <Validacion
+            placeholder="Repita Contraseña"
+            regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+            validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+          />
+
           <View style={styles.botones}>
-            <TouchableOpacity style={styles.buttonCrear} onPress={handleContra}>
+            <TouchableOpacity style={styles.buttonCrear} onPress={handleCrearCuenta}>
               <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
             </TouchableOpacity>
           </View>
@@ -144,7 +153,7 @@ const styles = StyleSheet.create({
 
   image: {
     flex: 1,
-    marginTop: -40,
+    marginTop: -20,
     marginLeft: 20,
     justifyContent: "center",
     alignItems: "center",
