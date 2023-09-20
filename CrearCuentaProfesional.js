@@ -61,7 +61,6 @@ export default function CrearCuentaProfesional({navigation}) {
 
   return (
    <SafeAreaView style={styles.container}>
-    
      <ScrollView>
 
       <View style={styles.container}>
@@ -153,9 +152,9 @@ export default function CrearCuentaProfesional({navigation}) {
           </ImageBackground>
         </View>
       </View>
-   </ScrollView>
- 
+   </ScrollView> 
 </SafeAreaView>   
+
 );
 }
 
@@ -319,10 +318,11 @@ const styles = StyleSheet.create({
   },
 
   checkboxContainer: {
-    marginHorizontal: 20,
+    marginHorizontal: 30,
     flexDirection: 'row',
     alignItems: "center",
     marginTop: 15,
+    columnGap:5
   },
 
   checkbox: {
@@ -374,6 +374,6 @@ const styles = StyleSheet.create({
   fondo: {
     flex:1,
     width: '100%',
-    height: '120%',
+    height: '100%',
   },
 });
