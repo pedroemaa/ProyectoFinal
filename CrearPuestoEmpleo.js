@@ -5,13 +5,13 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Image,
+  ScrollView,
   SafeAreaView,
   ImageBackground,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
-export default function CrearCuentaUserEnd({ navigation }) {
+export default function CrearCuentaEmpleo({ navigation }) {
   const handleMap = () => {
     navigation.navigate("Map");
   };
@@ -20,7 +20,6 @@ export default function CrearCuentaUserEnd({ navigation }) {
   const [currentLocationValue, setCurrentValueL] = useState();
 
   const itemsLocation = [
-    { label: "San Miguel", value: "San Miguel" },
     { label: "Merlo", value: "Merlo" },
     { label: "Ituzaingo", value: "Ituzaingo" },
   ];
@@ -28,17 +27,12 @@ export default function CrearCuentaUserEnd({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.general}>
-        <Image
-          style={styles.image}
-          resizeMode={"stretch"}
-          source={require("./src/assetsPropios/ImagenLogIn.png")}
-        ></Image>
+        <Text style={styles.txtTitulo}>Vamos a crear tu puesto de empleo</Text>
+        <Text style={styles.txt}>Cargo</Text>
+        <TextInput placeholder="" style={styles.input} />
 
-        <Text style={styles.txtName}>Nombre</Text>
-        <TextInput placeholder="" style={styles.inputName} />
-
-        <Text style={styles.txtApellido}>Apellido</Text>
-        <TextInput placeholder="" style={styles.inputApellido} />
+        <Text style={styles.txt}>Empresa</Text>
+        <TextInput placeholder="" style={styles.input} />
 
         <View style={styles.general1}>
           <ImageBackground
@@ -46,7 +40,14 @@ export default function CrearCuentaUserEnd({ navigation }) {
             resizeMode={"stretch"}
             style={styles.fondo}
           >
-            <Text style={styles.txtLocation}>Localidad</Text>
+            <Text style={styles.txt}>Descripcion</Text>
+
+            <TextInput placeholder="" style={styles.input} />
+            <Text style={styles.txt}>Ubicacion</Text>
+            <TextInput placeholder="" style={styles.input} />
+            <Text style={styles.txt}>Tipo de empleo</Text>
+            <TextInput placeholder="" style={styles.input} />
+            <Text style={styles.txt}>Lugar de trabajo</Text>
             <View style={[styles.ViewdropDownLocation]}>
               <DropDownPicker
                 style={styles.dropDownLocation}
@@ -58,13 +59,12 @@ export default function CrearCuentaUserEnd({ navigation }) {
                 placeholder=""
               />
             </View>
-
             <View>
               <TouchableOpacity
                 onPress={handleMap}
                 style={styles.buttoncontinuar}
               >
-                <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
+                <Text style={styles.txtcontinuar}>Publicar</Text>
               </TouchableOpacity>
             </View>
           </ImageBackground>
@@ -83,7 +83,13 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
   },
-
+  txtTitulo: {
+    fontSize: 30,
+    fontWeight: "bold",
+    alignSelf: "flex-start",
+    marginLeft: 25,
+    marginTop: 20,
+  },
   general1: {
     flex: 1,
   },
@@ -96,37 +102,16 @@ const styles = StyleSheet.create({
     marginTop: -30,
   },
 
-  /*Nombre             */
-  txtName: {
-    fontSize: 25,
-    fontWeight: "bold",
-    alignSelf: "flex-start",
-    marginLeft: 40,
-  },
-
-  inputName: {
-    borderWidth: 1,
-    borderColor: "gray",
-    padding: 10,
-    width: 320,
-    marginTop: 0,
-    height: 50,
-    borderRadius: 10,
-    backgroundColor: "white",
-    paddingStart: 10,
-    alignSelf: "center",
-  },
-
   /*Apellido             */
-  txtApellido: {
-    fontSize: 25,
+  txt: {
+    fontSize: 20,
     fontWeight: "bold",
     alignSelf: "flex-start",
     marginLeft: 40,
     marginTop: 10,
   },
 
-  inputApellido: {
+  input: {
     borderWidth: 1,
     borderColor: "gray",
     padding: 10,
@@ -137,15 +122,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingStart: 10,
     alignSelf: "center",
-  },
-
-  /*Localidad             */
-  txtLocation: {
-    fontSize: 25,
-    fontWeight: "bold",
-    alignSelf: "flex-start",
-    marginLeft: 40,
-    marginTop: 10,
   },
 
   ViewdropDownLocation: {
@@ -182,11 +158,12 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
     textAlign: "center",
+    marginTop: 0,
     fontWeight: "bold",
   },
 
   buttoncontinuar: {
-    marginTop: 130,
+    marginTop: 80,
     width: "80%",
     height: 50,
     alignSelf: "center",

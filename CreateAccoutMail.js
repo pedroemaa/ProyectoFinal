@@ -12,54 +12,47 @@ import {
 import Validacion, { desactivar } from "./ValidarInputs";
 
 export default function CreateAccoutMail({ navigation }) {
-  
-  
-
-
-  
-    const handleCrearCuenta = () => {
-      navigation.navigate("CrearCuenta");
-    };
+  const handleCrearCuenta = () => {
+    navigation.navigate("CrearCuenta");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-        <View style={styles.general}>
-          <StatusBar style="auto" />
-          <Image
-            style={styles.image}
-            resizeMode={"stretch"}
-            source={require("./src/assetsPropios/ImagenLogIn.png")}
-          />
+      <View style={styles.general}>
+        <StatusBar style="auto" />
+        <Image
+          style={styles.image}
+          resizeMode={"stretch"}
+          source={require("./src/assetsPropios/ImagenLogIn.png")}
+        />
 
-          <Text style={styles.txtIngMail}>Crear Cuenta</Text>
+        <Text style={styles.txtIngMail}>Crear Cuenta</Text>
 
-          <Validacion
-            placeholder="ejem@ejemplo.com"
-            regex={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
-            validacionMensaje="No ingreso un formato correcto en el campo mail"
-          />
+        <Validacion
+          placeholder="ejem@ejemplo.com"
+          regex={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
+          validacionMensaje="No ingreso un formato correcto en el campo mail"
+        />
 
-          <Validacion
-            placeholder="Contraseña"
-            regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
-            validacionMensaje="No ingreso un formato correcto en el campo contraseña"
-          />
+        <Validacion
+          placeholder="Contraseña"
+          regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+          validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+        />
 
-          <Validacion
-            placeholder="Repita Contraseña"
-            regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
-            validacionMensaje="No ingreso un formato correcto en el campo contraseña"
-          />
+        <Validacion
+          placeholder="Repita Contraseña"
+          regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+          validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+        />
+        <TouchableOpacity
+          style={styles.buttonCrear}
+          onPress={handleCrearCuenta}
+        >
+          <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
+        </TouchableOpacity>
 
-          <View style={styles.botones}>
-            <TouchableOpacity style={styles.buttonCrear} onPress={handleCrearCuenta}>
-              <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
-            </TouchableOpacity>
-          </View>
-
-
-        <View style={styles.general1}> 
-
+        <View style={styles.general1}>
           <View style={{ flexDirection: "row" }}>
             <Image
               source={require("./src/assetsPropios/lineaAzul.png")}
@@ -73,19 +66,24 @@ export default function CreateAccoutMail({ navigation }) {
           </View>
 
           {/* Imagen Azul de fondo, con el logo que se pueda tocar*/}
-         
+
           <ImageBackground
             source={require("./src/assetsPropios/fondoabajo3.png")}
             resizeMode={"stretch"}
-            style={styles.fondo}>
-           <View  style={styles.Google}>
-             <TouchableOpacity onPress={handleCrearCuenta} style={{ marginTop: 100 }}>
+            style={styles.fondo}
+          >
+            <View style={styles.Google}>
+              <TouchableOpacity
+                onPress={handleCrearCuenta}
+                style={{ marginTop: 100 }}
+              >
                 <Image
                   source={require("./src/assetsPropios/GoogleLogo.png")}
                   style={{
-                  alignSelf: "center"}}
-                 ></Image>
-             </TouchableOpacity>
+                    alignSelf: "center",
+                  }}
+                ></Image>
+              </TouchableOpacity>
             </View>
           </ImageBackground>
         </View>
@@ -93,10 +91,6 @@ export default function CreateAccoutMail({ navigation }) {
     </SafeAreaView>
   );
 }
-
-
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -106,11 +100,11 @@ const styles = StyleSheet.create({
 
   general: {
     flex: 1,
-    },
+  },
 
- general1: {
-      flex: 1,
-    },
+  general1: {
+    flex: 1,
+  },
 
   txtIngMail: {
     fontSize: 25,
@@ -119,29 +113,20 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
 
-  botones: {
-    flexDirection: "row",
-    marginLeft: 30,
-    justifyContent: "center",
-  },
-
   txtcontinuar: {
     color: "white",
     fontSize: 20,
     textAlign: "center",
-    marginTop: 5,
     fontWeight: "bold",
   },
 
   buttonCrear: {
-    alignSelf: "flex-start",
-    fontSize: 10,
-    marginTop: 50,
-    width: "100%",
+    marginTop: 20,
+    width: "80%",
     height: 50,
+    alignSelf: "center",
     borderRadius: 10,
     padding: 10,
-    marginLeft: -30,
     backgroundColor: "#0B6EFE",
   },
 
@@ -157,22 +142,21 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     justifyContent: "center",
     alignItems: "center",
-    width: '90%',
-    height: '40%',
+    width: "90%",
+    height: "40%",
   },
 
   fondo: {
-    flex:1,
-    width: '100%',
-    height: '120%',
+    flex: 1,
+    width: "100%",
+    height: "120%",
   },
 
   Google: {
-    flex:1,
+    flex: 1,
     flexDirection: "row",
     marginTop: -40,
     justifyContent: "center",
-   
   },
 
   buttonLoginCambiarContraseña: {

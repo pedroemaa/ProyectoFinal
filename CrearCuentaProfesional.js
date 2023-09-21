@@ -9,17 +9,14 @@ import {
   SafeAreaView,
   ScrollView,
   ImageBackground,
- }from "react-native";
+} from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-
-export default function CrearCuentaProfesional({navigation}) {
-
-  const handleImagenProfecional= () => {
+export default function CrearCuentaProfesional({ navigation }) {
+  const handleImagenProfecional = () => {
     navigation.navigate("ImagenesProfecional");
   };
-
 
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
@@ -39,62 +36,55 @@ export default function CrearCuentaProfesional({navigation}) {
     { label: "", value: "" },
     { label: "Merlo", value: "Merlo" },
     { label: "Ituzaingo", value: "Ituzaingo" },
-     ];
-
+  ];
 
   const [checkboxes, setCheckboxes] = useState([
-      { id: 1, label: 'Efectivo', isChecked: false },
-      { id: 2, label: 'Tarjetas', isChecked: false },
-      { id: 3, label: 'Mercado Pago', isChecked: false },
-    ]);
-  
+    { id: 1, label: "Efectivo", isChecked: false },
+    { id: 2, label: "Tarjetas", isChecked: false },
+    { id: 3, label: "Mercado Pago", isChecked: false },
+  ]);
+
   const toggleCheckbox = (id) => {
-      setCheckboxes((prevCheckboxes) =>
-        prevCheckboxes.map((checkbox) =>
-          checkbox.id === id ? { ...checkbox, isChecked: !checkbox.isChecked } : checkbox
-        ));
-      };
-
-   
-
-    
+    setCheckboxes((prevCheckboxes) =>
+      prevCheckboxes.map((checkbox) =>
+        checkbox.id === id
+          ? { ...checkbox, isChecked: !checkbox.isChecked }
+          : checkbox
+      )
+    );
+  };
 
   return (
-   <SafeAreaView style={styles.container}>
-     <ScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Image
+            style={styles.image}
+            resizeMode={"stretch"}
+            source={require("./src/assetsPropios/ImagenLogIn.png")}
+          ></Image>
 
-      <View style={styles.container}>
-       <Image
-             style={styles.image}
-             resizeMode={"stretch"}
-              source={require("./src/assetsPropios/ImagenLogIn.png")}></Image>
+          <Text style={styles.txtName}>Nombre</Text>
+          <TextInput placeholder="" style={styles.inputName} />
 
-        <Text style={styles.txtName}>Nombre</Text>
-        <TextInput   
+          <Text style={styles.txtApellido}>Apellido</Text>
+          <TextInput placeholder="" style={styles.inputApellido} />
+
+          <Text style={styles.txtProfesion}>Profesion</Text>
+          <View style={styles.ViewdropDownProfesion}>
+            <DropDownPicker
+              style={styles.dropDownProfesion}
+              items={itemsProfesion}
+              open={isOpen1}
+              setOpen={() => setIsOpen1(!isOpen1)}
+              value={currentProfesionValue}
+              setValue={(val) => setCurrentValue(val)}
               placeholder=""
-              style={styles.inputName}/>
+            />
+          </View>
 
-        <Text style={styles.txtApellido }>Apellido</Text>
-        <TextInput   
-              placeholder=""
-              style={styles.inputApellido}/>
-
-        <Text style={styles.txtProfesion }>Profesion</Text>
-        <View style={styles.ViewdropDownProfesion}>
-    <DropDownPicker
-      style={styles.dropDownProfesion}
-      items={itemsProfesion}
-      open={isOpen1}
-      setOpen={() => setIsOpen1(!isOpen1)}
-      value={currentProfesionValue}
-      setValue={(val) => setCurrentValue(val)}
-      placeholder=""
-    />
-  </View>
-        
-
-          <Text style={styles.txtLocation }>Localidad</Text>
-          <View style={[styles.ViewdropDownLocation, ]}>
+          <Text style={styles.txtLocation}>Localidad</Text>
+          <View style={[styles.ViewdropDownLocation]}>
             <DropDownPicker
               style={styles.dropDownLocation}
               items={itemsLocation}
@@ -102,79 +92,72 @@ export default function CrearCuentaProfesional({navigation}) {
               setOpen={() => setIsOpen2(!isOpen2)}
               value={currentLocationValue}
               setValue={(val) => setCurrentValueL(val)}
-              placeholder=""/>
+              placeholder=""
+            />
           </View>
 
+          <View>
+            <ImageBackground
+              source={require("./src/assetsPropios/fondoabajo3.png")}
+              resizeMode={"stretch"}
+              style={styles.fondo}
+            >
+              <Text style={styles.txtDirección}>Dirección</Text>
+              <TextInput placeholder="" style={styles.inputDirección} />
 
-
-
-          <View >
-         <ImageBackground 
-              source={require("./src/assetsPropios/fondoabajo3.png")} 
-              resizeMode= {'stretch'}
-              style={styles.fondo}> 
-
-
-          <Text style={styles.txtDirección }>Dirección</Text>
-           <TextInput   
-             placeholder=""
-             style={styles.inputDirección}/>
-
-           <View style={styles.container1}>
-             <Text style={styles.txtPago }>Medios de Pago</Text>
-               {checkboxes.map((checkbox) => (
-             <View key={checkbox.id} style={styles.checkboxContainer}>
-               <TouchableOpacity
-                   onPress={() => toggleCheckbox(checkbox.id)}
-                   style={[styles.checkbox, checkbox.isChecked && styles.checkedBox]}>
-                   {checkbox.isChecked && <Text>✔</Text>}
-                </TouchableOpacity>
-                <Text style={styles.label}>{checkbox.label}</Text>
+              <View style={styles.container1}>
+                <Text style={styles.txtPago}>Medios de Pago</Text>
+                {checkboxes.map((checkbox) => (
+                  <View key={checkbox.id} style={styles.checkboxContainer}>
+                    <TouchableOpacity
+                      onPress={() => toggleCheckbox(checkbox.id)}
+                      style={[
+                        styles.checkbox,
+                        checkbox.isChecked && styles.checkedBox,
+                      ]}
+                    >
+                      {checkbox.isChecked && <Text>✔</Text>}
+                    </TouchableOpacity>
+                    <Text style={styles.label}>{checkbox.label}</Text>
+                  </View>
+                ))}
               </View>
-              ))}
-             </View>
 
-     
+              <View>
+                <TouchableOpacity
+                  onPress={handleImagenProfecional}
+                  style={styles.buttoncontinuar}
+                >
+                  <Text style={styles.txtcontinuar}>Continuar</Text>
+                </TouchableOpacity>
 
-
-             <View>
-          <TouchableOpacity
-            onPress={handleImagenProfecional}
-            style={styles.buttoncontinuar}> 
-          <Text style={styles.txtcontinuar}>Continuar</Text>
-            
-           
-          </TouchableOpacity>
-          
-          <View style={styles.spaceBelowButton} />
+                <View style={styles.spaceBelowButton} />
+              </View>
+            </ImageBackground>
+          </View>
         </View>
-
-          </ImageBackground>
-        </View>
-      </View>
-   </ScrollView> 
-</SafeAreaView>   
-
-);
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    },
+  },
   image: {
     alignSelf: "center",
-    width: '80%',
+    width: "80%",
     height: 230,
-    marginBottom: 20, 
-    marginTop: -30,  
+    marginBottom: 20,
+    marginTop: -30,
   },
 
   /*Nombre             */
   txtName: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     alignSelf: "flex-start",
     marginLeft: 40,
   },
@@ -195,7 +178,7 @@ const styles = StyleSheet.create({
   /*Apellido             */
   txtApellido: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     alignSelf: "flex-start",
     marginLeft: 40,
     marginTop: 10,
@@ -217,7 +200,7 @@ const styles = StyleSheet.create({
   /*Profesion             */
   txtProfesion: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     alignSelf: "flex-start",
     marginLeft: 40,
     marginTop: 10,
@@ -232,7 +215,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     zIndex: 2,
   },
-  
+
   dropDownProfesion: {
     borderWidth: 1,
     borderColor: "gray",
@@ -243,13 +226,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     Color: "black",
     paddingStart: 10,
-    alignSelf: "center",  
+    alignSelf: "center",
   },
 
   /*Localidad             */
   txtLocation: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     alignSelf: "flex-start",
     marginLeft: 40,
     marginTop: 10,
@@ -281,7 +264,7 @@ const styles = StyleSheet.create({
   /*  Direccion        */
   txtDirección: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     alignSelf: "flex-start",
     marginLeft: 40,
     marginTop: 10,
@@ -300,10 +283,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 
- /* PAGOS              */ 
+  /* PAGOS              */
   txtPago: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     alignSelf: "flex-start",
     marginLeft: 11,
   },
@@ -311,33 +294,31 @@ const styles = StyleSheet.create({
   container1: {
     flex: 1,
     justifyContent: "center",
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     paddingLeft: 30,
     marginTop: 15,
-    
   },
 
   checkboxContainer: {
     marginHorizontal: 30,
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
     marginTop: 15,
-    columnGap:5
+    columnGap: 5,
   },
 
   checkbox: {
     width: 24,
     height: 24,
     borderWidth: 1,
-    borderColor: 'black',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    borderColor: "black",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
 
   checkedBox: {
-    backgroundColor: '#007AFF',
-    borderColor: '#007AFF',
-    
+    backgroundColor: "#007AFF",
+    borderColor: "#007AFF",
   },
 
   label: {
@@ -345,22 +326,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
- /*    boton continuar*/
+  /*    boton continuar*/
 
   txtcontinuar: {
     color: "white",
     fontSize: 20,
     textAlign: "center",
-    marginTop: 5,
     fontWeight: "bold",
   },
 
   buttoncontinuar: {
-    alignSelf: "center",
-    fontSize: 20,
-    marginTop: 30,
-    width: "88%",
+    marginTop: 20,
+    width: "80%",
     height: 50,
+    alignSelf: "center",
     borderRadius: 10,
     padding: 10,
     backgroundColor: "#0B6EFE",
@@ -370,10 +349,9 @@ const styles = StyleSheet.create({
     height: 30, // Ajusta esta altura según lo que necesites
   },
 
-
   fondo: {
-    flex:1,
-    width: '100%',
-    height: '100%',
+    flex: 1,
+    width: "100%",
+    height: "100%",
   },
 });
