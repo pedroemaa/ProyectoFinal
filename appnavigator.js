@@ -1,22 +1,12 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
-  View,
-  TextInput,
-  Button,
-  TouchableOpacity,
 } from "react-native";
-
 import { NavigationContainer } from "@react-navigation/native";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import { Ionicons } from "@expo/vector-icons";
-
 import MapPantalla from "./MapPantalla.js";
-
 import { OfficioNavigator } from "./infonavigator.js";
 
 const Tab = createBottomTabNavigator();
@@ -38,19 +28,34 @@ const createScreenOptions = ({ route }) => {
     ),
     tabBarActiveTintColor: "#0B6EFE",
     tabBarInactiveTintColor: "gray",
+    tabBarActiveBackgroundColor: "lightgray",
     headerShown: false,
-  };
+    
+    tabBarStyle: {
+      backgroundColor: "white",
+      borderRadius: 30, 
+      width: "85%",
+      height: "11%",
+      marginLeft: 30,
+      marginTop: "-100%",
+      },
+    tabBarIconStyle: {
+        marginBottom: 1,
+        borderRadius:25,
+        },
+    tabBarLabelStyle: {
+      fontSize: 20,
+      fontWeight: "bold",
+      },
+      };
 };
 
 export const AppNavigator = () => {
   return (
     <NavigationContainer independent={true}>
       <Tab.Navigator screenOptions={createScreenOptions}>
-        <Tab.Screen name="Officio" component={OfficioNavigator} />
-
         <Tab.Screen name="Mapa" component={MapPantalla} />
-
-        <Tab.Screen name="Cuenta" component={Account} />
+        <Tab.Screen name="Officio" component={OfficioNavigator} />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -59,3 +64,4 @@ export const AppNavigator = () => {
 export default AppNavigator;
 
 const styles = StyleSheet.create({});
+

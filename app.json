@@ -4,10 +4,10 @@
     "slug": "Hiring",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/hiring.gif",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/hiring.gif",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/hiring.gif",
         "backgroundColor": "#ffffff"
       },
     "web": {
@@ -27,7 +27,6 @@
       "proxyPort": 19000,
       "favicon": "./assets/favicon.png"
     }
-
   }
 }
 }
