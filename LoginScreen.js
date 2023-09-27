@@ -28,7 +28,7 @@ export default function LoginScreen({ navigation }) {
   };
 
   const handleMap = () => {
-    navigation.navigate("Map");
+    navigation.navigate("Mapa");
   };
 
   return (
