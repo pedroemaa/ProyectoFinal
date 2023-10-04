@@ -5,7 +5,6 @@ import PantPrincipal from "./PantPrincipal.js";
 import CambiarContraseña from "./CambiarContraseña.js";
 import CrearCuenta from "./Crearcuenta.js";
 import LoginScreen from "./LoginScreen.js";
-import MapPantalla from "./MapPantalla.js";
 import CreateAccoutMail from "./CreateAccoutMail.js";
 import CreateAccoutContra from "./CreateAccoutContra.js";
 import CrearCuentaProfesional from "./CrearCuentaProfesional.js";
@@ -15,6 +14,7 @@ import CrearPuestoEmpleo from "./CrearPuestoEmpleo.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Navigation from "./navigation.js";
 
+
 const Stack = createNativeStackNavigator();
 
 export default function AccountNavigator() {
@@ -22,7 +22,7 @@ export default function AccountNavigator() {
     <NavigationContainer
       screenOptions={{ headerShown: false }}
       screenOptions2={{ tabbarvisible: false }}>
-      <Stack.Navigator
+      <Stack.Navigator 
         screenOptions={{ headerShown: false }}
         screenOptions2={{ tabbarvisible: false }}>
         <Stack.Screen name="Pantalla Principal" component={PantPrincipal} />
@@ -31,7 +31,6 @@ export default function AccountNavigator() {
         <Stack.Screen name="Crear Cuenta Usuario" component={CraerCuentaUserEnd}/>
         <Stack.Screen name="Crear Contraseña" component={CreateAccoutContra} />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Map" component={MapPantalla} />
         <Stack.Screen name="ImagenesProfecional" component={ImagenesProfecional}/>
         <Stack.Screen name="CrearCuenta" component={CrearCuenta} />
         <Stack.Screen name="CambiarContraseña" component={CambiarContraseña} />
@@ -39,7 +38,7 @@ export default function AccountNavigator() {
         <Stack.Screen name="InfoOficio" component={Navigation} />
         <Stack.Screen name="CrearPuestoEmpleo" component={CrearPuestoEmpleo} />
         <Stack.Screen name="Mapa" component={Navigation} />
-      </Stack.Navigator>
+        </Stack.Navigator>
     </NavigationContainer>
   );
 }

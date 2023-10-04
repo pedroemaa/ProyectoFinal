@@ -6,53 +6,73 @@ import {
   View,
   TouchableOpacity,
   Image,
+  Alert,
   SafeAreaView,
   ImageBackground,
 } from "react-native";
 import Validacion, { desactivar } from "./ValidarInputs";
+import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import {initializeApp} from "firebase/app";
+import { firebaseConfig } from "./config-firebase";
 
 export default function CreateAccoutMail({ navigation }) {
-  const handleCrearCuenta = () => {
-    navigation.navigate("CrearCuenta");
-  };
+  
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
+  const handleCreateAccount = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential)=>{
+      Alert.alert('Account created')
+      const user = userCredential.user;
+      Alert.alert(user)
+    })
+    .catch(error => {
+      Alert.alert(error.message)
+    })
+  }
+
+  
+    const handleCrearCuenta = () => {
+      navigation.navigate("CrearCuenta");
+    };
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.general}>
-        <StatusBar style="auto" />
-        <Image
-          style={styles.image}
-          resizeMode={"stretch"}
-          source={require("./src/assetsPropios/ImagenLogIn.png")}
-        />
+        <View style={styles.general}>
+          <StatusBar style="auto" />
+          <Image
+            style={styles.image}
+            resizeMode={"stretch"}
+            source={require("./src/assetsPropios/ImagenLogIn.png")}
+          />
+          <Text style={styles.txtIngMail}>Crear Cuenta</Text>
+          <Validacion
+            onChangeText= {(text)=> setEmail(text)}
+            placeholder="ejem@ejemplo.com"
+            regex={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
+            validacionMensaje="No ingreso un formato correcto en el campo mail"
+          />
+          <Validacion
+            placeholder="Contraseña"
+            regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+            validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+          />
+          <Validacion
+            onChangeText= {(text)=> setPassword(text)}
+            placeholder="Repita Contraseña"
+            regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
+            validacionMensaje="No ingreso un formato correcto en el campo contraseña"
+          />
 
-        <Text style={styles.txtIngMail}>Crear Cuenta</Text>
+          <View style={styles.botones}>
+            <TouchableOpacity style={styles.buttonCrear} onPress={handleCreateAccount}>
+              <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
+            </TouchableOpacity>
+          </View>
 
-        <Validacion
-          placeholder="ejem@ejemplo.com"
-          regex={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
-          validacionMensaje="No ingreso un formato correcto en el campo mail"
-        />
-
-        <Validacion
-          placeholder="Contraseña"
-          regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
-          validacionMensaje="No ingreso un formato correcto en el campo contraseña"
-        />
-
-        <Validacion
-          placeholder="Repita Contraseña"
-          regex={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/}
-          validacionMensaje="No ingreso un formato correcto en el campo contraseña"
-        />
-        <TouchableOpacity
-          style={styles.buttonCrear}
-          onPress={handleCrearCuenta}
-        >
-          <Text style={styles.txtcontinuar}>Crear Cuenta</Text>
-        </TouchableOpacity>
-
-        <View style={styles.general1}>
+        <View style={styles.general1}> 
           <View style={{ flexDirection: "row" }}>
             <Image
               source={require("./src/assetsPropios/lineaAzul.png")}
@@ -64,26 +84,20 @@ export default function CreateAccoutMail({ navigation }) {
               style={styles.lineaAzul}
             />
           </View>
-
           {/* Imagen Azul de fondo, con el logo que se pueda tocar*/}
-
+         
           <ImageBackground
             source={require("./src/assetsPropios/fondoabajo3.png")}
             resizeMode={"stretch"}
-            style={styles.fondo}
-          >
-            <View style={styles.Google}>
-              <TouchableOpacity
-                onPress={handleCrearCuenta}
-                style={{ marginTop: 100 }}
-              >
+            style={styles.fondo}>
+           <View  style={styles.Google}>
+             <TouchableOpacity onPress={handleCrearCuenta} style={{ marginTop: 100 }}>
                 <Image
                   source={require("./src/assetsPropios/GoogleLogo.png")}
                   style={{
-                    alignSelf: "center",
-                  }}
-                ></Image>
-              </TouchableOpacity>
+                  alignSelf: "center"}}
+                 ></Image>
+             </TouchableOpacity>
             </View>
           </ImageBackground>
         </View>

@@ -12,17 +12,16 @@ import { Searchbar, DefaultTheme  } from "react-native-paper";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { SettingsModal } from "./modals.js"; // Importa el modal desde modals.js
+import { TabActions, useNavigation } from "@react-navigation/native";
 
 
-
-
-export default function MapPantalla({ navigation }) {
+export default function MapPantalla({  }) {
   const [userLocation, setUserLocation] = useState(null);
   const [menuVisible, setMenuVisible] = useState(false);
   const [isLoggedOut, setIsLoggedOut] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-
+  
 
   useEffect(() => {
     async function getUserLocation() {
@@ -49,8 +48,15 @@ export default function MapPantalla({ navigation }) {
   const handleLogouted = () => {
     setIsLoggedOut(true);
     setMenuVisible(false);
-    navigation.navigate("Login");
+    
   };
+
+  const navigation = useNavigation(); // Utiliza useNavigation para acceder a la navegación
+
+  const handleStoreInfo = () => {
+    navigation.navigate("Officio"); // Navega a la pantalla "InfoOficio" en la navegación principal
+  };
+
   return (
     <View style={styles.container}>
       <MapView style={styles.mapStyle} region={mapRegion}>
@@ -62,16 +68,29 @@ export default function MapPantalla({ navigation }) {
           />
         )}
       </MapView>
-      <TouchableOpacity
-        onPress={() => setMenuVisible(true)}
-        style={styles.buscadorContainer}
-      >
+
+      <View style={styles.buscadorContainer}>
+
+       <TouchableOpacity
+          onPress={() => setMenuVisible(true)}
+              >
         <Image
-          source={require("./src/assetsPropios/menu.png")}
-          style={styles.imagen}
-        />
-        <Searchbar style={styles.buscador}/>
-      </TouchableOpacity>
+          source={require("./src/assetsPropios/menuuu.png")}
+          style={styles.imagen} 
+          />
+        
+       </TouchableOpacity>
+       <Searchbar style={styles.buscador}/>
+
+       <TouchableOpacity onPress={handleStoreInfo}
+       >
+           
+        <Image
+          source={require("./src/assetsPropios/view.png")}
+          style={styles.imagen}/>
+        </TouchableOpacity>
+      </View>
+
       <SettingsModal
         visible={menuVisible}
         onClose={() => setMenuVisible(false) }
@@ -97,9 +116,8 @@ const styles = StyleSheet.create({
     padding: 4,
     },
   imagen: {
-    width: 20,
-    height: 20,
-    marginRight: 8,
+    marginRight: 10,
+    marginTop: 5,
   },
   buscador: {
     flex: 1,
