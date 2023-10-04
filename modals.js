@@ -1,29 +1,51 @@
 import React from "react";
-import LoginScreen from "./LoginScreen.js";
-import { Modal, Text, View, Image, TouchableOpacity, Button } from "react-native";
+import { Modal, Text, View, Image, TouchableOpacity, Button, Alert} from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import { NavigationContainer } from "@react-navigation/native";
-import appnavigator from "./appnavigator.js";
-import MapPantalla from "./MapPantalla.js";
+import { initializeApp } from "firebase/app";
+import { getReactNativePersistence, initializeAuth, signOut, Auth } from "firebase/auth";
+
+import { firebaseConfig } from "./config-firebase";
+
+
+
+
 
 export function SettingsModal({ visible, onClose }) {
  
-  
-  const handleMap = () => {
-    navigation.navigate("Mapa");
+  //Con estos dos podes navegar en cualquier pantalla que este dentro del Tab.Screen
+  const navigation = useNavigation(); 
+
+  const handleStoreInfo = () => {
+    onClose();
+    navigation.navigate("Officio"); 
   };
-  
 
-  const Account = (navigation) => <Text>Mi cuenta</Text>;
 
+
+
+  const handleLogout =  () => {
+    
+      // Aca pone el codigo para vaya a la pantalla de login y cierre firebase
+      
+      navigation.navigate("Login");
+
+      onClose();
+    
+  };
+
+
+///////////////////////////////////////////////////
   return (
+    
+    
     <Modal
-      animationType="slide"
+       animationType="slide"
       transparent={true}
       visible={visible}
       onRequestClose={onClose}
     >
-      <View style={styles.modalContainer}>
+      <View style={styles.modalContainer}
+      >
         {/* Contenido del panel */}
         <View style={styles.modalContent}>
           <View style={styles.imageTextContainer}>
@@ -43,7 +65,8 @@ export function SettingsModal({ visible, onClose }) {
               />
               <Text
                 style={styles.txtconfiguracion}
-                onPress={Account}
+                onPress={handleStoreInfo}
+               
                 
               >
                 Configuración y privacidad
@@ -56,7 +79,7 @@ export function SettingsModal({ visible, onClose }) {
               />
             </TouchableOpacity>
           </View>
-          <Button title="Cerrar sesión" onPress={onClose} color="red" style={{marginTop: 300}} />
+          <Button title="Cerrar sesión" onPress={handleLogout} color="red" style={{marginTop: 300}} />
         </View>
       </View>
     </Modal>

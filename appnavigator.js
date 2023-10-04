@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import MapPantalla from "./MapPantalla.js";
 import { OfficioNavigator } from "./infonavigator.js";
+import LoginScreen from "./LoginScreen.js";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +18,7 @@ const TAB_ICON = {
   Cuenta: "person-circle-outline",
 };
 
-const Account = (navigation) => <Text>Mi cuenta</Text>;
+
 
 const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
@@ -50,16 +51,22 @@ const createScreenOptions = ({ route }) => {
       };
 };
 
+
+
 export const AppNavigator = () => {
   return (
     <NavigationContainer independent={true}>
       <Tab.Navigator screenOptions={createScreenOptions}>
         <Tab.Screen name="Mapa" component={MapPantalla} />
-        <Tab.Screen name="Officio" component={OfficioNavigator} />
+        <Tab.Screen name="Officio" component={OfficioNavigator}  />
+        <Tab.Screen name="Login" component={LoginScreen} options={{ tabBarButton: () => null,  tabBarStyle:{display : 'none'}}} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 };
+
+/////// con el options oculto el boton para que se pueda utilizar en la navegacion sin que este presente//////
+
 
 export default AppNavigator;
 
