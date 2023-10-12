@@ -1,51 +1,61 @@
-import React from "react";
-import { Modal, Text, View, Image, TouchableOpacity, Button, Alert} from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from "react";
+import {
+  Modal,
+  Text,
+  View,
+  Image,
+  Alert,
+  TouchableOpacity,
+  Button,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { initializeApp } from "firebase/app";
-import { getReactNativePersistence, initializeAuth, signOut, Auth } from "firebase/auth";
+import {
+  getReactNativePersistence,
+  initializeAuth,
+  signOut,
+   getAuth,
+  Auth,
+} from "firebase/auth";
 
 import { firebaseConfig } from "./config-firebase";
 
-
-
-
-
-export function SettingsModal({ visible, onClose }) {
- 
+export function SettingsModal({ visible, onClose, navigation }) {
   //Con estos dos podes navegar en cualquier pantalla que este dentro del Tab.Screen
-  const navigation = useNavigation(); 
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const [user, setUser] = useState(null);
 
   const handleStoreInfo = () => {
     onClose();
-    navigation.navigate("Officio"); 
+    navigation.navigate("Officio");
   };
 
-
-
-
-  const handleLogout =  () => {
-    
-      // Aca pone el codigo para vaya a la pantalla de login y cierre firebase
-      
-      navigation.navigate("Login");
-
-      onClose();
-    
+  
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        console.log('DesLoged');
+        Alert.alert('Cerrando Sesión');
+        navigation.navigate('Login');
+       setPersistence(auth, null) 
+        
+      })
+      .catch((error) => {
+          console.log('error in Desloged');
+      });  
+    onClose();
   };
-
-
-///////////////////////////////////////////////////
+  
+ 
   return (
-    
-    
     <Modal
-       animationType="slide"
+      animationType="slide"
       transparent={true}
       visible={visible}
       onRequestClose={onClose}
     >
-      <View style={styles.modalContainer}
-      >
+      <View style={styles.modalContainer}>
         {/* Contenido del panel */}
         <View style={styles.modalContent}>
           <View style={styles.imageTextContainer}>
@@ -63,23 +73,29 @@ export function SettingsModal({ visible, onClose }) {
                 source={require("./src/assetsPropios/settings.png")}
                 style={styles.imagenGrande}
               />
-              <Text
-                style={styles.txtconfiguracion}
-                onPress={handleStoreInfo}
-               
-                
-              >
+              <Text style={styles.txtconfiguracion} onPress={handleStoreInfo}>
                 Configuración y privacidad
               </Text>
             </View>
             <TouchableOpacity onPress={onClose}>
               <Image
                 source={require("./src/assetsPropios/close.png")}
-                style={{ alignSelf: "flex-end", marginLeft: 50, marginTop: -30 }}
+                style={{
+                  alignSelf: "flex-end",
+                  marginLeft: 50,
+                  marginTop: -30,
+                }}
               />
             </TouchableOpacity>
+          </View >
+          <View style={styles.boton}>
+          <Button
+            title="Cerrar Sesión"
+            onPress={handleLogout}
+            color="red"
+            style={{ marginTop: -300 }}
+          />
           </View>
-          <Button title="Cerrar sesión" onPress={handleLogout} color="red" style={{marginTop: 300}} />
         </View>
       </View>
     </Modal>
@@ -114,10 +130,18 @@ const styles = {
     fontWeight: "bold",
     fontSize: 25,
     marginTop: 40,
-    textDecorationLine: "underline", // Subraya el texto para indicar que es interactivo
+    textDecorationLine: "underline", 
   },
-  buttonCerrar:{
+  buttonCerrar: {
     flex: 1,
-    marginTop:20,
-  }
+    marginTop: 20,
+  },
+boton: {
+    flex: 1,
+     marginTop: 40,
+     alignItems: 'center',     
+  },
+
+
 };
+

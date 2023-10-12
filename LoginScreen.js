@@ -13,7 +13,9 @@ import {
 } from "react-native";
 import ButtonLogin from "./ButtonLogin";
 import Validacion, { desactivar } from "./ValidarInputs";
-import { initializeAuth, getReactNativePersistence, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, auth, signInWithEmailAndPassword, inMemoryPersistence } from "firebase/auth";
+//import { initializeAuth, getReactNativePersistence, signInWithEmailAndPassword } from 'firebase/auth';
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./config-firebase";
@@ -35,34 +37,27 @@ export default function LoginScreen({ navigation }) {
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [auth, setAuth] = useState(null);
 
-  useEffect(() => {
-    const app = initializeApp(firebaseConfig);
-    const authInstance = initializeAuth(app, {
-      persistence: getReactNativePersistence(ReactNativeAsyncStorage)
-    });
-    setAuth(authInstance);
-  }, []);
-
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+ 
   const handleSingIn = () => {
     if (email.trim() === "" || password.trim() === "") {
       Alert.alert("Por favor, complete ambos campos.");
       return;
     }
-
-    if (auth) {
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          console.log('Loged');
-          const user = userCredential.user;
-          console.log(user);
-          navigation.navigate('Mapa');
-        })
-        .catch(error => {
-          Alert.alert(error.message);
-        });
-    }
+    signInWithEmailAndPassword(auth, email, password)
+     .then((userCredential) => {
+            Alert.alert('Loged');
+            const user = userCredential.user;
+            console.log(user);
+            navigation.navigate('Mapa');
+         })
+      .catch((error) => {
+        // Handle Errors here.
+        Alert.alert(error.code);
+        Alert.alert(error.message);
+      });
   }
 
   return (
