@@ -54,31 +54,3 @@ export default function AccountNavigator() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputlogin: {
-    borderWidth: 1,
-    borderColor: "gray",
-    padding: 10,
-    width: "80%",
-    marginTop: 20,
-    height: 50,
-    borderRadius: 30,
-    backgroundColor: "white",
-    paddingStart: 30,
-  },
-  txtlogin: {
-    fontSize: 50,
-  },
-
-  txtbuttoncrearcuenta: {
-    fontSize: 20,
-    marginTop: 50,
-  },
-});

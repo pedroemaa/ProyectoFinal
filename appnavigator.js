@@ -7,6 +7,7 @@ import MapPantalla from "./MapPantalla.js";
 import { OfficioNavigator } from "./infonavigator.js";
 import LoginScreen from "./LoginScreen.js";
 import DatosPersonales from "./datosPersonales.js";
+import CambiarContraseña from "./CambiarContraseña.js";
 
 const Tab = createBottomTabNavigator();
 
@@ -64,6 +65,14 @@ export const AppNavigator = () => {
         <Tab.Screen
           name="DatosPersonales"
           component={DatosPersonales}
+          options={{
+            tabBarButton: () => null,
+            tabBarStyle: { display: "none" },
+          }}
+        />
+        <Tab.Screen
+          name="CambiarContraseña"
+          component={CambiarContraseña}
           options={{
             tabBarButton: () => null,
             tabBarStyle: { display: "none" },
