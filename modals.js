@@ -14,7 +14,7 @@ import {
   getReactNativePersistence,
   initializeAuth,
   signOut,
-   getAuth,
+  getAuth,
   Auth,
 } from "firebase/auth";
 
@@ -31,23 +31,25 @@ export function SettingsModal({ visible, onClose, navigation }) {
     navigation.navigate("Officio");
   };
 
-  
+  const handleDatos = () => {
+    onClose();
+    navigation.navigate("DatosPersonales");
+  };
+
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        console.log('DesLoged');
-        Alert.alert('Cerrando Sesión');
-        navigation.navigate('Login');
-       setPersistence(auth, null) 
-        
+        console.log("DesLoged");
+        Alert.alert("Cerrando Sesión");
+        navigation.navigate("Login");
+        setPersistence(auth, null);
       })
       .catch((error) => {
-          console.log('error in Desloged');
-      });  
+        console.log("error in Desloged");
+      });
     onClose();
   };
-  
- 
+
   return (
     <Modal
       animationType="slide"
@@ -87,14 +89,22 @@ export function SettingsModal({ visible, onClose, navigation }) {
                 }}
               />
             </TouchableOpacity>
-          </View >
+          </View>
           <View style={styles.boton}>
-          <Button
-            title="Cerrar Sesión"
-            onPress={handleLogout}
-            color="red"
-            style={{ marginTop: -300 }}
-          />
+            <Button
+              title="Cerrar Sesión"
+              onPress={handleLogout}
+              color="red"
+              style={{ marginTop: -300 }}
+            />
+          </View>
+          <View style={styles.botonDatos}>
+            <Button
+              title="Modificar datos"
+              onPress={handleDatos}
+              color="gray"
+              style={{ marginTop: +300 }}
+            />
           </View>
         </View>
       </View>
@@ -110,7 +120,7 @@ const styles = {
   },
   modalContent: {
     backgroundColor: "white",
-    width: "80%",
+    width: "90%",
     height: "85%",
     padding: 20,
     borderRadius: 10,
@@ -124,24 +134,23 @@ const styles = {
   imagenGrande: {
     width: 40,
     height: 40,
-    marginTop: 20,
+    marginTop: 50,
   },
   txtconfiguracion: {
     fontWeight: "bold",
     fontSize: 25,
-    marginTop: 40,
-    textDecorationLine: "underline", 
+    marginTop: 50,
+    textDecorationLine: "underline",
   },
   buttonCerrar: {
-    flex: 1,
     marginTop: 20,
   },
-boton: {
-    flex: 1,
-     marginTop: 40,
-     alignItems: 'center',     
+  boton: {
+    marginTop: 40,
+    alignSelf: "flex-start",
   },
-
-
+  botonDatos: {
+    marginTop: 40,
+    alignSelf: "flex-start",
+  },
 };
-

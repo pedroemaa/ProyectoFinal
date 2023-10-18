@@ -11,9 +11,9 @@ import CrearCuentaProfesional from "./CrearCuentaProfesional.js";
 import ImagenesProfecional from "./SubirImagenesProfesional.js";
 import CraerCuentaUserEnd from "./CrearCuentaUserEnd.js";
 import CrearPuestoEmpleo from "./CrearPuestoEmpleo.js";
+import DatosPersonales from "./datosPersonales.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Navigation from "./navigation.js";
-
 
 const Stack = createNativeStackNavigator();
 
@@ -21,24 +21,36 @@ export default function AccountNavigator() {
   return (
     <NavigationContainer
       screenOptions={{ headerShown: false }}
-      screenOptions2={{ tabbarvisible: false }}>
-      <Stack.Navigator 
+      screenOptions2={{ tabbarvisible: false }}
+    >
+      <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        screenOptions2={{ tabbarvisible: false }}>
+        screenOptions2={{ tabbarvisible: false }}
+      >
         <Stack.Screen name="Pantalla Principal" component={PantPrincipal} />
         <Stack.Screen name="Crear Cuenta Mail" component={CreateAccoutMail} />
-        <Stack.Screen name="Crear Cuenta Profesional" component={CrearCuentaProfesional}/>
-        <Stack.Screen name="Crear Cuenta Usuario" component={CraerCuentaUserEnd}/>
+        <Stack.Screen
+          name="Crear Cuenta Profesional"
+          component={CrearCuentaProfesional}
+        />
+        <Stack.Screen
+          name="Crear Cuenta Usuario"
+          component={CraerCuentaUserEnd}
+        />
         <Stack.Screen name="Crear Contraseña" component={CreateAccoutContra} />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="ImagenesProfecional" component={ImagenesProfecional}/>
+        <Stack.Screen
+          name="ImagenesProfecional"
+          component={ImagenesProfecional}
+        />
         <Stack.Screen name="CrearCuenta" component={CrearCuenta} />
         <Stack.Screen name="CambiarContraseña" component={CambiarContraseña} />
         <Stack.Screen name="Navigation" component={Navigation} />
         <Stack.Screen name="InfoOficio" component={Navigation} />
         <Stack.Screen name="CrearPuestoEmpleo" component={CrearPuestoEmpleo} />
         <Stack.Screen name="Mapa" component={Navigation} />
-        </Stack.Navigator>
+        <Stack.Screen name="DatosPersonales" component={DatosPersonales} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
