@@ -22,18 +22,24 @@ export default function CreateAccoutMail({ navigation }) {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
+  const [uid, setUid] = useState(null);
+
   const handleCreateAccount = () => {
-    createUserWithEmailAndPassword(auth, email, password)
+   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential)=>{
-      Alert.alert('Account created')
+     
       const user = userCredential.user;
-      Alert.alert(user)
+   
+      setUid(user.uid);
+        navigation.navigate("CrearCuenta", { uid: user.uid })
+    //  navigation.navigate("CrearCuenta", params)
+      Alert.alert('Account created')
+      console.log(user)
     })
     .catch(error => {
       Alert.alert(error.message)
     })
   }
-
   
     const handleCrearCuenta = () => {
       navigation.navigate("CrearCuenta");

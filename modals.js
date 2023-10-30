@@ -76,7 +76,7 @@ export function SettingsModal({ visible, onClose, navigation }) {
                 style={styles.imagenGrande}
               />
               <Text style={styles.txtconfiguracion} onPress={handleStoreInfo}>
-                Configuración y privacidad
+                Configuración y Privacidad
               </Text>
             </View>
             <TouchableOpacity onPress={onClose}>
@@ -120,7 +120,7 @@ const styles = {
   },
   modalContent: {
     backgroundColor: "white",
-    width: "90%",
+    width: "95%",
     height: "85%",
     padding: 20,
     borderRadius: 10,
@@ -134,12 +134,12 @@ const styles = {
   imagenGrande: {
     width: 40,
     height: 40,
-    marginTop: 50,
+    marginTop: 60,
   },
   txtconfiguracion: {
     fontWeight: "bold",
     fontSize: 25,
-    marginTop: 50,
+    marginTop: 60,
     textDecorationLine: "underline",
   },
   buttonCerrar: {
