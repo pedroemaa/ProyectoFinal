@@ -9,10 +9,11 @@ import {
   SafeAreaView,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
+import { useRoute } from '@react-navigation/native';
 
 export default function CrearCuenta({ navigation }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentValue, setCurrentValue] = useState(null);
+  const [currentValue, setCurrentValue] = useState('');
   const [isButtonSelected, setIsButtonSelected] = useState(false);
 
   const items = [
@@ -21,28 +22,38 @@ export default function CrearCuenta({ navigation }) {
     { label: "Cuenta mixta", value: "Cuenta mixta" },
   ];
 
+  const route = useRoute();
+  const uid = route.params.uid;
+  const [empleador, setEmpleador] = useState('');
+  
+ 
+
   useEffect(() => {
     // Actualizar el estado de isButtonSelected cuando se elige un valor
     setIsButtonSelected(currentValue !== null);
   }, [currentValue]);
-
+  
   const handleButtonPress = () => {
     if (currentValue) {
+     
       switch (currentValue) {
         case "Ofrecer empleo":
-          navigation.navigate("Crear Cuenta Profesional");
+          navigation.navigate("Crear Cuenta Profesional", {  empleador: 'Profesional', uid: uid });
           break;
         case "Buscar empleo":
-          navigation.navigate("Crear Cuenta Usuario");
+          navigation.navigate("Crear Cuenta Usuario" ,  {  empleador: 'Empleado', uid: uid });
           break;
-        //  case "Cuenta mixta":
-        //    navigation.navigate("PantallaCuentaMixta");
-        //    break;
+         case "Cuenta mixta":
+            navigation.navigate("Crear Cuenta Mixta");
+            break;
         default:
           break;
       }
     }
   };
+
+ 
+ 
 
   return (
     <SafeAreaView style={styles.container}>
@@ -55,6 +66,8 @@ export default function CrearCuenta({ navigation }) {
         <Text style={styles.txtcrearcuenta1}>
           Seleccione el tipo de usuario
         </Text>
+
+        <Text>{`El UID del usuario es ${uid}.`}</Text>
         <View style={styles.general1}>
           <ImageBackground
             source={require("./src/assetsPropios/fondoabajo3.png")}
@@ -70,6 +83,7 @@ export default function CrearCuenta({ navigation }) {
                 value={currentValue}
                 setValue={(val) => setCurrentValue(val)}
                 placeholder="Seleccione su usuario"
+                
               />
             </View>
 

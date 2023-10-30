@@ -20,11 +20,10 @@ import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./config-firebase";
 import { useNavigation } from "@react-navigation/native";
+import {getFirestore, collection, getDoc, doc} from 'firebase/firestore';
 
 export default function LoginScreen({ navigation }) {
-  const handleRegister = () => {
-    navigation.navigate("CrearCuenta");
-  };
+ 
   const handleStoreInfo = () => {
     navigation.navigate("InfoOficio");
   };
@@ -34,32 +33,57 @@ export default function LoginScreen({ navigation }) {
   const handleMap = () => {
     navigation.navigate("Mapa");
   };
-
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
   const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
  
+  const auth = getAuth(app); // Obtén la instancia de autenticación de Firebase
+
   const handleSingIn = () => {
     if (email.trim() === "" || password.trim() === "") {
       Alert.alert("Por favor, complete ambos campos.");
       return;
     }
+  
     signInWithEmailAndPassword(auth, email, password)
-     .then((userCredential) => {
-            Alert.alert('Loged');
-            const user = userCredential.user;
-            console.log(user);
-            navigation.navigate('Mapa');
-         })
+      .then((userCredential) => {
+        const user = userCredential.user;
+        const uid = user.uid;
+  
+        // Ahora que tienes el uid del usuario, puedes consultar Firestore
+        const db = getFirestore(); // Asegúrate de importar getFirestore desde firebase/firestore
+        const usersCollection = collection(db, "usuario"); // "usuarios" es el nombre de la colección en Firestore
+  
+        const userRef = doc(usersCollection, uid);
+  
+        getDoc(userRef)
+          .then((doc) => {
+            if (doc.exists()) {
+              const userData = doc.data();
+              const tipoCuenta = userData.tipoCuenta;
+  
+              // Redirige al usuario según el tipo de cuenta
+              if (tipoCuenta === "profesional") {
+                navigation.navigate("Profe");
+              } else if (tipoCuenta === "basico") {
+                navigation.navigate('Mapa');
+              } else {
+                Alert.alert('Tipo de cuenta desconocido');
+              }
+            } else {
+              Alert.alert('Usuario no encontrado en la base de datos');
+              
+            }
+          })
+          .catch((error) => {
+            Alert.alert('Error al acceder a la base de datos: ' + error.message);
+          });
+      })
       .catch((error) => {
-        // Handle Errors here.
         Alert.alert(error.code);
         Alert.alert(error.message);
       });
   }
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.general}>
@@ -69,7 +93,7 @@ export default function LoginScreen({ navigation }) {
           source={require("./src/assetsPropios/ImagenLogIn.png")}
         />
         <Text style={styles.txtlogin}>Ingrese su usuario</Text>
-
+        
         <Validacion
           onChangeText={(text) => setEmail(text)}
           placeholder="Usuario, email o numero de telefono"
@@ -84,14 +108,12 @@ export default function LoginScreen({ navigation }) {
           validacionMensaje="No ingreso un formato correcto en el campo mail"
           
         />
-
         <TouchableOpacity
           onPress={handleCambiarContraseña}
           style={styles.buttonLoginCambiarContraseña}
         >
           <Text style={{ fontSize: 16 }}>¿Has olvidado la contraseña?</Text>
         </TouchableOpacity>
-
         <TouchableOpacity
           style={styles.buttonlogin}
           onPress={handleSingIn}
@@ -99,7 +121,6 @@ export default function LoginScreen({ navigation }) {
         >
           <ButtonLogin />
         </TouchableOpacity>
-
         <View style={styles.general1}>
           <View style={{ flexDirection: "row" }}>
             <Image
@@ -143,7 +164,6 @@ export default function LoginScreen({ navigation }) {
 
 
 
-
 const styles = StyleSheet.create({
  
 container: {
@@ -156,7 +176,6 @@ txtlogin: {
     alignSelf: "flex-start",
     marginLeft: 25,
   },
-
   general: {
     flex: 1,
     },
@@ -164,7 +183,6 @@ txtlogin: {
   general1: {
     flex: 1,
   },
-
   Google: {
     flex:1,
     flexDirection: "row",
@@ -187,7 +205,6 @@ txtlogin: {
     width: '100%',
     height: '120%',
   },
-
 
 buttonLoginCambiarContraseña: {
     marginTop: 5,

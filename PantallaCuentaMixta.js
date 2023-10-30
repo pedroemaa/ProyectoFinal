@@ -12,15 +12,10 @@ import {
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useRoute } from '@react-navigation/native';
-import {initializeApp} from "firebase/app";
-import { firebaseConfig } from "./config-firebase";
-import firebase from 'firebase/app';
-import 'firebase/database';
 
 export default function CrearCuentaProfesional({ navigation }) {
   const handleImagenProfecional = () => {
-    navigation.navigate("ImagenesProfecional");
+    navigation.navigate("ImagenesMixta");
   };
 
   const [isOpen1, setIsOpen1] = useState(false);
@@ -28,14 +23,6 @@ export default function CrearCuentaProfesional({ navigation }) {
   const [currentProfesionValue, setCurrentValue] = useState();
   const [currentLocationValue, setCurrentValueL] = useState();
   const [text, setText] = useState();
-
-
-  const route = useRoute();
- const empleador  = route.params.empleador;
-  const uid = route.params.uid;
-  const selectedValue = route.params.selectedValue;
- 
-  
 
   const itemsProfesion = [
     { label: "", value: "" },
@@ -65,9 +52,6 @@ export default function CrearCuentaProfesional({ navigation }) {
           : checkbox
       )
     );
-
-
-    
   };
 
   return (
@@ -79,12 +63,10 @@ export default function CrearCuentaProfesional({ navigation }) {
             resizeMode={"stretch"}
             source={require("./src/assetsPropios/ImagenLogIn.png")}
           ></Image>
-          
+
           <Text style={styles.txtName}>Nombre</Text>
-         
           <TextInput placeholder="" style={styles.inputName} />
-          <Text>{`El UID del usuario es ${uid}.`}</Text>
-          <Text>{`El UID del usuario es ${empleador}.`}</Text>
+
           <Text style={styles.txtApellido}>Apellido</Text>
           <TextInput placeholder="" style={styles.inputApellido} />
 

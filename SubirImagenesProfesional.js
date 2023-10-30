@@ -10,38 +10,30 @@ import {
   ImageBackground,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import {  useNavigation } from "@react-navigation/native";
 
 export default function SubirImagenProfesional ({ navigaton }) {
-
-
-
+  const navigation = useNavigation();
   const [selectedImage, setSelectedImage] = useState(null);
-
   const handleImageSelect = async () => {
         let { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (status !== "granted") {
          console.error("Permiso de acceso a la galería denegado");
       return;
       }
-
     let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
         quality: 1,
        });
-      if (!result.cancelled) {
+      if (!result.canceled) {
         setSelectedImage(result.uri);
       }
   };
-
- // const handleCrearProfecional = () => {
-  //  navigation.navigate("Crear Profecional");
-  //};
-//
+ const handleCrearProfecional = () => {
+  navigation.navigate('Profe');
+ };
   
-
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.general}>
@@ -49,9 +41,7 @@ export default function SubirImagenProfesional ({ navigaton }) {
                   style={styles.image}
                   resizeMode={"stretch"}
                   source={require("./src/assetsPropios/ImagenLogIn.png")}/>
-
               <Text style={styles.txtImagenes}>Imagenes</Text>
-
               <View style={styles.BotonImagenes}>
                 <TouchableOpacity
                   style={styles.button}
@@ -66,11 +56,11 @@ export default function SubirImagenProfesional ({ navigaton }) {
                 <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") }
                                  resizeMode= {'stretch'}
                                  style={styles.fondo}>
-
                   <View  style={styles.Google}>                
                   <TouchableOpacity
                       style={styles.buttoncontinuar}> 
-                    <Text style={styles.txtcontinuar}>Continuar</Text> 
+                    <Text style={styles.txtcontinuar}
+                          onPress={handleCrearProfecional}>Continuar</Text> 
                   </TouchableOpacity>
                   </View>
                 </ImageBackground>
@@ -79,7 +69,6 @@ export default function SubirImagenProfesional ({ navigaton }) {
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -91,7 +80,6 @@ const styles = StyleSheet.create({
   general1: {
     flex: 1,
   },
-
   image: {
     flex: 1,
     marginTop: -40,
@@ -101,14 +89,12 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '100%',
   },
-
   txtImagenes: {
     fontSize: 25,
     alignSelf: "flex-start",
     fontWeight: "bold",
     marginLeft: 60,
   },
-
 
   BotonImagenes: {
     flex: 1,
@@ -118,7 +104,6 @@ const styles = StyleSheet.create({
     marginTop: -20,
     width: "88%",
   },
-
 
   button: {
     backgroundColor: "#EDEDED",
@@ -158,7 +143,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-
   Google: {
     flex:1,
     flexDirection: "row",
@@ -167,6 +151,4 @@ const styles = StyleSheet.create({
    
   },
 
-
 });
-
