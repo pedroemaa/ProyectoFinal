@@ -22,7 +22,6 @@ import {
   import { signOut } from 'firebase/auth';
   import { auth, database } from './config-firebase.js';
   import { AntDesign } from '@expo/vector-icons';
-  import colors from './colors.js';
 
   export default function Job ({}) {
 
