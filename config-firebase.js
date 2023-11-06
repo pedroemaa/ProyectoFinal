@@ -1,9 +1,9 @@
 export const firebaseConfig = {
-    apiKey: "AIzaSyDq2l1Nop13Ck4R8OCdgWCHVpfF1EFSF5w",
-    authDomain: "hiring-99dc7.firebaseapp.com",
-    projectId: "hiring-99dc7",
-    storageBucket: "hiring-99dc7.appspot.com",
-    messagingSenderId: "475324374114",
-    appId: "1:475324374114:web:fd047bf7fa30ba8c37053b",
-    measurementId: "G-CZL7EW2RT8"
-  };
+  apiKey: "AIzaSyASlK3gLKzp-1nNezjXDG2CQjIKcUJY97g",
+  authDomain: "hiring-28e4b.firebaseapp.com",
+  projectId: "hiring-28e4b",
+  storageBucket: "hiring-28e4b.appspot.com",
+  messagingSenderId: "35344194437",
+  appId: "1:35344194437:web:a6ddde220a435014b282ec",
+  measurementId: "G-D1DX3ZQV2H"
+};

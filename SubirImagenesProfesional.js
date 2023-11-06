@@ -11,28 +11,62 @@ import {
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import {  useNavigation } from "@react-navigation/native";
+import { getStorage, ref, uploadFile } from 'firebase/storage';
+import {initializeApp} from "firebase/app";
+import { firebaseConfig } from "./config-firebase";
+import { useRoute } from '@react-navigation/native';
 
 export default function SubirImagenProfesional ({ navigaton }) {
   const navigation = useNavigation();
   const [selectedImage, setSelectedImage] = useState(null);
+
+
+  const app = initializeApp(firebaseConfig);
+
+  const route = useRoute();
+  const uid = route.params.uid;
+
   const handleImageSelect = async () => {
-        let { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (status !== "granted") {
-         console.error("Permiso de acceso a la galería denegado");
+    let { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      console.error("Permiso de acceso a la galería denegado");
       return;
-      }
-    let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true,
-        quality: 1,
-       });
-      if (!result.canceled) {
-        setSelectedImage(result.uri);
-      }
+    }
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      quality: 1,
+    });
+    if (!result.canceled) {
+      // result.uri se reemplaza por result.assets[0].uri
+      const selectedImageUri = result.assets[0].uri;
+      // Continúa con el proceso de carga
+      // ...
+    }
   };
- const handleCrearProfecional = () => {
-  navigation.navigate('Profe');
- };
+  
+    /*if (!result.canceled) {
+      // Sube la imagen a Firebase Storage con el nombre igual al uid
+      const storage = getStorage(app);
+      const storageRef = ref(storage, `imagenes/${uid}.jpg`); // Nombre del archivo
+  
+      // Sube la imagen desde la URI de la imagen seleccionada
+      const response = await fetch(result.uri);
+      const blob = await response.blob();
+  
+      // Sube el archivo a Firebase Storage
+      await uploadFile(storageRef, blob);
+  
+      setSelectedImage(result.uri);
+    }
+  };*/
+
+    const handleCrearProfecional = () => {
+      navigation.navigate('Profe');
+     };
+      
+ 
+  
   
   return (
     <SafeAreaView style={styles.container}>

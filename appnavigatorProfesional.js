@@ -6,7 +6,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import MapPantalla from "./MapPantalla.js";
-
 import job from "./jobs.js";
 import puesto from "./CrearPuestoEmpleo.js";
 import { OfficioNavigator } from "./infonavigator.js";
@@ -54,10 +53,10 @@ export const AppNavigatorProfesional = () => {
   return (
     <NavigationContainer independent={true}>
       <Tab.Navigator screenOptions={createScreenOptions}>
-        <Tab.Screen name="Chats" component={chats} />
         <Tab.Screen name="Jobs" component={job}  />
         <Tab.Screen name="Puesto" component={puesto} options={{ tabBarButton: () => null,  tabBarStyle:{display : 'none'}}} />
         <Tab.Screen name="Login" component={LoginScreen} options={{ tabBarButton: () => null,  tabBarStyle:{display : 'none'}}} />
+        <Tab.Screen name="Profe" component={job} options={{ tabBarButton: () => null,  tabBarStyle:{display : 'none'}}} />
       </Tab.Navigator>
     </NavigationContainer>
   );

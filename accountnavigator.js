@@ -17,7 +17,7 @@ import DatosPersonales from "./datosPersonales.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Navigation from "./navigation.js";
 import NavigationProf from "./navigatiorProfesional.js";
-
+import NavegacionMixto from "./appnavigatorMixto.js";
 
 
 const Stack = createNativeStackNavigator();
@@ -43,6 +43,7 @@ export default function AccountNavigator() {
         <Stack.Screen name="Mapa" component={Navigation} />
         <Stack.Screen name="Profe" component={NavigationProf} />
         <Stack.Screen name="Puesto" component={Navigation} />
+        <Stack.Screen name="Mixto" component={NavegacionMixto} />
         </Stack.Navigator>
     </NavigationContainer>
   );

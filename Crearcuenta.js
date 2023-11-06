@@ -17,9 +17,9 @@ export default function CrearCuenta({ navigation }) {
   const [isButtonSelected, setIsButtonSelected] = useState(false);
 
   const items = [
-    { label: "Buscar Profesional de Oficio", value: "Buscar empleo" },
-    { label: "Ofrecer Servicios de Oficio", value: "Ofrecer empleo" },
-    { label: "Cuenta mixta", value: "Cuenta mixta" },
+    { label: "Buscar Profesional de Oficio", value: "userEnd" },
+    { label: "Ofrecer Servicios de Oficio", value: "Profesional" },
+    { label: "Cuenta mixta", value: "mixto" },
   ];
 
   const route = useRoute();
@@ -37,14 +37,14 @@ export default function CrearCuenta({ navigation }) {
     if (currentValue) {
      
       switch (currentValue) {
-        case "Ofrecer empleo":
-          navigation.navigate("Crear Cuenta Profesional", {  empleador: 'Profesional', uid: uid });
+        case "Profesional":
+          navigation.navigate("Crear Cuenta Profesional", {  empleador: currentValue , uid: uid });
           break;
-        case "Buscar empleo":
-          navigation.navigate("Crear Cuenta Usuario" ,  {  empleador: 'Empleado', uid: uid });
+        case "userEnd":
+          navigation.navigate("Crear Cuenta Usuario" ,  {  empleador: currentValue, uid: uid });
           break;
-         case "Cuenta mixta":
-            navigation.navigate("Crear Cuenta Mixta");
+         case "mixto":
+            navigation.navigate("Crear Cuenta Profesional",  {  empleador: currentValue, uid: uid });
             break;
         default:
           break;

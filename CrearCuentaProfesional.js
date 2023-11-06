@@ -11,17 +11,63 @@ import {
   ImageBackground,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useRoute } from '@react-navigation/native';
 import {initializeApp} from "firebase/app";
 import { firebaseConfig } from "./config-firebase";
-import firebase from 'firebase/app';
-import 'firebase/database';
+import {getFirestore, doc,setDoc} from 'firebase/firestore';
+
 
 export default function CrearCuentaProfesional({ navigation }) {
-  const handleImagenProfecional = () => {
-    navigation.navigate("ImagenesProfecional");
-  };
+  
+  const route = useRoute();
+  const empleador  = route.params.empleador;
+  const uid = route.params.uid;
+  const selectedValue = route.params.selectedValue;
+ 
+   const app = initializeApp(firebaseConfig);
+
+   const db = getFirestore(app);
+  
+   
+
+   const initialState ={
+    nombre: '',
+    apellido:'',
+    profesion:'',
+  }
+
+  const [state, setState] =useState(initialState)
+  
+
+  const handleChangeText  = (value, name)=>{
+    setState({...state,[name]: value})
+  }
+  const handleImagenProfecional = async () => {
+    try {
+      const usuariosCollection = doc(db, 'oficios', uid);
+
+      // Selecciona el medios de pago elegidos
+        const selectedMediosDePago = checkboxes
+        .filter(checkbox => checkbox.isChecked)
+        .map(checkbox => checkbox.label);
+
+      await setDoc(usuariosCollection, {
+        nombre: state.nombre,
+        apellido: state.apellido,
+        profesion: currentProfesionValue,
+        localidad: currentLocationValue,
+        direccion: state.direccion,
+        mediosDePago: selectedMediosDePago,
+        tipoCuenta: empleador,
+      });
+
+      console.log("Datos Guardados con Éxito");
+      navigation.navigate("ImagenesProfecional", {uid: uid});
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
@@ -30,12 +76,8 @@ export default function CrearCuentaProfesional({ navigation }) {
   const [text, setText] = useState();
 
 
-  const route = useRoute();
- const empleador  = route.params.empleador;
-  const uid = route.params.uid;
-  const selectedValue = route.params.selectedValue;
  
-  
+ 
 
   const itemsProfesion = [
     { label: "", value: "" },
@@ -67,7 +109,8 @@ export default function CrearCuentaProfesional({ navigation }) {
     );
 
 
-    
+
+       
   };
 
   return (
@@ -81,12 +124,19 @@ export default function CrearCuentaProfesional({ navigation }) {
           ></Image>
           
           <Text style={styles.txtName}>Nombre</Text>
-         
-          <TextInput placeholder="" style={styles.inputName} />
+          <TextInput placeholder=""
+                     style={styles.inputName}
+                     onChangeText={(value) =>handleChangeText(value, 'nombre')} 
+                     value={state.nombre}/>
+
+
           <Text>{`El UID del usuario es ${uid}.`}</Text>
           <Text>{`El UID del usuario es ${empleador}.`}</Text>
           <Text style={styles.txtApellido}>Apellido</Text>
-          <TextInput placeholder="" style={styles.inputApellido} />
+          <TextInput placeholder=""
+                     style={styles.inputApellido}
+                     onChangeText={(value) =>handleChangeText(value, 'apellido')} 
+                     value={state.apellido}/>
 
           <Text style={styles.txtProfesion}>Profesion</Text>
           <View style={styles.ViewdropDownProfesion}>
@@ -98,6 +148,8 @@ export default function CrearCuentaProfesional({ navigation }) {
               value={currentProfesionValue}
               setValue={(val) => setCurrentValue(val)}
               placeholder=""
+              onChangeText={(value) =>handleChangeText(value, 'profesion')} 
+              
             />
           </View>
 
@@ -111,6 +163,9 @@ export default function CrearCuentaProfesional({ navigation }) {
               value={currentLocationValue}
               setValue={(val) => setCurrentValueL(val)}
               placeholder=""
+              onChangeText={(value) =>handleChangeText(value, 'localidad')} 
+            
+             
             />
           </View>
 
@@ -121,7 +176,11 @@ export default function CrearCuentaProfesional({ navigation }) {
               style={styles.fondo}
             >
               <Text style={styles.txtDirección}>Dirección</Text>
-              <TextInput placeholder="" style={styles.inputDirección} />
+              <TextInput placeholder=""
+                     style={styles.inputDirección}
+                     onChangeText={(value) =>handleChangeText(value, 'direccion')} 
+                     value={state.direccion}
+                      />
 
               <View style={styles.container1}>
                 <Text style={styles.txtPago}>Medios de Pago</Text>

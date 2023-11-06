@@ -54,7 +54,7 @@ export const AppNavigatorMixto = () => {
   return (
     <NavigationContainer independent={true}>
       <Tab.Navigator screenOptions={createScreenOptions}>
-        <Tab.Screen name="Chats" component={chats} />
+        <Tab.Screen name="Mapa" component={MapPantalla} />
         <Tab.Screen name="Jobs" component={job}  />
         <Tab.Screen name="Puesto" component={puesto} options={{ tabBarButton: () => null,  tabBarStyle:{display : 'none'}}} />
         <Tab.Screen name="Login" component={LoginScreen} options={{ tabBarButton: () => null,  tabBarStyle:{display : 'none'}}} />

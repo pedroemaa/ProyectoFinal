@@ -10,11 +10,61 @@ import {
   ImageBackground,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
+import { useRoute } from '@react-navigation/native';
+import {initializeApp} from "firebase/app";
+import { firebaseConfig } from "./config-firebase";
+import {getFirestore, doc,setDoc} from 'firebase/firestore';
 
 export default function CrearCuentaUserEnd({ navigation }) {
-  const handleMap = () => {
-    navigation.navigate("Map");
-  };
+ 
+  const route = useRoute();
+  const empleador  = route.params.empleador;
+  const uid = route.params.uid;
+  const selectedValue = route.params.selectedValue;
+ 
+   const app = initializeApp(firebaseConfig);
+
+   const db = getFirestore(app);
+  
+   
+
+   const initialState ={
+    nombre: '',
+    apellido:'',
+    profesion:'',
+    }
+
+  const [state, setState] =useState(initialState)
+  
+
+  const handleChangeText  = (value, name)=>{
+    setState({...state,[name]: value})
+  }
+  const handleMap = async () => {
+    try {
+      const usuariosCollection = doc(db, 'userEnd', uid);
+
+          await setDoc(usuariosCollection, {
+        nombre: state.nombre,
+        apellido: state.apellido,
+        localidad: currentLocationValue,
+        direccion: state.direccion,
+        tipoCuenta: empleador,
+        
+      });
+
+      console.log("Datos Guardados con Éxito");
+      navigation.navigate("Mapa");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+
+
+
 
   const [isOpen2, setIsOpen2] = useState(false);
   const [currentLocationValue, setCurrentValueL] = useState();
@@ -35,10 +85,15 @@ export default function CrearCuentaUserEnd({ navigation }) {
         ></Image>
 
         <Text style={styles.txtName}>Nombre</Text>
-        <TextInput placeholder="" style={styles.inputName} />
-
+        <TextInput placeholder="" style={styles.inputName} 
+                  onChangeText={(value) =>handleChangeText(value, 'nombre')} 
+                  value={state.nombre}/>
+        <Text>{`El UID del usuario es ${empleador}.`}</Text>
         <Text style={styles.txtApellido}>Apellido</Text>
-        <TextInput placeholder="" style={styles.inputApellido} />
+        <TextInput placeholder=""
+                   style={styles.inputApellido}
+                   onChangeText={(value) =>handleChangeText(value, 'apellido')} 
+                    value={state.apellido} />
 
         <View style={styles.general1}>
           <ImageBackground
@@ -46,17 +101,26 @@ export default function CrearCuentaUserEnd({ navigation }) {
             resizeMode={"stretch"}
             style={styles.fondo}
           >
+             <Text style={styles.txtDirección}>Dirección</Text>
+              <TextInput placeholder=""
+                     style={styles.inputDirección}
+                     onChangeText={(value) =>handleChangeText(value, 'direccion')} 
+                     value={state.direccion}
+                      />
+
+
             <Text style={styles.txtLocation}>Localidad</Text>
             <View style={[styles.ViewdropDownLocation]}>
-              <DropDownPicker
-                style={styles.dropDownLocation}
-                items={itemsLocation}
-                open={isOpen2}
-                setOpen={() => setIsOpen2(!isOpen2)}
-                value={currentLocationValue}
-                setValue={(val) => setCurrentValueL(val)}
-                placeholder=""
-              />
+            <DropDownPicker
+                      style={styles.dropDownLocation}
+                      items={itemsLocation}
+                      open={isOpen2}
+                      setOpen={() => setIsOpen2(!isOpen2)}
+                      value={currentLocationValue}
+                      setValue={(val) => setCurrentValueL(val)}
+                      placeholder=""
+                      onChangeText={(value) =>handleChangeText(value, 'localidad')}             
+            />
             </View>
 
             <View>
@@ -174,6 +238,28 @@ const styles = StyleSheet.create({
   label: {
     alignSelf: "flex-start",
     fontSize: 20,
+  },
+
+
+  txtDirección: {
+    fontSize: 25,
+    fontWeight: "bold",
+    alignSelf: "flex-start",
+    marginLeft: 40,
+    marginTop: 10,
+  },
+
+  inputDirección: {
+    borderWidth: 1,
+    borderColor: "gray",
+    padding: 10,
+    width: 320,
+    marginTop: 0,
+    height: 50,
+    borderRadius: 10,
+    backgroundColor: "white",
+    paddingStart: 10,
+    alignSelf: "center",
   },
 
   /*    boton continuar*/

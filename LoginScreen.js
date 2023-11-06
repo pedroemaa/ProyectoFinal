@@ -39,7 +39,62 @@ export default function LoginScreen({ navigation }) {
  
   const auth = getAuth(app); // Obtén la instancia de autenticación de Firebase
 
-  const handleSingIn = () => {
+
+  const  handleSingIn = () => {
+    if (email.trim() === "" || password.trim() === "") {
+      Alert.alert("Por favor, complete ambos campos.");
+      return;
+    }
+  
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        const uid = user.uid;
+  
+        // Ahora que tienes el uid del usuario, puedes consultar Firestore
+        const db = getFirestore();
+        const oficiosCollection = collection(db, "oficios");
+        const userEndCollection = collection(db, "userEnd");
+        const mixtoCollection   = collection(db, "mixto");
+  
+        const userRefOficios = doc(oficiosCollection, uid);
+        const userRefUserEnd = doc(userEndCollection, uid);
+        const userRefMixto   = doc(mixtoCollection, uid);
+  
+        const promises = [getDoc(userRefOficios), getDoc(userRefUserEnd), getDoc(userRefMixto)];
+  
+        Promise.all(promises)
+          .then((results) => {
+            const oficiosDoc = results[0];
+            const userEndDoc = results[1];
+            const mixtoDoc   = results[2];
+  
+            if (oficiosDoc.exists()) {
+              // Si el usuario tiene un registro en "oficios," es un profesional
+              navigation.navigate("Profe");
+              } else if (userEndDoc.exists()) {
+              // Si el usuario tiene un registro en "userEnd," es un usuario básico
+              navigation.navigate('Mapa');
+              } else if (mixtoDoc.exists()) {
+               // Si el usuario tiene un registro en "Mixto", es un usuario mixto 
+              navigation.navigate('Mixto');
+               } else {
+              Alert.alert('Tipo de cuenta desconocido');
+            } 
+          })
+          .catch((error) => {
+            Alert.alert('Error al acceder a la base de datos: ' + error.message);
+          });
+      })
+      .catch((error) => {
+        Alert.alert(error.code);
+        Alert.alert(error.message);
+      });
+  };
+
+
+
+/*  const handleSingIn = () => {
     if (email.trim() === "" || password.trim() === "") {
       Alert.alert("Por favor, complete ambos campos.");
       return;
@@ -64,7 +119,7 @@ export default function LoginScreen({ navigation }) {
   
               // Redirige al usuario según el tipo de cuenta
               if (tipoCuenta === "profesional") {
-                navigation.navigate("Profe");
+                
               } else if (tipoCuenta === "basico") {
                 navigation.navigate('Mapa');
               } else {
@@ -83,7 +138,7 @@ export default function LoginScreen({ navigation }) {
         Alert.alert(error.code);
         Alert.alert(error.message);
       });
-  }
+  }*/
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.general}>
