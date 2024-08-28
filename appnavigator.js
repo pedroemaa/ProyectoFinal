@@ -3,10 +3,10 @@ import { StyleSheet, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import MapPantalla from "./MapPantalla.js";
+import MapPantalla from "./Front-end/User/MapPantalla.js";
 import { OfficioNavigator } from "./infonavigator.js";
-import LoginScreen from "./LoginScreen.js";
-import DatosPersonales from "./datosPersonales.js";
+import LoginScreen from "./Front-end/Initi/LoginScreen.js";
+import DatosPersonales from "./Front-end/PersonalInformation/datosPersonales.js";
 import CambiarContraseña from "./CambiarContraseña.js";
 
 const Tab = createBottomTabNavigator();

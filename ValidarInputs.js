@@ -1,6 +1,6 @@
 import react, { useState } from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
-import { desactivar } from "./LoginScreen";
+import { desactivar } from "./Front-end/Initi/LoginScreen";
 
 export default function Validacion(props) {
   const [text, setText] = useState();

@@ -61,7 +61,7 @@ export default function CrearCuentaProfesional({ navigation }) {
           <Image
             style={styles.image}
             resizeMode={"stretch"}
-            source={require("./src/assetsPropios/ImagenLogIn.png")}
+            source={require("../../src/assetsPropios/ImagenLogIn.png")}
           ></Image>
 
           <Text style={styles.txtName}>Nombre</Text>
@@ -98,7 +98,7 @@ export default function CrearCuentaProfesional({ navigation }) {
 
           <View>
             <ImageBackground
-              source={require("./src/assetsPropios/fondoabajo3.png")}
+              source={require("../../src/assetsPropios/fondoabajo3.png")}
               resizeMode={"stretch"}
               style={styles.fondo}
             >

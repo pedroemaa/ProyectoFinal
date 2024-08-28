@@ -40,7 +40,7 @@ export default function SubirImagenProfesional ({ navigaton }) {
               <Image
                   style={styles.image}
                   resizeMode={"stretch"}
-                  source={require("./src/assetsPropios/ImagenLogIn.png")}/>
+                  source={require("../../src/assetsPropios/ImagenLogIn.png")}/>
               <Text style={styles.txtImagenes}>Imagenes</Text>
               <View style={styles.BotonImagenes}>
                 <TouchableOpacity
@@ -53,7 +53,7 @@ export default function SubirImagenProfesional ({ navigaton }) {
                                 )}
               </View>
               <View  style={styles.general1}>
-                <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") }
+                <ImageBackground source={require("../../src/assetsPropios/fondoabajo3.png") }
                                  resizeMode= {'stretch'}
                                  style={styles.fondo}>
                   <View  style={styles.Google}>                

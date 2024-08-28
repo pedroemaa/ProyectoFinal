@@ -13,7 +13,7 @@ import * as ImagePicker from "expo-image-picker";
 import {  useNavigation } from "@react-navigation/native";
 import { getStorage, ref, uploadFile } from 'firebase/storage';
 import {initializeApp} from "firebase/app";
-import { firebaseConfig } from "./config-firebase";
+import { firebaseConfig } from "../../config-firebase";
 import { useRoute } from '@react-navigation/native';
 
 export default function SubirImagenProfesional ({ navigaton }) {
@@ -74,7 +74,7 @@ export default function SubirImagenProfesional ({ navigaton }) {
               <Image
                   style={styles.image}
                   resizeMode={"stretch"}
-                  source={require("./src/assetsPropios/ImagenLogIn.png")}/>
+                  source={require("../../src/assetsPropios/ImagenLogIn.png")}/>
               <Text style={styles.txtImagenes}>Imagenes</Text>
               <View style={styles.BotonImagenes}>
                 <TouchableOpacity
@@ -87,7 +87,7 @@ export default function SubirImagenProfesional ({ navigaton }) {
                                 )}
               </View>
               <View  style={styles.general1}>
-                <ImageBackground source={require("./src/assetsPropios/fondoabajo3.png") }
+                <ImageBackground source={require("../../src/assetsPropios/fondoabajo3.png") }
                                  resizeMode= {'stretch'}
                                  style={styles.fondo}>
                   <View  style={styles.Google}>                

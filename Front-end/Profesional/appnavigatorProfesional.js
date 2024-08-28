@@ -5,11 +5,11 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import MapPantalla from "./MapPantalla.js";
-import job from "./jobs.js";
-import puesto from "./CrearPuestoEmpleo.js";
-import { OfficioNavigator } from "./infonavigator.js";
-import LoginScreen from "./LoginScreen.js";
+import MapPantalla from "../User/MapPantalla.js";
+import job from "../CreateJob/jobs.js";
+import puesto from "../CreateJob/CrearPuestoEmpleo.js";
+import { OfficioNavigator } from "../../infonavigator.js";
+import LoginScreen from "../Initi/LoginScreen.js";
 const Tab = createBottomTabNavigator();
 const TAB_ICON = {
   Chats: "chatbox-ellipses-outline",

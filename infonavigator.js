@@ -1,7 +1,7 @@
 import { React } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import StorePantalla from "./StorePantalla";
+import StorePantalla from "./Front-end/Store/StorePantalla";
 
 const OfficioStack = createStackNavigator();
 

@@ -60,7 +60,7 @@ export default function CrearCuenta({ navigation }) {
       <View style={styles.general}>
         <Image
           style={styles.image}
-          source={require("./src/assetsPropios/ImagenLogIn.png")}
+          source={require("../../src/assetsPropios/ImagenLogIn.png")}
           resizeMode={"contain"}
         />
         <Text style={styles.txtcrearcuenta1}>
@@ -70,7 +70,7 @@ export default function CrearCuenta({ navigation }) {
         <Text>{`El UID del usuario es ${uid}.`}</Text>
         <View style={styles.general1}>
           <ImageBackground
-            source={require("./src/assetsPropios/fondoabajo3.png")}
+            source={require("../../src/assetsPropios/fondoabajo3.png")}
             resizeMode={"stretch"}
             style={styles.fondo}
           >

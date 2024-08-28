@@ -28,7 +28,7 @@ export default function PantPrincipal({ navigation }) {
         <Image
           style={styles.image}
           resizeMode={"stretch"}
-          source={require("./src/assetsPropios/ImagenLogIn.png")}
+          source={require("../../src/assetsPropios/ImagenLogIn.png")}
         />
         <Text style={styles.txtImagenes}>Bienvenido a Hiring</Text>
         <Text style={styles.buttonText}>
@@ -43,7 +43,7 @@ export default function PantPrincipal({ navigation }) {
           <Text style={styles.txtcontinuar}>Crear puesto de empleo</Text>
         </TouchableOpacity>
         <ImageBackground
-          source={require("./src/assetsPropios/fondoabajo3.png")}
+          source={require("../../src/assetsPropios/fondoabajo3.png")}
           resizeMode={"stretch"}
           style={styles.fondo}
         >

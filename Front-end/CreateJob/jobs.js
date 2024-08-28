@@ -9,7 +9,7 @@ import {
   } from "react-native";
   import React, { useState, useEffect } from "react";
   import { Searchbar, DefaultTheme  } from "react-native-paper";
-  import { SettingsModal } from "./modals.js";
+  import { SettingsModal } from "../../modals.js";
   import { TabActions, useNavigation } from "@react-navigation/native";
   import { GiftedChat } from 'react-native-gifted-chat';
   import {
@@ -20,7 +20,7 @@ import {
     onSnapshot
   } from 'firebase/firestore';
   import { signOut } from 'firebase/auth';
-  import { auth, database } from './config-firebase.js';
+  import { auth, database } from '../../config-firebase.js';
   import { AntDesign } from '@expo/vector-icons';
 
   export default function Job ({}) {
@@ -54,7 +54,7 @@ import {
        onPress={() => setMenuVisible(true)}
            >
      <Image
-       source={require("./src/assetsPropios/menuuu.png")}
+       source={require("../../src/assetsPropios/menuuu.png")}
        style={styles.imagen} 
        />
      
@@ -66,7 +66,7 @@ import {
     >
         
      <Image
-       source={require("./src/assetsPropios/create.png")}
+       source={require("../../src/assetsPropios/create.png")}
        style={styles.imagen}/>
      </TouchableOpacity>
    </View>

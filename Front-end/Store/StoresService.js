@@ -1,5 +1,5 @@
 import camelize from "camelize";
-import { ciudades } from "./index";
+import { ciudades } from "../../index";
 
 export const storesrequest = (location = "0.8147289,-77.7194738") => {
   return new Promise((resolve, reject) => {

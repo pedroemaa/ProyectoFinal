@@ -12,7 +12,7 @@ import {
 import DropDownPicker from "react-native-dropdown-picker";
 import { useRoute } from '@react-navigation/native';
 import {initializeApp} from "firebase/app";
-import { firebaseConfig } from "./config-firebase";
+import { firebaseConfig } from "../../config-firebase";
 import {getFirestore, doc,setDoc} from 'firebase/firestore';
 
 export default function CrearCuentaUserEnd({ navigation }) {
@@ -81,7 +81,7 @@ export default function CrearCuentaUserEnd({ navigation }) {
         <Image
           style={styles.image}
           resizeMode={"stretch"}
-          source={require("./src/assetsPropios/ImagenLogIn.png")}
+          source={require("../../src/assetsPropios/ImagenLogIn.png")}
         ></Image>
 
         <Text style={styles.txtName}>Nombre</Text>
@@ -97,7 +97,7 @@ export default function CrearCuentaUserEnd({ navigation }) {
 
         <View style={styles.general1}>
           <ImageBackground
-            source={require("./src/assetsPropios/fondoabajo3.png")}
+            source={require("../../src/assetsPropios/fondoabajo3.png")}
             resizeMode={"stretch"}
             style={styles.fondo}
           >

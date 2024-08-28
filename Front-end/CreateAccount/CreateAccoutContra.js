@@ -10,7 +10,7 @@ import {
   ScrollView,
   ImageBackground,
 } from "react-native";
-import Validacion, { desactivar } from "./ValidarInputs";
+import Validacion, { desactivar } from "../../ValidarInputs";
 
 export default function CreateAccoutContra({ navigation }) {
   const handleCrearCuenta = () => {
@@ -24,7 +24,7 @@ export default function CreateAccoutContra({ navigation }) {
           <Image
             style={styles.image}
             resizeMode={"stretch"}
-            source={require("./src/assetsPropios/ImagenLogIn.png")}
+            source={require("../../src/assetsPropios/ImagenLogIn.png")}
           />
           <Text style={styles.txtCrearContra}>Crear Contraseña</Text>
 
@@ -42,7 +42,7 @@ export default function CreateAccoutContra({ navigation }) {
 
           <View style={styles.general1}>
             <ImageBackground
-              source={require("./src/assetsPropios/fondoabajo3.png")}
+              source={require("../../src/assetsPropios/fondoabajo3.png")}
               resizeMode={'stretch'}
               style={styles.fondo}
              >

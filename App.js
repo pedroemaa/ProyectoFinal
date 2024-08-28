@@ -13,13 +13,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import ButtonLogin from "./ButtonLogin.js";
 import CambiarContraseña from "./CambiarContraseña.js";
 import ButtonCrearCuenta from "./Buttoncrearcuenta.js";
-import CrearCuenta from "./Crearcuenta.js";
-import LoginScreen from "./LoginScreen.js";
-import MapPantalla from "./MapPantalla.js";
-import StorePantalla from "./StorePantalla.js";
+import CrearCuenta from "./Front-end/CreateAccount/Crearcuenta.js";
+import LoginScreen from "./Front-end/Initi/LoginScreen.js";
+import MapPantalla from "./Front-end/User/MapPantalla.js";
+import StorePantalla from "./Front-end/Store/StorePantalla.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AccountNavigator from "./accountnavigator.js";
-import { StoreContextProvider } from "./StoresContext.js";
+import { StoreContextProvider } from "./Front-end/Store/StoresContext.js";
 import Navigation from "./navigation.js";
 import AppNavigator from "./appnavigator.js";
 

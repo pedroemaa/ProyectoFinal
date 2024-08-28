@@ -10,10 +10,10 @@ import {
   SafeAreaView,
   ImageBackground,
 } from "react-native";
-import Validacion, { desactivar } from "./ValidarInputs";
+import Validacion, { desactivar } from "../../ValidarInputs";
 import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 import {initializeApp} from "firebase/app";
-import { firebaseConfig } from "./config-firebase";
+import { firebaseConfig } from "../../config-firebase";
 
 export default function CreateAccoutMail({ navigation }) {
   
@@ -51,7 +51,7 @@ export default function CreateAccoutMail({ navigation }) {
           <Image
             style={styles.image}
             resizeMode={"stretch"}
-            source={require("./src/assetsPropios/ImagenLogIn.png")}
+            source={require("../../src/assetsPropios/ImagenLogIn.png")}
           />
           <Text style={styles.txtIngMail}>Crear Cuenta</Text>
           <Validacion
@@ -81,25 +81,25 @@ export default function CreateAccoutMail({ navigation }) {
         <View style={styles.general1}> 
           <View style={{ flexDirection: "row" }}>
             <Image
-              source={require("./src/assetsPropios/lineaAzul.png")}
+              source={require("../../src/assetsPropios/lineaAzul.png")}
               style={styles.lineaAzul}
             />
             <Text style={styles.txtcrearcuenta}>O crea tu cuenta</Text>
             <Image
-              source={require("./src/assetsPropios/lineaAzul2.png")}
+              source={require("../../src/assetsPropios/lineaAzul2.png")}
               style={styles.lineaAzul}
             />
           </View>
           {/* Imagen Azul de fondo, con el logo que se pueda tocar*/}
          
           <ImageBackground
-            source={require("./src/assetsPropios/fondoabajo3.png")}
+            source={require("../../src/assetsPropios/fondoabajo3.png")}
             resizeMode={"stretch"}
             style={styles.fondo}>
            <View  style={styles.Google}>
              <TouchableOpacity onPress={handleCrearCuenta} style={{ marginTop: 100 }}>
                 <Image
-                  source={require("./src/assetsPropios/GoogleLogo.png")}
+                  source={require("../../src/assetsPropios/GoogleLogo.png")}
                   style={{
                   alignSelf: "center"}}
                  ></Image>

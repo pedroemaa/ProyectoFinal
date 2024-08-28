@@ -1,22 +1,22 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import PantPrincipal from "./PantPrincipal.js";
+import PantPrincipal from "./Front-end/Initi/PantPrincipal.js";
 import CambiarContraseña from "./CambiarContraseña.js";
-import CrearCuenta from "./Crearcuenta.js";
-import LoginScreen from "./LoginScreen.js";
-import CreateAccoutMail from "./CreateAccoutMail.js";
-import CreateAccoutContra from "./CreateAccoutContra.js";
-import CrearCuentaProfesional from "./CrearCuentaProfesional.js";
-import CraerCuentaMixta from "./PantallaCuentaMixta.js"
-import ImagenesProfecional from "./SubirImagenesProfesional.js";
-import ImagenesMixta from "./crearPerfilProf.js";
-import CraerCuentaUserEnd from "./CrearCuentaUserEnd.js";
-import CrearPuestoEmpleo from "./CrearPuestoEmpleo.js";
-import DatosPersonales from "./datosPersonales.js";
+import CrearCuenta from "./Front-end/CreateAccount/Crearcuenta.js";
+import LoginScreen from "./Front-end/Initi/LoginScreen.js";
+import CreateAccoutMail from "./Front-end/CreateAccount/CreateAccoutMail.js";
+import CreateAccoutContra from "./Front-end/CreateAccount/CreateAccoutContra.js";
+import CrearCuentaProfesional from "./Front-end/CreateAccount/CrearCuentaProfesional.js";
+import CraerCuentaMixta from "./Front-end/Mixto/PantallaCuentaMixta.js"
+import ImagenesProfecional from "./Front-end/Profesional/SubirImagenesProfesional.js";
+import ImagenesMixta from "./Front-end/CreateAccount/crearPerfilProf.js";
+import CraerCuentaUserEnd from "./Front-end/CreateAccount/CrearCuentaUserEnd.js";
+import CrearPuestoEmpleo from "./Front-end/CreateJob/CrearPuestoEmpleo.js";
+import DatosPersonales from "./Front-end/PersonalInformation/datosPersonales.js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Navigation from "./navigation.js";
-import NavigationProf from "./navigatiorProfesional.js";
+import NavigationProf from "./Front-end/Profesional/navigatiorProfesional.js";
 import NavegacionMixto from "./appnavigatorMixto.js";
 
 

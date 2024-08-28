@@ -36,7 +36,7 @@ export default function CrearCuentaEmpleo({ navigation }) {
 
         <View style={styles.general1}>
           <ImageBackground
-            source={require("./src/assetsPropios/fondoabajo3.png")}
+            source={require("../../src/assetsPropios/fondoabajo3.png")}
             resizeMode={"stretch"}
             style={styles.fondo}
           >

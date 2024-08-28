@@ -11,14 +11,14 @@ import {
   ImageBackground,
   Alert
 } from "react-native";
-import ButtonLogin from "./ButtonLogin";
-import Validacion, { desactivar } from "./ValidarInputs";
+import ButtonLogin from "../../ButtonLogin";
+import Validacion, { desactivar } from "../../ValidarInputs";
 import { getAuth, auth, signInWithEmailAndPassword, inMemoryPersistence } from "firebase/auth";
 //import { initializeAuth, getReactNativePersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "./config-firebase";
+import { firebaseConfig } from "../../config-firebase";
 import { useNavigation } from "@react-navigation/native";
 import {getFirestore, collection, getDoc, doc} from 'firebase/firestore';
 
@@ -145,7 +145,7 @@ export default function LoginScreen({ navigation }) {
         <Image
           style={styles.image}
           resizeMode={"stretch"}
-          source={require("./src/assetsPropios/ImagenLogIn.png")}
+          source={require("../../src/assetsPropios/ImagenLogIn.png")}
         />
         <Text style={styles.txtlogin}>Ingrese su usuario</Text>
         
@@ -179,24 +179,24 @@ export default function LoginScreen({ navigation }) {
         <View style={styles.general1}>
           <View style={{ flexDirection: "row" }}>
             <Image
-              source={require("./src/assetsPropios/lineaAzul.png")}
+              source={require("../../src/assetsPropios/lineaAzul.png")}
               style={styles.lineaAzul}
             />
             <Text style={styles.txtingresar}>O ingresar con</Text>
             <Image
-              source={require("./src/assetsPropios/lineaAzul2.png")}
+              source={require("../../src/assetsPropios/lineaAzul2.png")}
               style={styles.lineaAzul}
             />
           </View>
           <ImageBackground
-            source={require("./src/assetsPropios/fondoabajo3.png")}
+            source={require("../../src/assetsPropios/fondoabajo3.png")}
             resizeMode={"stretch"}
             style={styles.fondo}
           >
             <View style={styles.Google}>
               <TouchableOpacity onPress={handleMap} style={{ marginTop: 100 }}>
                 <Image
-                  source={require("./src/assetsPropios/GoogleLogo.png")}
+                  source={require("../../src/assetsPropios/GoogleLogo.png")}
                   style={{
                     alignSelf: "center"
                   }}

@@ -11,7 +11,7 @@ import {
 import { Searchbar, DefaultTheme  } from "react-native-paper";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
-import { SettingsModal } from "./modals.js"; // Importa el modal desde modals.js
+import { SettingsModal } from "../../modals.js"; // Importa el modal desde modals.js
 import { TabActions, useNavigation } from "@react-navigation/native";
 
 
@@ -75,7 +75,7 @@ export default function MapPantalla({  }) {
           onPress={() => setMenuVisible(true)}
               >
         <Image
-          source={require("./src/assetsPropios/menuuu.png")}
+          source={require("../../src/assetsPropios/menuuu.png")}
           style={styles.imagen} 
           />
         
@@ -86,7 +86,7 @@ export default function MapPantalla({  }) {
        >
            
         <Image
-          source={require("./src/assetsPropios/view.png")}
+          source={require("../../src/assetsPropios/view.png")}
           style={styles.imagen}/>
         </TouchableOpacity>
       </View>

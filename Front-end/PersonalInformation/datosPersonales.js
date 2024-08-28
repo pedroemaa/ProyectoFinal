@@ -32,7 +32,7 @@ function DatosPersonales({ navigation }) {
           alignSelf: "flex-start",
         }}
       >
-        <Image source={require("./src/assetsPropios/logoDatos.png")} />
+        <Image source={require("../../src/assetsPropios/logoDatos.png")} />
         <Text style={styles.textTitulo}>Datos personales</Text>
       </View>
       <View style={styles.viewFlex}>

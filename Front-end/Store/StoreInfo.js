@@ -10,13 +10,13 @@ import {
 import { Card } from "react-native-paper";
 import MapView from "react-native-maps";
 import { SvgXml } from "react-native-svg";
-import estrella from "./src/assetsPropios/estrella";
+import estrella from "../../src/assetsPropios/estrella";
 
 export const StoreInfo = ({ store = {}, navigation }) => {
   const {
-    name = "Electricista",
+    name = "Elecicista",
     icon,
-    photos = ["src/assetsPropios/electricista.jpg"],
+    photos = ["../../src/assetsPropios/electricista.jpg"],
     address = "Avenida Veintimilla 37 , tulcán",
     isOpenNow = true,
     rating = 4,
