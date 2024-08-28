@@ -9,15 +9,16 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function ButtonLogin() {
-  return <Text style={styles.txtbuttonlogin}>Inicia Sesión</Text>;
+export default function CrearCuentaProfesional() {
+  return <Text style={styles.txtnuevapantalla}>boton2</Text>;
 }
 
 const styles = StyleSheet.create({
-  txtbuttonlogin: {
+  txtnuevapantalla: {
     color: "white",
     fontSize: 20,
     textAlign: "center",
+    marginTop: -4,
     fontWeight: "bold",
   },
 });
